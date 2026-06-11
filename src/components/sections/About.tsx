@@ -38,7 +38,7 @@ export default function About() {
               </div>
               <div className="border-l-4 border-secondary pl-4">
                 <h4 className="font-bold text-dark text-xl mb-2">Mission</h4>
-                <p className="text-sm text-gray-600 leading-relaxed">Accompagner les entreprises, marques et entrepreneurs dans leur développement digital grâce à des stratégies de communication efficaces et des contenus à forte valeur ajoutée.</p>
+                <p className="text-sm text-gray-600 leading-relaxed">Accompagner les entreprises, marques et entrepreneurs dans leur développement digital.</p>
               </div>
             </div>
             

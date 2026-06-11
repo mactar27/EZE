@@ -3,15 +3,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const CATEGORIES = ["Tout", "Photos", "Vidéos", "Campagnes Marketing", "Événements", "Sites Web", "Branding"];
+const CATEGORIES = ["Tout", "Création de contenu", "Infographie", "Branding", "Campagnes Marketing", "Pages Internet"];
 
 const PROJECTS = [
   { id: 1, title: "Lancement Marque X", category: "Campagnes Marketing", image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" },
-  { id: 2, title: "Refonte Site E-commerce", category: "Sites Web", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
-  { id: 3, title: "Shooting Mode Été", category: "Photos", image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800" },
+  { id: 2, title: "Refonte Site E-commerce", category: "Pages Internet", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
+  { id: 3, title: "Shooting Mode Été", category: "Création de contenu", image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800" },
   { id: 4, title: "Identité Visuelle Startup", category: "Branding", image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" },
-  { id: 5, title: "Gala Annuel Entreprise", category: "Événements", image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=800" },
-  { id: 6, title: "Spot Publicitaire TV", category: "Vidéos", image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800" },
+  { id: 5, title: "Visuels Réseaux Sociaux", category: "Infographie", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" },
+  { id: 6, title: "Spot Publicitaire TV", category: "Création de contenu", image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800" },
 ];
 
 export default function Portfolio() {

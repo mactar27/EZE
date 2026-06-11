@@ -41,7 +41,7 @@ export default function Navbar() {
               alt="EZK Agency Logo" 
               width={600} 
               height={180} 
-              className="h-28 md:h-36 w-auto object-contain rounded transform -translate-x-6 md:-translate-x-16" 
+              className="h-28 md:h-36 w-auto object-contain rounded transform -translate-x-8 md:-translate-x-24" 
               priority
             />
           </div>

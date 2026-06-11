@@ -32,16 +32,16 @@ export default function Navbar() {
         isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
       }`}
     >
-      <div className="w-full mx-auto px-6 md:px-12 lg:px-16 xl:px-24 flex items-center justify-between">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           {/* Real Logo */}
           <div className="flex items-center">
             <Image 
               src="/logo.jpeg" 
               alt="EZK Agency Logo" 
-              width={500} 
-              height={140} 
-              className="h-24 md:h-28 w-auto object-contain rounded" 
+              width={600} 
+              height={180} 
+              className="h-28 md:h-36 w-auto object-contain rounded" 
               priority
             />
           </div>

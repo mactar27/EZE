@@ -17,8 +17,8 @@ export default function Footer() {
                 className="h-12 w-auto object-contain rounded filter brightness-0 invert" 
               />
             </div>
-            <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
-              ILLUMINEZ VOTRE PRÉSENCE EN LIGNE
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+              EZK Agency est une agence de communication et de marketing basée à Dakar. Nous accompagnons les entreprises, les marques et les entrepreneurs dans la construction de leur image, le développement de leur visibilité et la création de contenus impactants.
             </p>
           </div>
 

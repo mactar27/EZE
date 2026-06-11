@@ -92,6 +92,19 @@ export default function Services() {
             </div>
           ))}
         </div>
+
+        <div className="mt-16 text-center">
+          <motion.a 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            href="#contact" 
+            className="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+          >
+            Découvrir nos services
+          </motion.a>
+        </div>
       </div>
     </section>
   );

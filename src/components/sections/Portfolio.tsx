@@ -21,6 +21,8 @@ export default function Portfolio() {
     ? PROJECTS 
     : PROJECTS.filter(project => project.category === activeCategory);
 
+  const displayedProjects = filteredProjects.slice(0, 3);
+
   return (
     <section id="portfolio" className="py-24 bg-gray-50">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
@@ -61,7 +63,7 @@ export default function Portfolio() {
         {/* Projects Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {displayedProjects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
@@ -96,6 +98,19 @@ export default function Portfolio() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        <div className="mt-16 text-center">
+          <motion.a 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            href="#contact" 
+            className="inline-block border-2 border-dark text-dark hover:bg-dark hover:text-white px-8 py-3 rounded-full font-medium transition-colors"
+          >
+            Voir toutes nos réalisations
+          </motion.a>
+        </div>
       </div>
     </section>
   );

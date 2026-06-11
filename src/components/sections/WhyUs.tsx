@@ -32,9 +32,13 @@ export default function WhyUs() {
             <h2 className="text-sm font-bold text-secondary tracking-widest uppercase mb-2">
               Notre différence
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold font-poppins text-white mb-8">
+            <h3 className="text-4xl md:text-5xl font-bold font-poppins text-white mb-6">
               POURQUOI NOUS CHOISIR ?
             </h3>
+            
+            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              Nous combinons créativité, expertise et vision stratégique pour donner à votre marque une présence digitale forte et cohérente. Plus qu’un simple prestataire, nous nous engageons comme un partenaire de confiance dans le développement de votre activité.
+            </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {REASONS.map((reason, index) => (

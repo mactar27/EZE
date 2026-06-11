@@ -27,7 +27,7 @@ export default function About() {
                 <strong className="text-dark">EZK Agency</strong> est une agence de communication et de marketing basée à Dakar. Nous accompagnons les entreprises, les marques et les entrepreneurs dans la construction de leur image, le développement de leur visibilité et la création de contenus impactants.
               </p>
               <p>
-                Notre mission est de transformer vos idées en stratégies efficaces et en résultats concrets, en combinant créativité et expertise technique.
+                Notre mission est de transformer vos idées en stratégies efficaces et en résultats concrets.
               </p>
             </div>
             
@@ -40,6 +40,12 @@ export default function About() {
                 <h4 className="font-bold text-dark text-xl mb-1">Mission</h4>
                 <p className="text-sm text-gray-500">Propulser votre marque vers le succès digital.</p>
               </div>
+            </div>
+            
+            <div className="mt-8">
+              <a href="#contact" className="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                En savoir plus
+              </a>
             </div>
           </motion.div>
 

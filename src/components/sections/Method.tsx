@@ -56,6 +56,9 @@ export default function Method() {
               NOTRE MÉTHODE
             </h3>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie adaptée, produisons des contenus de qualité et assurons un suivi continu afin d’optimiser durablement vos résultats.
+            </p>
           </motion.div>
         </div>
 

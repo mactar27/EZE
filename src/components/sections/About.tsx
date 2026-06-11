@@ -34,7 +34,7 @@ export default function About() {
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="border-l-4 border-primary pl-4">
                 <h4 className="font-bold text-dark text-xl mb-2">Vision</h4>
-                <p className="text-sm text-gray-600 leading-relaxed">Devenir une référence en communication et marketing digital en Afrique, reconnue pour son innovation, sa créativité et son impact.</p>
+                <p className="text-sm text-gray-600 leading-relaxed">Devenir une référence en communication et marketing digital au niveau local et à l'international.</p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
                 <h4 className="font-bold text-dark text-xl mb-2">Mission</h4>

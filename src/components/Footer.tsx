@@ -83,8 +83,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 text-center text-sm text-gray-500">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© 2026 EZK Agency. Tous droits réservés.</p>
+          <p>
+            Réalisé par{" "}
+            <a 
+              href="https://wockytech.xyz" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-blue-400 transition-colors font-medium"
+            >
+              WockyTech
+            </a>
+          </p>
         </div>
       </div>
     </footer>

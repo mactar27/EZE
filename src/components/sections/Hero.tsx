@@ -25,8 +25,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-xl z-10"
           >
-            <h4 className="text-primary font-bold text-sm tracking-widest uppercase mb-4 font-poppins">EZK AGENCY</h4>
-            
+
             <h1 className="text-[3.5rem] md:text-[4.5rem] lg:text-[5rem] font-bold font-poppins leading-[1.05] text-[#2D2D2D] mb-6 tracking-tight">
               ILLUMINEZ<br />
               VOTRE PRÉSENCE<br />

@@ -26,7 +26,7 @@ export default function Hero() {
             className="max-w-xl z-10"
           >
 
-            <h1 className="text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem] font-bold font-poppins leading-[1.05] text-[#2D2D2D] mb-6 tracking-tight">
+            <h1 className="text-[3.5rem] md:text-[4.5rem] lg:text-[5rem] font-bold font-poppins leading-[1.05] text-[#2D2D2D] mb-6 tracking-tight">
               ILLUMINEZ<br />
               VOTRE PRÉSENCE<br />
               <span className="text-primary">EN LIGNE</span>

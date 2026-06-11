@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen pt-32 pb-12 overflow-hidden bg-white">
+    <section className="relative min-h-screen pt-52 pb-12 overflow-hidden bg-white">
       {/* Background dotted grid */}
       <div className="absolute top-40 right-1/3 w-32 h-32 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #0D4FB8 2px, transparent 2px)', backgroundSize: '16px 16px' }}></div>
       <div className="absolute bottom-40 left-1/4 w-32 h-32 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #0D4FB8 2px, transparent 2px)', backgroundSize: '16px 16px' }}></div>

@@ -31,14 +31,14 @@ export default function About() {
               </p>
             </div>
             
-            <div className="mt-10 grid grid-cols-2 gap-6">
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="border-l-4 border-primary pl-4">
-                <h4 className="font-bold text-dark text-xl mb-1">Vision</h4>
-                <p className="text-sm text-gray-500">Devenir la référence créative en Afrique de l'Ouest.</p>
+                <h4 className="font-bold text-dark text-xl mb-2">Vision</h4>
+                <p className="text-sm text-gray-600 leading-relaxed">Devenir une référence en communication et marketing digital en Afrique, reconnue pour son innovation, sa créativité et son impact.</p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h4 className="font-bold text-dark text-xl mb-1">Mission</h4>
-                <p className="text-sm text-gray-500">Propulser votre marque vers le succès digital.</p>
+                <h4 className="font-bold text-dark text-xl mb-2">Mission</h4>
+                <p className="text-sm text-gray-600 leading-relaxed">Accompagner les entreprises, marques et entrepreneurs dans leur développement digital grâce à des stratégies de communication efficaces et des contenus à forte valeur ajoutée.</p>
               </div>
             </div>
             

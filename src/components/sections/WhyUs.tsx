@@ -6,7 +6,7 @@ import { Lightbulb, Zap, UserCheck, PiggyBank, Target, TrendingUp } from "lucide
 const REASONS = [
   { title: "Créativité", icon: <Lightbulb className="w-6 h-6 text-primary" /> },
   { title: "Réactivité", icon: <Zap className="w-6 h-6 text-primary" /> },
-  { title: "Accompagnement personnalisé", icon: <UserCheck className="w-6 h-6 text-primary" /> },
+  { title: "Suivi personnalisé", icon: <UserCheck className="w-6 h-6 text-primary" /> },
   { title: "Solutions adaptées à chaque budget", icon: <PiggyBank className="w-6 h-6 text-primary" /> },
   { title: "Vision stratégique", icon: <Target className="w-6 h-6 text-primary" /> },
   { title: "Résultats mesurables", icon: <TrendingUp className="w-6 h-6 text-primary" /> },

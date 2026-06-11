@@ -20,11 +20,6 @@ export const metadata: Metadata = {
   description: "Agence de communication et marketing digital basée à Dakar. Nous accompagnons les entreprises dans leur développement digital.",
   keywords: ["Agence digitale", "Marketing digital", "Dakar", "Création de contenu", "Web design", "Communication"],
   authors: [{ name: "EZK Agency" }],
-  icons: {
-    icon: "/logo.jpeg",
-    shortcut: "/logo.jpeg",
-    apple: "/logo.jpeg",
-  },
 };
 
 export default function RootLayout({

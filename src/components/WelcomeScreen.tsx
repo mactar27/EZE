@@ -11,7 +11,11 @@ const onboardingSlides = [
     title: "Bienvenue chez EZK",
     subtitle: "Illuminez votre présence en ligne",
     description: "Nous sommes l'agence de communication et marketing digital qui transforme vos idées en stratégies percutantes.",
-    icon: <Sparkles className="w-12 h-12 text-blue-500 mb-6" />,
+    icon: (
+      <div className="mb-6 rounded-full bg-white p-2 shadow-sm">
+        <Image src="/icon.png" alt="EZK Agency Logo" width={56} height={56} className="object-contain" />
+      </div>
+    ),
   },
   {
     id: 2,

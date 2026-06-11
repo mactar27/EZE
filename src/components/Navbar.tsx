@@ -33,7 +33,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 -ml-4 md:-ml-10">
+        <Link href="/" className="flex items-center gap-2">
           {/* Real Logo */}
           <div className="flex items-center">
             <Image 
@@ -41,7 +41,7 @@ export default function Navbar() {
               alt="EZK Agency Logo" 
               width={600} 
               height={180} 
-              className="h-28 md:h-36 w-auto object-contain rounded" 
+              className="h-28 md:h-36 w-auto object-contain rounded transform -translate-x-6 md:-translate-x-16" 
               priority
             />
           </div>

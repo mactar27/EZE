@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   keywords: ["Agence digitale", "Marketing digital", "Dakar", "Création de contenu", "Web design", "Communication"],
   authors: [{ name: "EZK Agency" }],
   verification: {
-    google: "X9cBuMIqNYvemwJp1yxyukY1UXGKttoLpaf724Jo-gQ",
+    google: "vlshVxXsyJUYN0ngpQb4rNUqyVJOlliKTAwBtHb1XW4",
   },
 };
 

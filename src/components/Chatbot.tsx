@@ -143,7 +143,7 @@ export default function Chatbot() {
             </div>
 
             {/* Messages */}
-            <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4 bg-gray-50/50">
+            <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4 bg-white">
               {visibleMessages.map((m) => (
                 <Bubble key={m.id} message={m} />
               ))}
@@ -185,7 +185,7 @@ export default function Chatbot() {
 
             {/* Suggestions */}
             {visibleMessages.length <= 1 && !isLoading && (
-              <div className="flex flex-wrap gap-1.5 px-4 pb-2 bg-gray-50/50">
+              <div className="flex flex-wrap gap-1.5 px-4 pb-2 bg-white">
                 {SUGGESTIONS.map((s) => (
                   <button
                     key={s}

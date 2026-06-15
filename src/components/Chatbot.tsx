@@ -260,11 +260,7 @@ export default function Chatbot() {
           )}
         </AnimatePresence>
 
-        {!open && !hasOpened && (
-          <span className="absolute -right-0.5 -top-0.5 flex size-4 flex-col items-center justify-center rounded-full bg-primary text-[9px] font-bold text-white ring-2 ring-white">
-            1
-          </span>
-        )}
+
       </motion.button>
     </div>
   )

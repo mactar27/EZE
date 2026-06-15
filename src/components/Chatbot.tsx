@@ -60,6 +60,7 @@ function Bubble({ message }: { message: UIMessage }) {
 /* ─── Main chatbot component ─────────────────────────────── */
 export default function Chatbot() {
   const [open, setOpen] = useState(false)
+  const [hasOpened, setHasOpened] = useState(false)
   const [inputValue, setInputValue] = useState("")
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -84,6 +85,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (open) {
+      setHasOpened(true)
       setTimeout(() => inputRef.current?.focus(), 300)
     }
   }, [open])
@@ -258,7 +260,7 @@ export default function Chatbot() {
           )}
         </AnimatePresence>
 
-        {!open && (
+        {!open && !hasOpened && (
           <span className="absolute -right-0.5 -top-0.5 flex size-4 flex-col items-center justify-center rounded-full bg-primary text-[9px] font-bold text-white ring-2 ring-white">
             1
           </span>

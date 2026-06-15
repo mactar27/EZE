@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   authors: [{ name: "EZK Agency" }],
 };
 
+import Chatbot from "@/components/Chatbot";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,7 +34,10 @@ export default function RootLayout({
       lang="fr"
       className={`${inter.variable} ${poppins.variable} font-sans h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-light text-dark">{children}</body>
+      <body className="min-h-full flex flex-col font-sans bg-light text-dark">
+        {children}
+        <Chatbot />
+      </body>
     </html>
   );
 }

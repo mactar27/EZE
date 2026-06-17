@@ -41,7 +41,7 @@ function Bubble({ message }: { message: UIMessage }) {
       className={`flex gap-2 ${isBot ? "items-start" : "items-end flex-row-reverse"}`}
     >
       {isBot && (
-        <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-dark shadow-sm ring-1 ring-border p-1">
+        <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-gray-200 overflow-hidden p-1">
           <Image src="/favicon.png" alt="Assistant" width={24} height={24} className="size-full object-contain" />
         </span>
       )}
@@ -122,8 +122,8 @@ export default function Chatbot() {
             className="flex w-[340px] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl shadow-black/20 sm:w-[380px]"
             style={{ maxHeight: "min(560px, 80vh)" }}
           >
-            <div className="flex items-center gap-3 bg-dark px-4 py-3.5">
-              <span className="relative flex size-10 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-white/10 p-1">
+            <div className="flex items-center gap-3 bg-primary px-4 py-3.5">
+              <span className="relative flex size-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-white/20 p-1">
                 <Image src="/favicon.png" alt="Assistant" width={28} height={28} className="size-full object-contain" />
                 <span className="absolute -right-0.5 -top-0.5 size-2.5 rounded-full bg-emerald-400 ring-2 ring-dark" />
               </span>
@@ -157,7 +157,7 @@ export default function Chatbot() {
                     exit={{ opacity: 0 }}
                     className="flex items-center gap-2"
                   >
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-dark shadow-sm ring-1 border-gray-200 p-1">
+                    <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-gray-200 p-1">
                       <Image src="/favicon.png" alt="Assistant" width={24} height={24} className="size-full object-contain" />
                     </span>
                     <span className="flex gap-1 rounded-2xl rounded-tl-sm border border-gray-200 bg-white px-4 py-3">
@@ -211,7 +211,7 @@ export default function Chatbot() {
               <button
                 type="submit"
                 disabled={!inputValue.trim() || isLoading}
-                className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-white transition-all hover:bg-primary/90 disabled:opacity-40"
+                className="flex size-9 shrink-0 items-center justify-center rounded-xl transition-all disabled:bg-gray-100 disabled:text-gray-400 bg-primary text-white hover:bg-primary/90"
               >
                 <Send className="size-4" />
               </button>

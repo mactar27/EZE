@@ -226,11 +226,11 @@ export default function Chatbot() {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Ouvrir le chatbot"
-        className="relative flex size-14 items-center justify-center rounded-full bg-dark text-white shadow-xl shadow-dark/30"
+        className="relative flex size-14 items-center justify-center rounded-full bg-white text-dark shadow-xl shadow-dark/30"
       >
         {!open && (
           <motion.span
-            className="absolute inset-0 rounded-full bg-dark"
+            className="absolute inset-0 rounded-full bg-white"
             animate={{ scale: [1, 1.3], opacity: [0.5, 0] }}
             transition={{ duration: 1.8, repeat: Infinity }}
           />

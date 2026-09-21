@@ -1,117 +1,273 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
-const CATEGORIES = ["Tout", "Création de contenu", "Infographie", "Branding", "Campagnes Marketing", "Pages Internet"];
+// Portfolio items per category with labeled thumbnails
+const SECTIONS = [
+  {
+    id: "contenu",
+    title: "Création de Contenu",
+    description:
+      "Des contenus pensés pour raconter, valoriser et faire vivre les marques. À travers la photographie et la vidéo, nous créons des contenus adaptés aux réseaux sociaux, à la communication corporate, aux campagnes promotionnelles et aux besoins spécifiques de chaque projet.",
+    subsections: [
+      {
+        label: "PHOTOS",
+        items: [
+          { title: "Photographie corporate", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
+          { title: "Shooting produits", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" },
+          { title: "Photographie événement", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80" },
+          { title: "Portrait pro", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" },
+          { title: "Lifestyle & Brand", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80" },
+          { title: "Réseaux sociaux", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80" },
+        ],
+      },
+      {
+        label: "VIDÉOS",
+        items: [
+          { title: "Reels & Stories", image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=400&q=80" },
+          { title: "Vidéo promotionnelle", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" },
+          { title: "Interview & Témoignage", image: "https://images.unsplash.com/photo-1570126618953-d437176e8c79?auto=format&fit=crop&w=400&q=80" },
+          { title: "Teaser lancement", image: "https://images.unsplash.com/photo-1536240478700-b869ad10e2ab?auto=format&fit=crop&w=400&q=80" },
+          { title: "Vidéo institutionnelle", image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&q=80" },
+          { title: "Contenus Ads", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "infographie",
+    title: "Infographie",
+    description:
+      "Chaque visuel est une occasion de renforcer l'image d'une marque. De l'identité visuelle aux supports de communication digitaux et imprimés, nous concevons des créations graphiques cohérentes, modernes et pensées pour transmettre efficacement chaque message.",
+    subsections: [
+      {
+        label: "",
+        items: [
+          { title: "Logos", image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=400&q=80" },
+          { title: "Fleyers", image: "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?auto=format&fit=crop&w=400&q=80" },
+          { title: "Carte de visite", image: "https://images.unsplash.com/photo-1612532275214-e4ca76d0e4d1?auto=format&fit=crop&w=400&q=80" },
+          { title: "Posts graphique", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80" },
+          { title: "Présentations", image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=400&q=80" },
+          { title: "Animation", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "webdesign",
+    title: "Web Design",
+    description:
+      "Nous concevons des expériences digitales qui associent esthétique, fonctionnalité et expérience utilisateur. Sites vitrines, plateformes, e-commerce ou interfaces digitales : chaque projet est pensé pour valoriser la marque et répondre à ses objectifs.",
+    subsections: [
+      {
+        label: "",
+        items: [
+          { title: "Site vitrine", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" },
+          { title: "E-commerce", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80" },
+          { title: "Landing page", image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=400&q=80" },
+          { title: "UX/UI Design", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80" },
+          { title: "App mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80" },
+          { title: "Dashboard", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" },
+        ],
+      },
+    ],
+  },
+];
 
-const PROJECTS = [
-  { id: 1, title: "Lancement Marque X", category: "Campagnes Marketing", image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" },
-  { id: 2, title: "Refonte Site E-commerce", category: "Pages Internet", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
-  { id: 3, title: "Shooting Mode Été", category: "Création de contenu", image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800" },
-  { id: 4, title: "Identité Visuelle Startup", category: "Branding", image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" },
-  { id: 5, title: "Visuels Réseaux Sociaux", category: "Infographie", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" },
-  { id: 6, title: "Spot Publicitaire TV", category: "Création de contenu", image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800" },
+const SOCIAL_ICONS = [
+  {
+    name: "Instagram",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+        <defs>
+          <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+            <stop offset="0%" stopColor="#ffd600" />
+            <stop offset="20%" stopColor="#ff7a00" />
+            <stop offset="40%" stopColor="#ff0069" />
+            <stop offset="70%" stopColor="#d300c5" />
+            <stop offset="100%" stopColor="#7638fa" />
+          </radialGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="6" ry="6" fill="url(#ig-grad)" />
+        <circle cx="12" cy="12" r="4.5" stroke="white" strokeWidth="1.8" fill="none" />
+        <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
+      </svg>
+    ),
+  },
+  {
+    name: "Facebook",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1877F2">
+        <rect width="24" height="24" rx="6" fill="#1877F2" />
+        <path d="M15.5 8H13.5V6.5C13.5 5.95 13.95 5.5 14.5 5.5H15.5V3H13.5C12.12 3 11 4.12 11 5.5V8H9V10.5H11V21H13.5V10.5H15L15.5 8Z" fill="white" />
+      </svg>
+    ),
+  },
+  {
+    name: "TikTok",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <rect width="24" height="24" rx="6" fill="#010101" />
+        <path d="M16.5 4H14.3C14.5 5.5 15.4 6.8 17 7.1V9.3C15.9 9.2 14.9 8.8 14.1 8.1V13.7C14.1 16.1 12.2 18 9.8 18C7.4 18 5.5 16.1 5.5 13.7C5.5 11.3 7.4 9.4 9.8 9.4C10 9.4 10.2 9.4 10.4 9.5V11.7C10.2 11.6 10 11.6 9.8 11.6C8.6 11.6 7.7 12.5 7.7 13.7C7.7 14.9 8.6 15.8 9.8 15.8C11 15.8 11.9 14.9 11.9 13.7V4H14.1C14.1 4 14.3 5.6 16.5 6.2V4Z" fill="white" />
+        <path d="M16.5 4H14.3C14.5 5.5 15.4 6.8 17 7.1V9.3" stroke="#69C9D0" strokeWidth="0.3" fill="none" />
+      </svg>
+    ),
+  },
+  {
+    name: "LinkedIn",
+    href: "#",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#0A66C2">
+        <rect width="24" height="24" rx="6" fill="#0A66C2" />
+        <path d="M7 9H9.5V17H7V9ZM8.25 8C7.56 8 7 7.44 7 6.75C7 6.06 7.56 5.5 8.25 5.5C8.94 5.5 9.5 6.06 9.5 6.75C9.5 7.44 8.94 8 8.25 8Z" fill="white" />
+        <path d="M11 9H13.4V10.2C13.8 9.5 14.7 9 15.8 9C17.9 9 18.9 10.3 18.9 12.5V17H16.4V13C16.4 12 16.1 11.2 15.1 11.2C14.1 11.2 13.5 11.9 13.5 13V17H11V9Z" fill="white" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState("Tout");
-
-  const filteredProjects = activeCategory === "Tout" 
-    ? PROJECTS 
-    : PROJECTS.filter(project => project.category === activeCategory);
-
-  const displayedProjects = filteredProjects.slice(0, 3);
-
   return (
-    <section id="portfolio" className="py-24 bg-gray-50">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+    <section id="portfolio" className="bg-white">
+
+      {/* Hero Banner */}
+      <div className="relative h-[320px] md:h-[400px] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-dark/60" />
+        <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-2">
-              Portfolio
-            </h2>
-            <h3 className="text-4xl font-bold font-poppins text-dark mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins text-secondary mb-3 uppercase tracking-tight">
               NOS RÉALISATIONS
-            </h3>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+            </h2>
+            <p className="text-white/80 max-w-lg text-sm leading-relaxed">
+              Au cours de nos plus de quatre années d'activité, nous avons travaillé sur des projets variés pour des entreprises, des marques et des entrepreneurs issus de secteurs différents.
+            </p>
+            <p className="text-secondary text-xs font-medium mt-3 italic">
+              Votre partenaire de croissance digitale à Dakar.
+            </p>
           </motion.div>
         </div>
+      </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-dark text-white shadow-md"
-                  : "bg-white text-gray-600 hover:bg-gray-100 hover:text-dark border border-gray-200"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {displayedProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="group relative h-[350px] rounded-3xl overflow-hidden cursor-pointer shadow-lg"
-              >
-                {/* Background Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                ></div>
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-                
-                {/* Content */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-secondary text-sm font-medium mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    {project.category}
-                  </span>
-                  <h4 className="text-white text-2xl font-bold font-poppins mb-4">
-                    {project.title}
-                  </h4>
-                  <button className="bg-white/20 hover:bg-primary backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-medium transition-colors w-fit opacity-0 group-hover:opacity-100 duration-300 delay-200 border border-white/30">
-                    Voir le projet
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        <div className="mt-16 text-center">
-          <motion.a 
-            initial={{ opacity: 0, y: 20 }}
+      {/* Portfolio Sections */}
+      <div className="py-16 px-6 md:px-12 lg:px-24">
+        {SECTIONS.map((section, sIdx) => (
+          <motion.div
+            key={section.id}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            href="#contact" 
-            className="inline-block border-2 border-dark text-dark hover:bg-dark hover:text-white px-8 py-3 rounded-full font-medium transition-colors"
+            transition={{ duration: 0.5, delay: sIdx * 0.1 }}
+            className="mb-20"
           >
-            Voir toutes nos réalisations
-          </motion.a>
-        </div>
+            {/* Section Title */}
+            <h3 className="text-2xl font-bold font-poppins text-secondary mb-3 uppercase tracking-wide">
+              {section.title}
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed mb-8 max-w-2xl font-medium">
+              {section.description}
+            </p>
+
+            {/* Subsections */}
+            {section.subsections.map((sub, subIdx) => (
+              <div key={subIdx} className="mb-8">
+                {sub.label && (
+                  <p className="text-primary font-bold text-sm uppercase tracking-widest mb-4">
+                    {sub.label} :
+                  </p>
+                )}
+
+                {/* 3×2 Grid */}
+                <div className="grid grid-cols-3 gap-3 mb-5">
+                  {sub.items.map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: i * 0.05 }}
+                      className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group shadow-sm"
+                    >
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent" />
+                      <div className="absolute bottom-2 left-2 right-2">
+                        <p className="text-white text-[0.65rem] font-bold leading-tight drop-shadow-sm">
+                          {item.title}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Voir plus button */}
+                <div className="flex justify-center mb-4">
+                  <button className="bg-red-400 hover:bg-red-500 text-white text-xs font-bold px-5 py-1.5 rounded-full transition-colors shadow-sm">
+                    voir plus
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            {/* Separator */}
+            {sIdx < SECTIONS.length - 1 && (
+              <div className="border-t border-gray-200 mt-8" />
+            )}
+          </motion.div>
+        ))}
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="border-t border-gray-200 pt-12 mb-12"
+        >
+          <p className="text-gray-800 text-[0.95rem] font-semibold leading-relaxed mb-6 max-w-xl">
+            Chaque projet est différent, mais notre objectif reste le même : transformer les idées en solutions digitales qui ont du sens. Découvrez nos réalisations et imaginez ce que nous pouvons construire ensemble pour votre marque.
+          </p>
+          <p className="text-red-400 text-sm italic font-medium mb-6">
+            Envie d'en voir plus ? Retrouvez davantage de nos réalisations et de nos projets sur nos réseaux sociaux.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 mb-10">
+            {SOCIAL_ICONS.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                aria-label={social.name}
+                className="hover:scale-110 transition-transform duration-200"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+
+          {/* Final image */}
+          <div className="relative h-[280px] md:h-[360px] rounded-3xl overflow-hidden shadow-xl">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1609402497778-5b3c0e76f24f?auto=format&fit=crop&w=1000&q=80')" }}
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+

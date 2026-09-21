@@ -7,33 +7,33 @@ const STEPS = [
   {
     id: "01",
     title: "Analyse",
-    description: "Comprendre vos besoins et objectifs.",
+    description: "Comprendre l'activité, l'environnement, les besoins et les objectifs du projet.",
     icon: <Search className="w-6 h-6 text-primary" />,
   },
   {
     id: "02",
     title: "Stratégie",
-    description: "Construire une approche adaptée.",
+    description: "Définir une approche claire, adaptée au positionnement, aux ressources et aux résultats recherchés.",
     icon: <Compass className="w-6 h-6 text-white" />,
     isDark: true,
   },
   {
     id: "03",
     title: "Création",
-    description: "Produire des contenus de qualité.",
+    description: "Transformer la stratégie en contenus, supports et solutions créatives de qualité.",
     icon: <PenTool className="w-6 h-6 text-primary" />,
   },
   {
     id: "04",
     title: "Déploiement",
-    description: "Lancer les actions prévues.",
+    description: "Mettre en œuvre les actions et assurer leur diffusion sur les plateformes et canaux adaptés.",
     icon: <Rocket className="w-6 h-6 text-white" />,
     isDark: true,
   },
   {
     id: "05",
     title: "Optimisation",
-    description: "Mesurer et améliorer les résultats.",
+    description: "Mesurer les performances, tirer les enseignements et ajuster les actions pour progresser durablement.",
     icon: <LineChart className="w-6 h-6 text-primary" />,
   },
 ];

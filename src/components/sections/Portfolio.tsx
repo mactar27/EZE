@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { urlFor } from "@/sanity/lib/image";
 
-// Portfolio items per category with labeled thumbnails
-const SECTIONS = [
+const BASE_SECTIONS = [
   {
     id: "contenu",
     title: "Création de Contenu",
@@ -12,25 +12,13 @@ const SECTIONS = [
     subsections: [
       {
         label: "PHOTOS",
-        items: [
-          { title: "Photographie corporate", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-          { title: "Shooting produits", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" },
-          { title: "Photographie événement", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80" },
-          { title: "Portrait pro", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" },
-          { title: "Lifestyle & Brand", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80" },
-          { title: "Réseaux sociaux", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80" },
-        ],
+        categoryMatch: "Photos",
+        items: [],
       },
       {
         label: "VIDÉOS",
-        items: [
-          { title: "Reels & Stories", image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=400&q=80" },
-          { title: "Vidéo promotionnelle", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" },
-          { title: "Interview & Témoignage", image: "https://images.unsplash.com/photo-1570126618953-d437176e8c79?auto=format&fit=crop&w=400&q=80" },
-          { title: "Teaser lancement", image: "https://images.unsplash.com/photo-1536240478700-b869ad10e2ab?auto=format&fit=crop&w=400&q=80" },
-          { title: "Vidéo institutionnelle", image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&q=80" },
-          { title: "Contenus Ads", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80" },
-        ],
+        categoryMatch: "Videos",
+        items: [],
       },
     ],
   },
@@ -42,14 +30,8 @@ const SECTIONS = [
     subsections: [
       {
         label: "",
-        items: [
-          { title: "Logos", image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=400&q=80" },
-          { title: "Fleyers", image: "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?auto=format&fit=crop&w=400&q=80" },
-          { title: "Carte de visite", image: "https://images.unsplash.com/photo-1612532275214-e4ca76d0e4d1?auto=format&fit=crop&w=400&q=80" },
-          { title: "Posts graphique", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80" },
-          { title: "Présentations", image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=400&q=80" },
-          { title: "Animation", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80" },
-        ],
+        categoryMatch: "Infographie",
+        items: [],
       },
     ],
   },
@@ -61,14 +43,8 @@ const SECTIONS = [
     subsections: [
       {
         label: "",
-        items: [
-          { title: "Site vitrine", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" },
-          { title: "E-commerce", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80" },
-          { title: "Landing page", image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=400&q=80" },
-          { title: "UX/UI Design", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80" },
-          { title: "App mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80" },
-          { title: "Dashboard", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" },
-        ],
+        categoryMatch: "Webdesign",
+        items: [],
       },
     ],
   },
@@ -129,7 +105,25 @@ const SOCIAL_ICONS = [
   },
 ];
 
-export default function Portfolio() {
+export default function Portfolio({ projects = [] }: { projects?: any[] }) {
+  // Injecter les projets dynamiques dans notre structure de base
+  const sections = BASE_SECTIONS.map((section) => {
+    const updatedSubsections = section.subsections.map((sub) => {
+      // Trouver tous les projets qui correspondent à la catégorie
+      const matchingProjects = projects.filter((p) => p.category === sub.categoryMatch);
+      
+      return {
+        ...sub,
+        items: matchingProjects.map((p) => ({
+          title: p.title,
+          image: p.image ? urlFor(p.image).url() : "https://via.placeholder.com/400",
+        })),
+      };
+    });
+    
+    return { ...section, subsections: updatedSubsections };
+  });
+
   return (
     <section id="portfolio" className="bg-white">
 
@@ -162,7 +156,7 @@ export default function Portfolio() {
 
       {/* Portfolio Sections */}
       <div className="py-16 px-6 md:px-12 lg:px-24">
-        {SECTIONS.map((section, sIdx) => (
+        {sections.map((section, sIdx) => (
           <motion.div
             key={section.id}
             initial={{ opacity: 0, y: 30 }}
@@ -180,7 +174,9 @@ export default function Portfolio() {
             </p>
 
             {/* Subsections */}
-            {section.subsections.map((sub, subIdx) => (
+            {section.subsections.map((sub, subIdx) => {
+              if (sub.items.length === 0) return null; // Ne pas afficher les sections vides
+              return (
               <div key={subIdx} className="mb-8">
                 {sub.label && (
                   <p className="text-primary font-bold text-sm uppercase tracking-widest mb-4">
@@ -220,10 +216,10 @@ export default function Portfolio() {
                   </button>
                 </div>
               </div>
-            ))}
+            )})}
 
             {/* Separator */}
-            {sIdx < SECTIONS.length - 1 && (
+            {sIdx < sections.length - 1 && (
               <div className="border-t border-gray-200 mt-8" />
             )}
           </motion.div>

@@ -9,8 +9,15 @@ import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import WelcomeScreen from "@/components/WelcomeScreen";
+import { client } from "@/sanity/lib/client";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await client.fetch(`*[_type == "project"] {
+    title,
+    category,
+    image
+  }`);
+
   return (
     <main>
       <WelcomeScreen />
@@ -18,7 +25,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <Portfolio />
+      <Portfolio projects={projects} />
       <Method />
       <WhyUs />
       <Testimonials />

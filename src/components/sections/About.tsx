@@ -9,7 +9,15 @@ const STATS = [
   { number: "4+", label: "Années d'expérience" },
 ];
 
-export default function About() {
+export default function About({ aboutData }: { aboutData?: any }) {
+  // Use data from Sanity if available, otherwise use defaults
+  const stats = [
+    { number: aboutData?.statsProjects || "100+", label: "Projets réalisés" },
+    { number: aboutData?.statsClients || "25+", label: "Clients accompagnés" },
+    { number: aboutData?.statsBrands || "10+", label: "Marques représentées" },
+    { number: aboutData?.statsYears || "4+", label: "Années d'expérience" },
+  ];
+
   return (
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
@@ -38,18 +46,24 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <div className="space-y-5 text-gray-600 leading-relaxed text-[1.05rem]">
-              <p>
-                <strong className="text-dark">EZK Agency</strong> est une agence de communication et de marketing digital basée à Dakar, qui accompagne les entreprises, les marques et les entrepreneurs dans la construction d'une présence digitale forte, cohérente et durable.
-              </p>
-              <p>
-                Depuis plus de quatre ans, nous mettons notre créativité, notre expertise et notre compréhension des enjeux numériques au service de projets de différentes natures et de différents secteurs.
-              </p>
-              <p>
-                De la création de contenus à la gestion des plateformes digitales, en passant par l'infographie, le web design, le consulting digital et les campagnes publicitaires, nous concevons des solutions adaptées à chaque identité, chaque objectif et chaque réalité.
-              </p>
-              <p>
-                Notre approche repose sur une conviction simple : une présence digitale efficace ne se résume pas à être visible. Elle doit avoir du sens, transmettre une image forte et contribuer concrètement au développement de l'activité.
-              </p>
+              {aboutData?.aboutText ? (
+                <p className="whitespace-pre-line">{aboutData.aboutText}</p>
+              ) : (
+                <>
+                  <p>
+                    <strong className="text-dark">EZK Agency</strong> est une agence de communication et de marketing digital basée à Dakar, qui accompagne les entreprises, les marques et les entrepreneurs dans la construction d'une présence digitale forte, cohérente et durable.
+                  </p>
+                  <p>
+                    Depuis plus de quatre ans, nous mettons notre créativité, notre expertise et notre compréhension des enjeux numériques au service de projets de différentes natures et de différents secteurs.
+                  </p>
+                  <p>
+                    De la création de contenus à la gestion des plateformes digitales, en passant par l'infographie, le web design, le consulting digital et les campagnes publicitaires, nous concevons des solutions adaptées à chaque identité, chaque objectif et chaque réalité.
+                  </p>
+                  <p>
+                    Notre approche repose sur une conviction simple : une présence digitale efficace ne se résume pas à être visible. Elle doit avoir du sens, transmettre une image forte et contribuer concrètement au développement de l'activité.
+                  </p>
+                </>
+              )}
             </div>
           </motion.div>
 
@@ -91,15 +105,21 @@ export default function About() {
             <h3 className="text-xl font-bold font-poppins text-dark mb-4 uppercase tracking-widest">Notre Vision</h3>
             <div className="w-8 h-0.5 bg-primary rounded-full mb-6" />
             <div className="space-y-4 text-gray-600 leading-relaxed text-sm">
-              <p>
-                Nous ambitionnons de faire d'EZK Agency une référence en communication et marketing digital, d'abord au niveau local, puis progressivement à l'échelle internationale.
-              </p>
-              <p>
-                Notre vision est de construire une agence capable de répondre aux exigences d'un marché en constante évolution, tout en valorisant les entreprises, les marques et les talents d'ici sur la scène digitale mondiale.
-              </p>
-              <p>
-                Nous souhaitons contribuer à une nouvelle manière de penser la communication en associant créativité, stratégie, innovation et compréhension des réalités propres à chaque marché.
-              </p>
+              {aboutData?.visionText ? (
+                <p className="whitespace-pre-line">{aboutData.visionText}</p>
+              ) : (
+                <>
+                  <p>
+                    Nous ambitionnons de faire d'EZK Agency une référence en communication et marketing digital, d'abord au niveau local, puis progressivement à l'échelle internationale.
+                  </p>
+                  <p>
+                    Notre vision est de construire une agence capable de répondre aux exigences d'un marché en constante évolution, tout en valorisant les entreprises, les marques et les talents d'ici sur la scène digitale mondiale.
+                  </p>
+                  <p>
+                    Nous souhaitons contribuer à une nouvelle manière de penser la communication en associant créativité, stratégie, innovation et compréhension des réalités propres à chaque marché.
+                  </p>
+                </>
+              )}
             </div>
           </motion.div>
 
@@ -120,15 +140,21 @@ export default function About() {
               <h3 className="text-xl font-bold font-poppins text-white mb-4 uppercase tracking-widest">Notre Mission</h3>
               <div className="w-8 h-0.5 bg-secondary rounded-full mb-6" />
               <div className="space-y-4 text-gray-300 leading-relaxed text-sm">
-                <p>
-                  Notre mission est d'accompagner les entreprises, les marques et les entrepreneurs dans leur développement digital, en leur apportant les outils, les stratégies et les solutions nécessaires pour mieux se positionner, communiquer et atteindre leurs objectifs.
-                </p>
-                <p>
-                  Nous cherchons à transformer chaque besoin en une démarche concrète et structurée, depuis la réflexion stratégique jusqu'à la mise en œuvre et l'évaluation des actions engagées.
-                </p>
-                <p>
-                  Notre rôle est de permettre à nos clients de mieux exprimer leur valeur, de renforcer leur visibilité et de construire une présence digitale capable de soutenir durablement leur activité.
-                </p>
+                {aboutData?.missionText ? (
+                  <p className="whitespace-pre-line">{aboutData.missionText}</p>
+                ) : (
+                  <>
+                    <p>
+                      Notre mission est d'accompagner les entreprises, les marques et les entrepreneurs dans leur développement digital, en leur apportant les outils, les stratégies et les solutions nécessaires pour mieux se positionner, communiquer et atteindre leurs objectifs.
+                    </p>
+                    <p>
+                      Nous cherchons à transformer chaque besoin en une démarche concrète et structurée, depuis la réflexion stratégique jusqu'à la mise en œuvre et l'évaluation des actions engagées.
+                    </p>
+                    <p>
+                      Notre rôle est de permettre à nos clients de mieux exprimer leur valeur, de renforcer leur visibilité et de construire une présence digitale capable de soutenir durablement leur activité.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>
@@ -146,7 +172,7 @@ export default function About() {
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {STATS.map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}

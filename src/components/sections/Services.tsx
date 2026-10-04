@@ -3,58 +3,18 @@
 import { motion } from "framer-motion";
 import { Camera, Megaphone, Palette, MonitorSmartphone, BarChart3, Target, ArrowRight } from "lucide-react";
 
-const SERVICES = [
-  {
-    id: 1,
-    num: "01",
-    title: "Création de Contenu Mobile Professionnel",
-    description: "Photos, vidéos, reels, interviews et contenus créatifs pensés pour les usages digitaux : réseaux sociaux, publicité, événements.",
-    icon: <Camera className="text-primary w-8 h-8" strokeWidth={1.5} />,
-    delay: 0.1,
-  },
-  {
-    id: 2,
-    num: "02",
-    title: "Gestion de Plateformes & Réseaux Sociaux",
-    description: "Gestion et animation de vos comptes Instagram, Facebook, TikTok, LinkedIn, Snapchat. Calendrier éditorial, publication, modération et reporting.",
-    icon: <Megaphone className="text-primary w-8 h-8" strokeWidth={1.5} />,
-    delay: 0.2,
-  },
-  {
-    id: 3,
-    num: "03",
-    title: "Infographie",
-    description: "Création de logos, chartes graphiques, supports print & digitaux, motion design et animations graphiques pour vos réseaux sociaux.",
-    icon: <Palette className="text-primary w-8 h-8" strokeWidth={1.5} />,
-    delay: 0.3,
-  },
-  {
-    id: 4,
-    num: "04",
-    title: "Web Design",
-    description: "Conception de sites vitrines, e-commerce, landing pages et applications web. UX/UI, responsive design, intégrations et optimisation SEO.",
-    icon: <MonitorSmartphone className="text-primary w-8 h-8" strokeWidth={1.5} />,
-    delay: 0.4,
-  },
-  {
-    id: 5,
-    num: "05",
-    title: "Consulting Digital",
-    description: "Audit de l'écosystème digital, stratégie média, définition des KPIs, optimisation des performances et accompagnement à la transformation digitale.",
-    icon: <BarChart3 className="text-primary w-8 h-8" strokeWidth={1.5} />,
-    delay: 0.5,
-  },
-  {
-    id: 6,
-    num: "06",
-    title: "Campagnes & Publicité Ads",
-    description: "Conception, déploiement et optimisation de campagnes Meta Ads, Google Ads, TikTok Ads et LinkedIn Ads. Ciblage, création publicitaire et suivi des performances.",
-    icon: <Target className="text-primary w-8 h-8" strokeWidth={1.5} />,
-    delay: 0.6,
-  },
-];
+const ICONS_MAP: Record<string, React.ReactNode> = {
+  Camera: <Camera className="text-primary w-8 h-8" strokeWidth={1.5} />,
+  Megaphone: <Megaphone className="text-primary w-8 h-8" strokeWidth={1.5} />,
+  Palette: <Palette className="text-primary w-8 h-8" strokeWidth={1.5} />,
+  MonitorSmartphone: <MonitorSmartphone className="text-primary w-8 h-8" strokeWidth={1.5} />,
+  BarChart3: <BarChart3 className="text-primary w-8 h-8" strokeWidth={1.5} />,
+  Target: <Target className="text-primary w-8 h-8" strokeWidth={1.5} />,
+};
 
-export default function Services() {
+export default function Services({ services = [] }: { services?: any[] }) {
+  // Use Sanity services if available, otherwise empty array
+  const displayServices = services.length > 0 ? services : [];
   return (
     <section id="services" className="py-20 bg-white relative">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
@@ -77,8 +37,16 @@ export default function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+          {displayServices.map((service, index) => (
+            <ServiceCard 
+              key={service._id || index} 
+              service={{
+                ...service,
+                num: String(index + 1).padStart(2, '0'),
+                delay: (index * 0.1) % 0.4,
+                iconNode: ICONS_MAP[service.icon] || ICONS_MAP['Target']
+              }} 
+            />
           ))}
         </div>
 
@@ -114,7 +82,7 @@ function ServiceCard({ service }: { service: any }) {
       </span>
 
       <div className="w-14 h-14 bg-primary/8 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
-        {service.icon}
+        {service.iconNode}
       </div>
 
       <h4 className="text-[1rem] font-bold text-[#2D2D2D] font-poppins mb-3 leading-snug group-hover:text-primary transition-colors">

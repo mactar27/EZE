@@ -18,13 +18,29 @@ export default async function Home() {
     image
   }`);
 
+  const services = await client.fetch(`*[_type == "service"] | order(order asc) {
+    _id,
+    title,
+    description,
+    icon
+  }`);
+
+  const about = await client.fetch(`*[_type == "about"][0] {
+    aboutText,
+    visionText,
+    missionText,
+    statsProjects,
+    statsClients,
+    statsBrands,
+    statsYears
+  }`);
+
   return (
     <main>
       <WelcomeScreen />
       <Navbar />
-      <Hero />
-      <About />
-      <Services />
+      <About aboutData={about} />
+      <Services services={services} />
       <Portfolio projects={projects} />
       <Method />
       <WhyUs />

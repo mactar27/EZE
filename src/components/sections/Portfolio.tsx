@@ -255,16 +255,11 @@ export default function Portfolio({ projects = [] }: { projects?: any[] }) {
           </div>
 
           {/* Final image */}
-          <div className="relative h-[280px] md:h-[400px] rounded-3xl overflow-hidden shadow-xl">
+          <div className="relative h-[280px] md:h-[420px] rounded-3xl overflow-hidden shadow-xl">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/portfolio_event.png')" }}
+              style={{ backgroundImage: "url('/collaboration-creative.png')" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
-              <p className="text-white text-lg md:text-xl font-bold">
-                Construisons ensemble des projets qui marquent les esprits.
-              </p>
-            </div>
           </div>
         </motion.div>
       </div>

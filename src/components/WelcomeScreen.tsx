@@ -88,74 +88,61 @@ export default function WelcomeScreen() {
                 key="splash"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="flex flex-col items-center justify-center px-4"
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="relative flex flex-col items-center justify-center w-full h-full px-6"
               >
+                {/* Lueur d'ambiance très subtile */}
                 <motion.div
-                  initial={{ scale: 0.8, opacity: 0, y: 20 }}
-                  animate={{ 
-                    scale: 1,
-                    opacity: 1,
-                    y: [0, -6, 0],
-                  }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: [0.15, 0.35, 0.15], scale: [0.95, 1.08, 0.95] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-blue-500/20 blur-3xl pointer-events-none"
+                />
+
+                {/* Logo sans boîte ni encadré lourd : pur et net */}
+                <motion.div
+                  initial={{ opacity: 0, y: 16, scale: 0.94 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{
-                    scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                    opacity: { duration: 0.6 },
-                    y: {
-                      delay: 0.8,
-                      duration: 2.4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
+                    duration: 0.9,
+                    ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="relative flex items-center justify-center"
+                  className="relative z-10 flex flex-col items-center"
                 >
-                  {/* Halo pulsant en arrière-plan */}
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.25, 1],
-                      opacity: [0.2, 0.5, 0.2],
-                    }}
-                    transition={{
-                      duration: 2.2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute inset-0 -m-6 rounded-3xl bg-blue-500/20 blur-2xl"
+                  <Image 
+                    src="/logo-clean.png" 
+                    alt="EZK Agency Logo" 
+                    width={480} 
+                    height={250} 
+                    className="h-24 md:h-32 w-auto object-contain drop-shadow-sm"
+                    priority
                   />
 
-                  {/* Conteneur avec effet d'ombre et brillance */}
-                  <motion.div
-                    animate={{
-                      boxShadow: [
-                        "0px 0px 0px rgba(13, 79, 184, 0)",
-                        "0px 12px 35px rgba(13, 79, 184, 0.25)",
-                        "0px 0px 0px rgba(13, 79, 184, 0)",
-                      ],
-                    }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative rounded-2xl bg-white px-8 py-6 ring-1 ring-blue-100 shadow-xl"
-                  >
-                    <Image 
-                      src="/logo.jpeg" 
-                      alt="EZK Agency Logo" 
-                      width={320} 
-                      height={100} 
-                      className="h-24 md:h-32 w-auto object-contain"
-                      priority
+                  {/* Ligne élégante de progression */}
+                  <div className="relative mt-10 w-44 h-[2px] bg-gray-100 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "100%" }}
+                      transition={{
+                        duration: 1.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="w-1/2 h-full bg-gradient-to-r from-transparent via-blue-600 to-transparent"
                     />
-                  </motion.div>
-                </motion.div>
+                  </div>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                  className="mt-6 text-sm text-gray-500 uppercase tracking-widest font-semibold"
-                >
-                  Communication & Marketing Digital
-                </motion.p>
+                  {/* Tagline typographique premium */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="mt-4 text-xs md:text-sm font-medium tracking-[0.25em] text-gray-400 uppercase text-center"
+                  >
+                    Communication & Marketing Digital
+                  </motion.p>
+                </motion.div>
               </motion.div>
             )}
 

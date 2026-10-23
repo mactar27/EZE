@@ -93,20 +93,61 @@ export default function WelcomeScreen() {
                 className="flex flex-col items-center justify-center"
               >
                 <motion.div
+                  initial={{ scale: 0, rotate: -20, opacity: 0 }}
                   animate={{ 
-                    boxShadow: ["0px 0px 0px rgba(13, 79, 184, 0)", "0px 0px 40px rgba(13, 79, 184, 0.4)", "0px 0px 0px rgba(13, 79, 184, 0)"]
+                    scale: [0, 1.15, 1],
+                    rotate: [-20, 5, 0],
+                    opacity: 1,
+                    y: [0, -8, 0],
                   }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="rounded-full bg-white p-4"
+                  transition={{
+                    scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                    rotate: { duration: 0.8, ease: "easeOut" },
+                    opacity: { duration: 0.4 },
+                    y: {
+                      delay: 0.8,
+                      duration: 2.2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  className="relative flex items-center justify-center"
                 >
-                  <Image 
-                    src="/icon.png" 
-                    alt="EZK Agency Logo" 
-                    width={120} 
-                    height={120} 
-                    className="object-contain"
-                    priority
+                  {/* Halo pulsant en arrière-plan */}
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.35, 1],
+                      opacity: [0.25, 0.6, 0.25],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute inset-0 -m-4 rounded-full bg-blue-500/20 blur-xl"
                   />
+
+                  {/* Conteneur avec effet d'ombre et brillance */}
+                  <motion.div
+                    animate={{
+                      boxShadow: [
+                        "0px 0px 0px rgba(13, 79, 184, 0)",
+                        "0px 10px 40px rgba(13, 79, 184, 0.35)",
+                        "0px 0px 0px rgba(13, 79, 184, 0)",
+                      ],
+                    }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative rounded-full bg-white p-4 ring-1 ring-blue-100 shadow-xl"
+                  >
+                    <Image 
+                      src="/favicon.png" 
+                      alt="EZK Agency Logo" 
+                      width={120} 
+                      height={120} 
+                      className="object-contain"
+                      priority
+                    />
+                  </motion.div>
                 </motion.div>
                 <motion.h1 
                   initial={{ opacity: 0, y: 20 }}

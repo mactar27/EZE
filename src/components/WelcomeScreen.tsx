@@ -86,27 +86,25 @@ export default function WelcomeScreen() {
             {phase === "splash" && (
               <motion.div
                 key="splash"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="flex flex-col items-center justify-center"
+                className="flex flex-col items-center justify-center px-4"
               >
                 <motion.div
-                  initial={{ scale: 0, rotate: -20, opacity: 0 }}
+                  initial={{ scale: 0.8, opacity: 0, y: 20 }}
                   animate={{ 
-                    scale: [0, 1.15, 1],
-                    rotate: [-20, 5, 0],
+                    scale: 1,
                     opacity: 1,
-                    y: [0, -8, 0],
+                    y: [0, -6, 0],
                   }}
                   transition={{
                     scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                    rotate: { duration: 0.8, ease: "easeOut" },
-                    opacity: { duration: 0.4 },
+                    opacity: { duration: 0.6 },
                     y: {
                       delay: 0.8,
-                      duration: 2.2,
+                      duration: 2.4,
                       repeat: Infinity,
                       ease: "easeInOut",
                     },
@@ -116,15 +114,15 @@ export default function WelcomeScreen() {
                   {/* Halo pulsant en arrière-plan */}
                   <motion.div
                     animate={{
-                      scale: [1, 1.35, 1],
-                      opacity: [0.25, 0.6, 0.25],
+                      scale: [1, 1.25, 1],
+                      opacity: [0.2, 0.5, 0.2],
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.2,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="absolute inset-0 -m-4 rounded-full bg-blue-500/20 blur-xl"
+                    className="absolute inset-0 -m-6 rounded-3xl bg-blue-500/20 blur-2xl"
                   />
 
                   {/* Conteneur avec effet d'ombre et brillance */}
@@ -132,38 +130,31 @@ export default function WelcomeScreen() {
                     animate={{
                       boxShadow: [
                         "0px 0px 0px rgba(13, 79, 184, 0)",
-                        "0px 10px 40px rgba(13, 79, 184, 0.35)",
+                        "0px 12px 35px rgba(13, 79, 184, 0.25)",
                         "0px 0px 0px rgba(13, 79, 184, 0)",
                       ],
                     }}
-                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative rounded-full bg-white p-4 ring-1 ring-blue-100 shadow-xl"
+                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative rounded-2xl bg-white px-8 py-6 ring-1 ring-blue-100 shadow-xl"
                   >
                     <Image 
-                      src="/favicon.png" 
+                      src="/logo.jpeg" 
                       alt="EZK Agency Logo" 
-                      width={120} 
-                      height={120} 
-                      className="object-contain"
+                      width={320} 
+                      height={100} 
+                      className="h-24 md:h-32 w-auto object-contain"
                       priority
                     />
                   </motion.div>
                 </motion.div>
-                <motion.h1 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="mt-8 text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900"
-                >
-                  EZK <span className="text-blue-600">Agency</span>
-                </motion.h1>
+
                 <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.8 }}
-                  className="mt-2 text-sm text-gray-500 uppercase tracking-widest font-medium"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="mt-6 text-sm text-gray-500 uppercase tracking-widest font-semibold"
                 >
-                  Communication & Digital
+                  Communication & Marketing Digital
                 </motion.p>
               </motion.div>
             )}

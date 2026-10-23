@@ -39,8 +39,8 @@ export default function WelcomeScreen() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    // Vérifie si l'utilisateur a déjà vu l'onboarding
-    const hasSeenWelcome = localStorage.getItem("ezk_has_seen_welcome");
+    // Affiche le splash screen à chaque nouvelle session de navigation
+    const hasSeenWelcome = sessionStorage.getItem("ezk_has_seen_welcome");
     
     if (!hasSeenWelcome) {
       setIsVisible(true);
@@ -56,7 +56,7 @@ export default function WelcomeScreen() {
   }, []);
 
   const finishOnboarding = () => {
-    localStorage.setItem("ezk_has_seen_welcome", "true");
+    sessionStorage.setItem("ezk_has_seen_welcome", "true");
     setPhase("done");
     setTimeout(() => setIsVisible(false), 500); // Laisse le temps à l'animation de fin
   };

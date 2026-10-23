@@ -39,6 +39,7 @@ export default async function Home() {
     <main>
       <WelcomeScreen />
       <Navbar />
+      <Hero />
       <About aboutData={about} />
       <Services services={services} />
       <Portfolio projects={projects} />

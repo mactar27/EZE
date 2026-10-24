@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Compass, PenTool, Rocket, LineChart } from "lucide-react";
+import Link from "next/link";
+import { Search, Compass, PenTool, Rocket, LineChart, ArrowRight } from "lucide-react";
 
 const STEPS = [
   {
@@ -105,6 +106,17 @@ export default function Method() {
               </motion.div>
             ))}
           </div>
+        </div>
+
+        {/* Bouton Voir plus */}
+        <div className="mt-16 text-center">
+          <Link
+            href="/methode"
+            className="inline-flex items-center gap-2 bg-primary text-white font-medium px-8 py-3.5 rounded-full shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
+          >
+            <span>Découvrir notre méthode en détail</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

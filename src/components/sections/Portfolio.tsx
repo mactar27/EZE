@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 
 const BASE_SECTIONS = [
@@ -211,9 +213,13 @@ export default function Portfolio({ projects = [] }: { projects?: any[] }) {
 
                 {/* Voir plus button */}
                 <div className="flex justify-center mb-4">
-                  <button className="bg-red-400 hover:bg-red-500 text-white text-xs font-bold px-5 py-1.5 rounded-full transition-colors shadow-sm">
-                    voir plus
-                  </button>
+                  <Link 
+                    href="/realisations"
+                    className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-white text-xs font-bold px-5 py-2 rounded-full transition-colors shadow-sm"
+                  >
+                    <span>Voir plus</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             )})}
@@ -254,12 +260,29 @@ export default function Portfolio({ projects = [] }: { projects?: any[] }) {
             ))}
           </div>
 
-          {/* Final image */}
-          <div className="relative h-[280px] md:h-[420px] rounded-3xl overflow-hidden shadow-xl">
+          {/* Final image with CTA */}
+          <div className="relative h-[280px] md:h-[420px] rounded-3xl overflow-hidden shadow-xl group">
             <div
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: "url('/collaboration-creative.png')" }}
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex flex-col justify-end p-8 md:p-12">
+              <h3 className="text-white text-xl md:text-2xl font-bold font-poppins mb-2">
+                Découvrez l'ensemble de nos projets
+              </h3>
+              <p className="text-white/80 text-sm md:text-base max-w-xl mb-6">
+                Explorez en détail toutes nos créations de contenu, identités visuelles et expériences digitales.
+              </p>
+              <div>
+                <Link
+                  href="/realisations"
+                  className="inline-flex items-center gap-2 bg-white text-primary font-bold px-7 py-3 rounded-full hover:bg-gray-100 transition-all shadow-md text-sm"
+                >
+                  <span>Explorer toutes nos réalisations</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -51,12 +51,19 @@ export default function Services({ services = [] }: { services?: any[] }) {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-16 flex flex-wrap justify-center gap-4">
+          <Link 
+            href="/services" 
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-full font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
+          >
+            <span>Voir tous nos services</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
           <Link 
             href="/contact" 
-            className="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+            className="inline-flex items-center gap-2 bg-white text-dark border border-gray-200 px-8 py-3.5 rounded-full font-medium shadow-sm hover:bg-gray-50 transition-all text-sm"
           >
-            Nous contacter
+            Demander un devis
           </Link>
         </div>
       </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const STATS = [
   { number: "100+", label: "Projets réalisés" },
@@ -191,6 +193,17 @@ export default function About({ aboutData }: { aboutData?: any }) {
             ))}
           </div>
         </motion.div>
+
+        {/* Bouton Voir plus */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/a-propos"
+            className="inline-flex items-center gap-2 bg-primary text-white font-medium px-8 py-3.5 rounded-full shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
+          >
+            <span>En savoir plus sur notre agence</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
       </div>
     </section>

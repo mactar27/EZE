@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, Quote, Star, ArrowRight } from "lucide-react";
 
 const TESTIMONIALS = [
   {
@@ -85,6 +86,17 @@ export default function Testimonials() {
             <ChevronRight size={20} />
           </button>
 
+        </div>
+
+        {/* Bouton Voir plus */}
+        <div className="mt-16 text-center">
+          <Link
+            href="/temoignages"
+            className="inline-flex items-center gap-2 bg-primary text-white font-medium px-8 py-3.5 rounded-full shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
+          >
+            <span>Voir tous les témoignages</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

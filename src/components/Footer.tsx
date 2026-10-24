@@ -47,19 +47,19 @@ export default function Footer() {
             <h4 className="font-semibold text-lg font-poppins">Liens rapides</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
-                <Link href="#" className="hover:text-secondary transition-colors">Accueil</Link>
+                <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-secondary transition-colors">À propos</Link>
+                <Link href="/a-propos" className="hover:text-secondary transition-colors">À propos</Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-secondary transition-colors">Services</Link>
+                <Link href="/services" className="hover:text-secondary transition-colors">Services</Link>
               </li>
               <li>
-                <Link href="#portfolio" className="hover:text-secondary transition-colors">Réalisations</Link>
+                <Link href="/realisations" className="hover:text-secondary transition-colors">Réalisations</Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-secondary transition-colors">Contact</Link>
+                <Link href="/contact" className="hover:text-secondary transition-colors">Contact</Link>
               </li>
             </ul>
           </div>

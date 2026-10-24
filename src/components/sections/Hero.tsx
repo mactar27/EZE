@@ -42,14 +42,14 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-4 mb-12">
               <Link
-                href="#services"
+                href="/services"
                 className="bg-primary text-white px-8 py-3.5 rounded-[8px] font-medium hover:bg-primary/90 transition-all shadow-[0_8px_20px_rgba(13,79,184,0.3)] flex items-center gap-2 group text-sm"
               >
                 Découvrir nos services
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="bg-white text-primary border-2 border-blue-100 px-8 py-3.5 rounded-[8px] font-medium hover:bg-blue-50 transition-all text-sm shadow-sm"
               >
                 Demander un devis

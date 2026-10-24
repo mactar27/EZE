@@ -7,11 +7,11 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { name: "Accueil", href: "#" },
-  { name: "À propos", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Réalisations", href: "#portfolio" },
-  { name: "Contact", href: "#contact" },
+  { name: "Accueil", href: "/" },
+  { name: "À propos", href: "/a-propos" },
+  { name: "Services", href: "/services" },
+  { name: "Réalisations", href: "/realisations" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -62,7 +62,7 @@ export default function Navbar() {
             ))}
           </ul>
           <Link
-            href="#contact"
+            href="/contact"
             className="bg-primary text-white px-6 py-2.5 rounded-full font-medium text-base hover:bg-primary/90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
             Demander un devis
@@ -97,7 +97,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href="/contact"
             onClick={() => setMobileMenuOpen(false)}
             className="bg-primary text-white text-center px-6 py-3 rounded-full font-medium mt-4"
           >

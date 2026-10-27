@@ -18,9 +18,17 @@ export default function Footer() {
                 className="h-12 w-auto object-contain rounded filter brightness-0 invert" 
               />
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              EZK Agency est une agence de communication et de marketing basée à Dakar. Nous accompagnons les entreprises, les marques et les entrepreneurs dans la construction de leur image, le développement de leur visibilité et la création de contenus impactants.
-            </p>
+            <div className="space-y-3">
+              <h5 className="text-xs md:text-sm font-bold tracking-wider text-secondary uppercase font-poppins">
+                VOTRE MARQUE MÉRITE UNE PRÉSENCE À LA HAUTEUR DE VOS AMBITIONS.
+              </h5>
+              <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
+                De la stratégie à la création, jusqu’au déploiement de vos actions marketing, EZK Agency vous accompagne pour construire une présence digitale cohérente, professionnelle et impactante.
+              </p>
+              <p className="text-white text-sm font-semibold tracking-wide">
+                Votre prochain projet commence ici.
+              </p>
+            </div>
           </div>
 
           {/* Contact Info */}

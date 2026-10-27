@@ -364,7 +364,7 @@ export default function Services({
           </div>
 
           {/* Bouton Voir tous les services */}
-          <div className="mt-14 text-center">
+          <div className="mt-8 md:mt-10 text-center">
             <Link
               href="/services"
               className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all"

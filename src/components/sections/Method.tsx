@@ -15,33 +15,38 @@ const STATS_DATA = [
 
 const METHOD_STEPS = [
   {
-    title: "Analyse",
+    num: "01",
+    title: "ANALYSE",
     description:
-      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+      "Nous étudions votre activité, votre marché, vos concurrents et votre présence digitale afin d’identifier vos besoins, vos forces et vos opportunités de développement.",
     icon: <Search className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    title: "strategie",
+    num: "02",
+    title: "STRATÉGIE",
     description:
-      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+      "Nous élaborons une stratégie digitale sur mesure, alignée sur vos objectifs, votre cible et votre positionnement, pour définir les actions les plus pertinentes à mettre en œuvre.",
     icon: <Target className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    title: "création",
+    num: "03",
+    title: "CRÉATION",
     description:
-      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+      "Nous concevons des contenus et des supports de communication cohérents avec votre identité : visuels, vidéos, textes et autres ressources nécessaires pour valoriser votre marque.",
     icon: <Lightbulb className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    title: "Deploiment",
+    num: "04",
+    title: "DÉPLOIEMENT",
     description:
-      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+      "Nous mettons en œuvre la stratégie à travers la diffusion des contenus, la gestion de vos plateformes et le lancement des actions de communication prévues.",
     icon: <Monitor className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    title: "Optimisation",
+    num: "05",
+    title: "OPTIMISATION",
     description:
-      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+      "Nous analysons les résultats, mesurons les performances et ajustons les actions engagées afin d’améliorer continuellement votre visibilité et l’efficacité de votre communication digitale.",
     icon: <BarChart2 className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
 ];
@@ -91,7 +96,10 @@ export default function Method({
                 <div className="w-16 h-16 rounded-full bg-[#5FD3E2] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-4">
                   {step.icon}
                 </div>
-                <h3 className="text-base font-extrabold text-gray-900 capitalize mb-3 font-poppins">
+                <span className="text-[11px] font-extrabold text-[#0D4FB8] tracking-widest uppercase mb-1">
+                  {step.num}
+                </span>
+                <h3 className="text-base font-extrabold text-gray-900 tracking-wider uppercase mb-3 font-poppins">
                   {step.title}
                 </h3>
                 <p className="text-xs text-gray-600 leading-relaxed font-normal">
@@ -102,7 +110,7 @@ export default function Method({
           </div>
 
           {/* Version Mobile & Tablette */}
-          <div className="lg:hidden space-y-6">
+          <div className="lg:hidden space-y-4">
             {METHOD_STEPS.map((step, index) => (
               <motion.div
                 key={step.title}
@@ -110,17 +118,20 @@ export default function Method({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="flex items-start gap-5 p-4 rounded-2xl bg-gray-50/70 border border-gray-100"
+                className="flex items-start gap-4 p-4 rounded-2xl bg-gray-50/70 border border-gray-100"
               >
                 <div className="flex flex-col items-center shrink-0 w-16">
                   <div className="w-12 h-12 rounded-full bg-[#5FD3E2] flex items-center justify-center shadow-md">
                     {step.icon}
                   </div>
-                  <span className="text-xs font-bold text-gray-900 mt-2 text-center capitalize">
-                    {step.title}
+                  <span className="text-[10px] font-extrabold text-[#0D4FB8] mt-1.5">
+                    {step.num}
                   </span>
                 </div>
                 <div className="flex-1 pt-1">
+                  <h4 className="text-xs font-extrabold text-gray-900 uppercase tracking-wide mb-1 font-poppins">
+                    {step.title}
+                  </h4>
                   <p className="text-xs text-gray-600 leading-relaxed font-normal">
                     {step.description}
                   </p>

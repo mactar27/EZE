@@ -50,14 +50,10 @@ export default function Method() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-2">
-              Processus
-            </h2>
-            <h3 className="text-4xl font-bold font-poppins text-dark mb-6">
-              NOTRE MÉTHODE
+            <h3 className="text-3xl md:text-4xl font-extrabold font-poppins text-[#5FD3E2] tracking-wider uppercase mb-6">
+              NOTRE METHODE
             </h3>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
               Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie adaptée, produisons des contenus de qualité et assurons un suivi continu afin d’optimiser durablement vos résultats.
             </p>
           </motion.div>

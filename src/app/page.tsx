@@ -22,7 +22,8 @@ export default async function Home() {
     _id,
     title,
     description,
-    icon
+    icon,
+    image
   }`);
 
   const about = await client.fetch(`*[_type == "about"][0] {
@@ -39,6 +40,7 @@ export default async function Home() {
     heroImage,
     aboutImage,
     servicesBanner,
+    servicesImages,
     realisationsBanner,
     realisationsEndImage,
     methodBanner,
@@ -65,7 +67,12 @@ export default async function Home() {
       <Navbar />
       <Hero heroImage={siteImages?.heroImage} />
       <About aboutData={about} aboutImage={siteImages?.aboutImage} isHomeTeaser={true} />
-      <Services services={services} bannerImage={siteImages?.servicesBanner} isHomeTeaser={true} />
+      <Services 
+        services={services} 
+        bannerImage={siteImages?.servicesBanner} 
+        servicesImages={siteImages?.servicesImages}
+        isHomeTeaser={true} 
+      />
       <Portfolio projects={projects} isHomeTeaser={true} />
       <Method methodBanner={siteImages?.methodBanner} />
       <Testimonials statsBanner={siteImages?.statsBanner} clientLogos={combinedClientLogos} />

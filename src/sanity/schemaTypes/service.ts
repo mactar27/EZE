@@ -35,19 +35,26 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'image',
+      title: 'Image / Illustration du Pôle de Service',
+      description: 'Optionnel : image personnalisée pour illustrer ce pôle de service.',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'order',
       title: 'Ordre d\'affichage',
       type: 'number',
       description: 'Un chiffre pour trier les services (ex: 1, 2, 3...)',
     }),
   ],
-  orderings: [
-    {
-      title: 'Ordre manuel',
-      name: 'orderAsc',
-      by: [
-        {field: 'order', direction: 'asc'}
-      ]
-    }
-  ]
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'description',
+      media: 'image',
+    },
+  },
 })

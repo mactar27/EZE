@@ -27,6 +27,20 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'servicesImages',
+      title: 'Images des 6 Pôles de Services',
+      description: 'Images personnalisées pour illustrer les 6 pôles de services (Création mobile, Réseaux sociaux, Infographie, Webdesign, Consulting, Ads).',
+      type: 'object',
+      fields: [
+        defineField({ name: 'service01Image', title: '01. Création de contenu mobile', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'service02Image', title: '02. Gestion réseaux sociaux', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'service03Image', title: '03. Infographie', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'service04Image', title: '04. Web Design', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'service05Image', title: '05. Consulting Digital', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'service06Image', title: '06. Campagnes Ads', type: 'image', options: { hotspot: true } }),
+      ],
+    }),
+    defineField({
       name: 'realisationsBanner',
       title: 'Bannière Réalisations (Caméra / Trépied)',
       description: 'L\'image d\'en-tête de la page Réalisations.',

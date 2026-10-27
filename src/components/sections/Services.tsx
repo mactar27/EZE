@@ -272,13 +272,31 @@ const SERVICES_DETAILED = [
 export default function Services({ 
   services = [],
   bannerImage,
+  servicesImages,
   isHomeTeaser = false,
 }: { 
   services?: any[];
   bannerImage?: any;
+  servicesImages?: any;
   isHomeTeaser?: boolean;
 }) {
   const imageUrl = bannerImage ? urlFor(bannerImage).url() : "/services-banner.png";
+
+  // Récupère l'image personnalisée de Sanity pour un service donné si l'admin en a téléversé une
+  const getServiceCustomImage = (serviceNum: string) => {
+    if (servicesImages) {
+      if (serviceNum === "01" && servicesImages.service01Image) return urlFor(servicesImages.service01Image).url();
+      if (serviceNum === "02" && servicesImages.service02Image) return urlFor(servicesImages.service02Image).url();
+      if (serviceNum === "03" && servicesImages.service03Image) return urlFor(servicesImages.service03Image).url();
+      if (serviceNum === "04" && servicesImages.service04Image) return urlFor(servicesImages.service04Image).url();
+      if (serviceNum === "05" && servicesImages.service05Image) return urlFor(servicesImages.service05Image).url();
+      if (serviceNum === "06" && servicesImages.service06Image) return urlFor(servicesImages.service06Image).url();
+    }
+    // Ou via la collection de services dynamiques
+    const found = services.find((s: any) => s.order === Number(serviceNum) || s.title?.toLowerCase().includes(serviceNum));
+    if (found?.image) return urlFor(found.image).url();
+    return null;
+  };
 
   // Vue synthétique pour la page d'accueil (Grid 3 colonnes de cartes modernes)
   if (isHomeTeaser) {
@@ -411,18 +429,32 @@ export default function Services({
               className="bg-white rounded-[26px] p-6 md:p-10 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] scroll-mt-28"
             >
               {/* Header du service */}
-              <div className="flex items-start gap-4 md:gap-6 mb-6">
-                <span className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] font-poppins">
-                  {service.num}.
-                </span>
-                <div>
-                  <h2 className="text-lg md:text-2xl font-extrabold font-poppins text-gray-900 tracking-tight">
-                    {service.title}
-                  </h2>
-                  <p className="text-gray-600 text-xs md:text-sm mt-2 leading-relaxed font-normal max-w-3xl">
-                    {service.intro}
-                  </p>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+                <div className="flex items-start gap-4 md:gap-6 flex-1">
+                  <span className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] font-poppins">
+                    {service.num}.
+                  </span>
+                  <div>
+                    <h2 className="text-lg md:text-2xl font-extrabold font-poppins text-gray-900 tracking-tight">
+                      {service.title}
+                    </h2>
+                    <p className="text-gray-600 text-xs md:text-sm mt-2 leading-relaxed font-normal max-w-3xl">
+                      {service.intro}
+                    </p>
+                  </div>
                 </div>
+
+                {/* Si l'admin a uploadé une illustration personnalisée pour ce service */}
+                {getServiceCustomImage(service.num) && (
+                  <div className="relative w-full md:w-56 h-36 rounded-2xl overflow-hidden shadow-md shrink-0 border border-gray-100">
+                    <Image
+                      src={getServiceCustomImage(service.num)!}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Sous-sections avec puces - 1 colonne sur mobile, 2 sur tablette, 3 sur grand écran */}

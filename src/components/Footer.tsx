@@ -15,7 +15,7 @@ export default function Footer() {
                 alt="EZK Agency Logo" 
                 width={755} 
                 height={392} 
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain rounded filter brightness-0 invert" 
+                className="h-11 sm:h-13 md:h-14 lg:h-16 w-auto object-contain rounded filter brightness-0 invert" 
               />
             </div>
             <div className="space-y-3">

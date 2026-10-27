@@ -35,9 +35,6 @@ export default function About({
             {/* Texte synthétique */}
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <span className="inline-block bg-blue-50 text-[#0D4FB8] text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase mb-3">
-                  QUI SOMMES-NOUS ?
-                </span>
                 <h2 className="text-3xl md:text-5xl font-extrabold font-poppins text-gray-900 leading-tight tracking-tight">
                   L’AGENCE QUI DONNE DU SENS À VOTRE <span className="text-[#0D4FB8]">PRÉSENCE DIGITALE</span>
                 </h2>

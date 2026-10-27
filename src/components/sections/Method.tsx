@@ -161,25 +161,25 @@ export default function Method({
                 <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 shadow-sm">
                   NOTRE DIFFÉRENCE
                 </span>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-4 drop-shadow-sm font-poppins">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0D4FB8] tracking-wider uppercase mb-3 drop-shadow-sm font-poppins">
                   POURQUOI NOUS CHOISIR ?
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-800 leading-relaxed font-medium mx-auto">
+                <p className="text-xs sm:text-sm text-gray-800 leading-relaxed font-normal mx-auto max-w-md">
                   Nous combinons créativité, expertise et vision stratégique pour donner à votre marque une présence digitale forte et cohérente. Plus qu'un simple prestataire, nous nous engageons comme un partenaire de confiance dans le développement de votre activité.
                 </p>
               </div>
 
-              {/* Deux boutons Cyan Canva en bas */}
-              <div className="flex justify-center gap-4 mt-6">
+              {/* Deux boutons en bas */}
+              <div className="flex justify-center gap-3 sm:gap-4 mt-6">
                 <Link
                   href="/a-propos"
-                  className="bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs tracking-wider uppercase px-6 py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
+                  className="bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs tracking-wider uppercase px-6 py-2.5 sm:py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
                 >
                   Analyse
                 </Link>
                 <Link
                   href="/contact"
-                  className="bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs tracking-wider uppercase px-6 py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
+                  className="bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs tracking-wider uppercase px-6 py-2.5 sm:py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
                 >
                   Contact
                 </Link>
@@ -214,7 +214,7 @@ export default function Method({
               <div className="grid grid-cols-2 gap-6 sm:gap-8 w-full text-center">
                 {STATS_DATA.map((item, idx) => (
                   <div key={idx} className="flex flex-col items-center justify-center">
-                    <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#5FD3E2] drop-shadow-sm font-poppins">
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D4FB8] drop-shadow-sm font-poppins">
                       {item.value}
                     </span>
                     <span className="text-[11px] sm:text-xs font-bold text-gray-800 mt-2 uppercase tracking-wider">

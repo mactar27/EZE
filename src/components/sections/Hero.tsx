@@ -139,8 +139,8 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
         </div>
       </div>
 
-      {/* Indicateurs de confiance (sous le hero, bande unique unifiée garantie sur une seule ligne) */}
-      <div className="container mx-auto px-2 sm:px-4 md:px-12 lg:px-20 max-w-6xl mt-4 md:mt-8">
+      {/* Indicateurs de confiance (sous le hero, bande unique unifiée alignée exactement avec la carte du hero) */}
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl mt-4 md:mt-8">
         <div className="bg-[#EBF6FA] rounded-[22px] sm:rounded-[24px] py-4 px-3 sm:p-6 md:p-8 grid grid-cols-3 items-center text-center shadow-sm border border-blue-100/50">
           <div className="px-1">
             <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Stratégies</span>

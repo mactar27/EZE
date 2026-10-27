@@ -17,8 +17,8 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Création de contenu (Photos)', value: 'Photos' },
-          { title: 'Création de contenu (Vidéos)', value: 'Videos' },
+          { title: 'Photos (Création de contenu)', value: 'Photos' },
+          { title: 'Vidéos (Création de contenu)', value: 'Videos' },
           { title: 'Infographie', value: 'Infographie' },
           { title: 'Web Design', value: 'Webdesign' },
         ],
@@ -27,12 +27,25 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      title: 'Image Principale',
+      title: 'Image / Visuel du projet',
       type: 'image',
       options: {
         hotspot: true, // Permet de recadrer l'image dans le studio
       },
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'order',
+      title: 'Ordre d\'affichage',
+      type: 'number',
+      initialValue: 0,
+    }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'category',
+      media: 'image',
+    },
+  },
 })

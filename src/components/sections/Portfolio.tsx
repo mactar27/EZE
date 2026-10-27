@@ -242,6 +242,23 @@ function FullPortfolioView({
     { title: "Animation", image: "/sample-animation.png" },
   ];
 
+  // Helper pour filtrer les projets ajoutés par l'admin via Sanity, avec fallback sur les échantillons
+  const getCategoryItems = (categoryValue: string) => {
+    const fromSanity = projects.filter((p: any) => p.category === categoryValue);
+    if (fromSanity.length > 0) {
+      return fromSanity.map((p: any) => ({
+        title: p.title,
+        image: p.image ? urlFor(p.image).url() : "/sample-logos.png",
+      }));
+    }
+    return SAMPLE_ITEMS;
+  };
+
+  const photoItems = getCategoryItems("Photos");
+  const videoItems = getCategoryItems("Videos");
+  const infographieItems = getCategoryItems("Infographie");
+  const webdesignItems = getCategoryItems("Webdesign");
+
   return (
     <section id="portfolio-full" className="bg-white pb-20">
       {/* Hero Banner style Canva avec caméra sur trépied */}
@@ -294,7 +311,7 @@ function FullPortfolioView({
             </p>
             {/* Grille 6 colonnes sur grand écran / 3 sur mobile */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
-              {SAMPLE_ITEMS.map((item, i) => (
+              {photoItems.map((item, i) => (
                 <div
                   key={`photo-${i}`}
                   className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -331,7 +348,7 @@ function FullPortfolioView({
               VIDEOS :
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
-              {SAMPLE_ITEMS.map((item, i) => (
+              {videoItems.map((item, i) => (
                 <div
                   key={`vid-${i}`}
                   className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -374,7 +391,7 @@ function FullPortfolioView({
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
-            {SAMPLE_ITEMS.map((item, i) => (
+            {infographieItems.map((item, i) => (
               <div
                 key={`info-${i}`}
                 className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -417,7 +434,7 @@ function FullPortfolioView({
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
-            {SAMPLE_ITEMS.map((item, i) => (
+            {webdesignItems.map((item, i) => (
               <div
                 key={`web-${i}`}
                 className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"

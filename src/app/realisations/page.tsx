@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RealisationsPage() {
-  const projects = await client.fetch(`*[_type == "project"] {
+  const projects = await client.fetch(`*[_type == "project"] | order(order asc, _createdAt desc) {
+    _id,
     title,
     category,
     image

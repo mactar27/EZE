@@ -51,13 +51,12 @@ export default async function Home() {
       <WelcomeScreen />
       <Navbar />
       <Hero heroImage={siteImages?.heroImage} />
-      <About aboutData={about} aboutImage={siteImages?.aboutImage} />
+      <About aboutData={about} aboutImage={siteImages?.aboutImage} isHomeTeaser={true} />
       <Services services={services} bannerImage={siteImages?.servicesBanner} isHomeTeaser={true} />
       <Portfolio projects={projects} isHomeTeaser={true} />
       <Method methodBanner={siteImages?.methodBanner} />
-      <WhyUs />
       <Testimonials statsBanner={siteImages?.statsBanner} clientLogos={siteImages?.clientLogos} />
-      <Contact />
+      <Contact isHomeTeaser={true} />
       <Footer />
     </main>
   );

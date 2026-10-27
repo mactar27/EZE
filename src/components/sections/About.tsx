@@ -6,7 +6,15 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 
-export default function About({ aboutData, aboutImage }: { aboutData?: any; aboutImage?: any }) {
+export default function About({ 
+  aboutData, 
+  aboutImage,
+  isHomeTeaser = false,
+}: { 
+  aboutData?: any; 
+  aboutImage?: any;
+  isHomeTeaser?: boolean;
+}) {
   const imageUrl = aboutImage ? urlFor(aboutImage).url() : "/collaboration-creative.png";
 
   const stats = [
@@ -16,6 +24,84 @@ export default function About({ aboutData, aboutImage }: { aboutData?: any; abou
     { number: aboutData?.statsYears || "4+", label: "ANNÉES D’EXPÉRIENCE" },
   ];
 
+  // VERSION TEASER ACCUEIL : Synthétique avec aperçu et bouton "En savoir plus sur nous"
+  if (isHomeTeaser) {
+    return (
+      <section id="about" className="py-16 md:py-24 bg-white relative">
+        <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            
+            {/* Texte synthétique */}
+            <div className="lg:col-span-7 space-y-6">
+              <div>
+                <span className="inline-block bg-blue-50 text-[#0D4FB8] text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase mb-3">
+                  QUI SOMMES-NOUS ?
+                </span>
+                <h2 className="text-3xl md:text-5xl font-extrabold font-poppins text-gray-900 leading-tight tracking-tight">
+                  L’AGENCE QUI DONNE DU SENS À VOTRE <span className="text-[#0D4FB8]">PRÉSENCE DIGITALE</span>
+                </h2>
+              </div>
+
+              <div className="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+                <p>
+                  <strong className="text-gray-900 font-bold">EZK Agency</strong> est une agence de communication et de marketing digital basée à Dakar, qui accompagne les entreprises, marques et entrepreneurs dans la construction d’une présence forte, cohérente et durable.
+                </p>
+                <p>
+                  Notre approche repose sur une conviction simple : une présence digitale efficace ne se résume pas à être visible. Elle doit avoir du sens, transmettre une image forte et contribuer concrètement au développement de votre activité.
+                </p>
+              </div>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/a-propos"
+                  className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all"
+                >
+                  <span>En savoir plus sur nous</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-full transition-all"
+                >
+                  <span>Nous contacter</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Visuel avec badge Dakar */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 relative h-[320px] md:h-[420px] rounded-[30px] overflow-hidden shadow-2xl border border-gray-100"
+            >
+              <Image
+                src={imageUrl}
+                alt="Collaboration créative chez EZK Agency"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-8">
+                <div>
+                  <span className="inline-block bg-[#5FD3E2] text-gray-900 text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-2">
+                    Basée à Dakar, Sénégal
+                  </span>
+                  <p className="text-white text-lg md:text-2xl font-bold font-poppins leading-snug">
+                    Créativité & Stratégie Digitale
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+    );
+  }
+
+  // VERSION COMPLÈTE PAGE DÉDIÉE (/a-propos)
   return (
     <section id="about" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { 
   Briefcase, 
   Layers, 
@@ -10,12 +11,13 @@ import {
   MapPin, 
   Mail, 
   Phone, 
-  Send 
+  Send,
+  ArrowRight
 } from "lucide-react";
 
 type Pathway = "accompagnement" | "prestation" | "rejoindre";
 
-export default function Contact() {
+export default function Contact({ isHomeTeaser = false }: { isHomeTeaser?: boolean }) {
   const [activePathway, setActivePathway] = useState<Pathway>("accompagnement");
   const [submitted, setSubmitted] = useState<string | null>(null);
 
@@ -27,6 +29,150 @@ export default function Contact() {
     }, 500);
   };
 
+  // VERSION TEASER ACCUEIL : Présente les 3 parcours et les coordonnées sans dérouler les 30 questions de formulaire
+  if (isHomeTeaser) {
+    return (
+      <section id="contact" className="py-16 md:py-24 bg-[#F8FAFC] relative">
+        <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
+          
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block bg-blue-50 text-[#0D4FB8] text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase mb-3">
+              CONTACTEZ EZK AGENCY
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold font-poppins text-gray-900 leading-tight tracking-tight uppercase">
+              PARLONS DE VOTRE <span className="text-[#0D4FB8]">PROJET</span>
+            </h2>
+            <div className="w-14 h-1 bg-[#5FD3E2] mx-auto mt-4 rounded-full" />
+            <p className="text-gray-600 text-sm md:text-base mt-4 leading-relaxed font-normal">
+              Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ? Choisissez le parcours qui correspond à votre besoin.
+            </p>
+          </div>
+
+          {/* 3 Cartes de Parcours avec redirection claire vers le formulaire */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+            
+            {/* 01 Accompagnement */}
+            <Link
+              href="/contact?parcours=accompagnement"
+              className="bg-white p-8 rounded-[28px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-extrabold text-[#5FD3E2] uppercase tracking-wider">
+                    01 — PARCOURS
+                  </span>
+                  <div className="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-[#0D4FB8] group-hover:bg-[#0D4FB8] group-hover:text-white transition-colors">
+                    <Briefcase className="w-5 h-5" />
+                  </div>
+                </div>
+                <h3 className="text-base md:text-lg font-extrabold text-gray-900 uppercase leading-snug mb-3 font-poppins group-hover:text-[#0D4FB8] transition-colors">
+                  VOUS RECHERCHEZ UN ACCOMPAGNEMENT DIGITAL ?
+                </h3>
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
+                  Pour structurer, développer ou améliorer votre communication digitale sur la durée.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#0D4FB8] uppercase tracking-wider">
+                <span>Remplir le formulaire</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 02 Prestation */}
+            <Link
+              href="/contact?parcours=prestation"
+              className="bg-white p-8 rounded-[28px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-extrabold text-[#5FD3E2] uppercase tracking-wider">
+                    02 — PARCOURS
+                  </span>
+                  <div className="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-[#0D4FB8] group-hover:bg-[#0D4FB8] group-hover:text-white transition-colors">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                </div>
+                <h3 className="text-base md:text-lg font-extrabold text-gray-900 uppercase leading-snug mb-3 font-poppins group-hover:text-[#0D4FB8] transition-colors">
+                  VOUS AVEZ BESOIN D'UNE PRESTATION SPÉCIFIQUE ?
+                </h3>
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
+                  Un besoin ponctuel : création de contenu, identité visuelle, site web ou publicité Ads.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#0D4FB8] uppercase tracking-wider">
+                <span>Demander une prestation</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 03 Rejoindre */}
+            <Link
+              href="/contact?parcours=rejoindre"
+              className="bg-white p-8 rounded-[28px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-extrabold text-[#5FD3E2] uppercase tracking-wider">
+                    03 — PARCOURS
+                  </span>
+                  <div className="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-[#0D4FB8] group-hover:bg-[#0D4FB8] group-hover:text-white transition-colors">
+                    <UserCheck className="w-5 h-5" />
+                  </div>
+                </div>
+                <h3 className="text-base md:text-lg font-extrabold text-gray-900 uppercase leading-snug mb-3 font-poppins group-hover:text-[#0D4FB8] transition-colors">
+                  VOUS SOUHAITEZ REJOINDRE EZK ?
+                </h3>
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
+                  Jeune, passionné(e) par le digital, monteur, graphiste ou créateur : partagez votre profil.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#0D4FB8] uppercase tracking-wider">
+                <span>Postuler / Rejoindre</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+          </div>
+
+          {/* Coordonnées directes */}
+          <div className="bg-[#EBF6FA] rounded-[24px] p-6 md:p-8 flex flex-wrap items-center justify-around gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Localisation</span>
+                <span className="font-bold text-gray-900">Dakar, Sénégal</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Email direct</span>
+                <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-bold text-gray-900">
+                  contactezkagency@gmail.com
+                </a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Téléphone / WhatsApp</span>
+                <span className="font-bold text-gray-900">+221 77 593 31 93 / +221 76 196 87 59</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    );
+  }
+
+  // VERSION COMPLÈTE PAGE DÉDIÉE /contact (avec tous les formulaires complets)
   return (
     <section id="contact" className="py-16 md:py-24 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">

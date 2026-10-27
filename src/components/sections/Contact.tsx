@@ -93,7 +93,7 @@ export default function Contact({
                   </div>
                 </div>
                 <h3 className="text-base md:text-lg font-extrabold text-gray-900 uppercase leading-snug mb-3 font-poppins group-hover:text-[#0D4FB8] transition-colors">
-                  VOUS RECHERCHEZ UN ACCOMPAGNEMENT DIGITAL ?
+                  Accompagnement digitale
                 </h3>
                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
                   Pour structurer, développer ou améliorer votre communication digitale sur la durée.
@@ -120,7 +120,7 @@ export default function Contact({
                   </div>
                 </div>
                 <h3 className="text-base md:text-lg font-extrabold text-gray-900 uppercase leading-snug mb-3 font-poppins group-hover:text-[#0D4FB8] transition-colors">
-                  VOUS AVEZ BESOIN D'UNE PRESTATION SPÉCIFIQUE ?
+                  Prestation
                 </h3>
                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
                   Un besoin ponctuel : création de contenu, identité visuelle, site web ou publicité Ads.
@@ -132,7 +132,7 @@ export default function Contact({
               </div>
             </Link>
 
-            {/* 03 Rejoindre */}
+            {/* 03 Rejoindre / Carriere */}
             <Link
               href="/contact?parcours=rejoindre"
               className="bg-white p-8 rounded-[28px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
@@ -147,7 +147,7 @@ export default function Contact({
                   </div>
                 </div>
                 <h3 className="text-base md:text-lg font-extrabold text-gray-900 uppercase leading-snug mb-3 font-poppins group-hover:text-[#0D4FB8] transition-colors">
-                  VOUS SOUHAITEZ REJOINDRE EZK ?
+                  Carriere
                 </h3>
                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
                   Jeune, passionné(e) par le digital, monteur, graphiste ou créateur : partagez votre profil.
@@ -290,7 +290,7 @@ export default function Contact({
                 <Briefcase className="w-5 h-5 text-[#0D4FB8]" />
               </div>
               <h3 className="text-sm font-extrabold text-gray-900 uppercase leading-snug mb-2 font-poppins">
-                VOUS RECHERCHEZ UN ACCOMPAGNEMENT DIGITAL ?
+                Accompagnement digitale
               </h3>
               <p className="text-xs text-gray-600 leading-relaxed">
                 Pour structurer, développer ou améliorer votre communication digitale sur la durée.
@@ -321,7 +321,7 @@ export default function Contact({
                 <Layers className="w-5 h-5 text-[#0D4FB8]" />
               </div>
               <h3 className="text-sm font-extrabold text-gray-900 uppercase leading-snug mb-2 font-poppins">
-                VOUS AVEZ BESOIN D'UNE PRESTATION SPÉCIFIQUE ?
+                Prestation
               </h3>
               <p className="text-xs text-gray-600 leading-relaxed">
                 Un besoin ponctuel précis : création de contenu, identité visuelle, site web ou publicité Ads.
@@ -352,7 +352,7 @@ export default function Contact({
                 <UserCheck className="w-5 h-5 text-[#0D4FB8]" />
               </div>
               <h3 className="text-sm font-extrabold text-gray-900 uppercase leading-snug mb-2 font-poppins">
-                VOUS SOUHAITEZ REJOINDRE EZK ?
+                Carriere
               </h3>
               <p className="text-xs text-gray-600 leading-relaxed">
                 Jeune, passionné(e) par le digital, monteur, graphiste ou créateur : partagez votre profil.

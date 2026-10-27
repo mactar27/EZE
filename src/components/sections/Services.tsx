@@ -368,7 +368,7 @@ export default function Services({
   // Page dédiée /services : Présentation détaillée avec la bannière et toutes les sous-sections
   return (
     <section id="services" className="py-16 md:py-24 bg-white relative">
-      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
         {/* Banner visuelle */}
         <motion.div
@@ -425,19 +425,19 @@ export default function Services({
                 </div>
               </div>
 
-              {/* Sous-sections avec puces */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
+              {/* Sous-sections avec puces - 1 colonne sur mobile, 2 sur tablette, 3 sur grand écran */}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
                 {service.subsections.map((sub, sIdx) => (
-                  <div key={sIdx} className="bg-gray-50/70 rounded-[18px] p-5 border border-gray-100/60 flex flex-col justify-between">
+                  <div key={sIdx} className="bg-gray-50/80 rounded-[20px] p-5 sm:p-6 border border-gray-100/80 flex flex-col justify-start">
                     <div>
-                      <h3 className="text-xs md:text-sm font-bold text-[#0D4FB8] uppercase tracking-wider mb-3">
+                      <h3 className="text-xs sm:text-sm font-bold text-[#0D4FB8] uppercase tracking-wider mb-4 pb-2 border-b border-gray-200/60">
                         {sub.title}
                       </h3>
-                      <ul className="space-y-2 text-xs md:text-sm text-gray-700">
+                      <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
                         {sub.items.map((item, iIdx) => (
-                          <li key={iIdx} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#5FD3E2] shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
+                          <li key={iIdx} className="flex items-start gap-2.5">
+                            <CheckCircle2 className="w-4 h-4 text-[#5FD3E2] shrink-0 mt-0.5" />
+                            <span className="leading-snug break-words">{item}</span>
                           </li>
                         ))}
                       </ul>

@@ -29,7 +29,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-white relative">
-      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-5xl">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
         {/* En-tête officiel */}
         <div className="text-center mb-12">
@@ -150,20 +150,35 @@ export default function Contact() {
         </div>
 
         {/* Coordonnées rapides */}
-        <div className="bg-[#EBF6FA] rounded-[22px] p-5 md:p-6 mb-12 flex flex-wrap items-center justify-between gap-4 text-xs md:text-sm text-gray-700">
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-[#0D4FB8]" />
-            <span className="font-semibold">Dakar, Sénégal</span>
+        <div className="bg-[#EBF6FA] rounded-[22px] p-6 md:p-8 mb-12 flex flex-wrap items-center justify-around gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+              <MapPin className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Localisation</span>
+              <span className="font-bold text-gray-900">Dakar, Sénégal</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Mail className="w-4 h-4 text-[#0D4FB8]" />
-            <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-semibold text-gray-900">
-              contactezkagency@gmail.com
-            </a>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+              <Mail className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Email</span>
+              <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-bold text-gray-900">
+                contactezkagency@gmail.com
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 text-[#0D4FB8]" />
-            <span className="font-semibold">+221 77 593 31 93 / +221 76 196 87 59</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+              <Phone className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Téléphone / WhatsApp</span>
+              <span className="font-bold text-gray-900">+221 77 593 31 93 / +221 76 196 87 59</span>
+            </div>
           </div>
         </div>
 
@@ -185,7 +200,7 @@ export default function Contact() {
         )}
 
         {/* FORMULAIRES COMPLETS SELON LE PARCOURS */}
-        <div className="bg-white rounded-[28px] p-6 md:p-12 border border-gray-100 shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
+        <div className="bg-white rounded-[32px] p-6 md:p-14 lg:p-16 border border-gray-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
             {/* ========================================================
                 01 — FORMULAIRE DEMANDE D'ACCOMPAGNEMENT DIGITAL
@@ -248,14 +263,14 @@ export default function Contact() {
                   </h3>
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-2">Quel est votre secteur d'activité ?</label>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 text-xs">
                       {[
                         "Commerce / Vente", "Immobilier", "Restauration / Alimentation",
                         "Mode / Beauté", "Transport / Mobilité", "Éducation / Formation",
                         "Santé / Bien-être", "BTP / Construction", "Services",
                         "Technologie / Digital", "Association / Organisation", "Institution", "Autre"
                       ].map((item) => (
-                        <label key={item} className="flex items-center gap-2 p-2.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                        <label key={item} className="flex items-center gap-2 p-3 rounded-xl border border-gray-200/80 hover:bg-gray-50 cursor-pointer transition-colors">
                           <input type="checkbox" name="secteur" value={item} className="rounded text-[#0D4FB8] focus:ring-[#0D4FB8]" />
                           <span className="text-gray-700">{item}</span>
                         </label>
@@ -270,9 +285,9 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-2">Depuis combien de temps votre activité existe-t-elle ?</label>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
                       {["Moins de 6 mois", "6 mois à 1 an", "1 à 3 ans", "Plus de 3 ans", "Projet en cours de lancement"].map((duree) => (
-                        <label key={duree} className="flex items-center gap-2 p-2.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                        <label key={duree} className="flex items-center gap-2 p-3 rounded-xl border border-gray-200/80 hover:bg-gray-50 cursor-pointer transition-colors">
                           <input type="radio" name="anciennete" value={duree} className="text-[#0D4FB8] focus:ring-[#0D4FB8]" />
                           <span className="text-gray-700">{duree}</span>
                         </label>
@@ -288,9 +303,9 @@ export default function Contact() {
                   </h3>
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-2">Sur quels canaux êtes-vous actuellement présent ?</label>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 text-xs">
                       {["Instagram", "Facebook", "TikTok", "LinkedIn", "Snapchat", "YouTube", "Site internet", "Google Business Profile", "Aucun pour le moment", "Autre"].map((canal) => (
-                        <label key={canal} className="flex items-center gap-2 p-2.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                        <label key={canal} className="flex items-center gap-2 p-3 rounded-xl border border-gray-200/80 hover:bg-gray-50 cursor-pointer transition-colors">
                           <input type="checkbox" name="canaux" value={canal} className="rounded text-[#0D4FB8] focus:ring-[#0D4FB8]" />
                           <span className="text-gray-700">{canal}</span>
                         </label>

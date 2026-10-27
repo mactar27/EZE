@@ -46,8 +46,8 @@ export default function Contact({
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
           {/* Bannière / Image d'introduction pour la section Contacter EZK Agency */}
-          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-xl mb-12 sm:mb-16 border border-gray-100">
-            <div className="relative h-[220px] sm:h-[260px] md:h-[300px] w-full">
+          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-xl mb-10 sm:mb-14 border border-gray-100">
+            <div className="relative h-[300px] sm:h-[340px] md:h-[380px] w-full">
               <Image
                 src={bannerUrl}
                 alt="Contacter EZK Agency Dakar"
@@ -62,7 +62,7 @@ export default function Contact({
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-poppins text-white leading-tight uppercase">
                   PARLONS DE VOTRE <span className="text-[#5FD3E2]">PROJET</span>
                 </h2>
-                <p className="text-gray-200 text-xs sm:text-sm mt-3 leading-relaxed font-normal max-w-xl">
+                <p className="text-gray-200 text-xs sm:text-sm md:text-base mt-3 leading-relaxed font-normal max-w-xl">
                   Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ? Que vous recherchiez un accompagnement régulier, une prestation ponctuelle ou à rejoindre l'équipe, nous sommes à votre écoute.
                 </p>
               </div>

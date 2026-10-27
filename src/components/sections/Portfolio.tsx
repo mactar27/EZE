@@ -245,12 +245,12 @@ function FullPortfolioView({
   return (
     <section id="portfolio-full" className="bg-white pb-20">
       {/* Hero Banner style Canva avec caméra sur trépied */}
-      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl pt-4">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl pt-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative h-[260px] md:h-[340px] rounded-[28px] overflow-hidden shadow-xl"
+          className="relative h-[280px] md:h-[400px] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100"
         >
           <Image
             src={bannerUrl}
@@ -259,42 +259,45 @@ function FullPortfolioView({
             className="object-cover"
             priority
           />
-          {/* Dégradé léger et textes Canva */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent flex flex-col justify-start p-6 md:p-8">
-            <h1 className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-2 drop-shadow-sm font-poppins">
+          {/* Dégradé sombre et net pour lisibilité parfaite */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent flex flex-col justify-center p-8 md:p-14 max-w-2xl">
+            <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 self-start shadow-sm">
+              PORTFOLIO & PROJETS
+            </span>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3 drop-shadow-sm font-poppins">
               NOS REALISATIONS
             </h1>
-            <p className="text-white text-xs md:text-sm max-w-md leading-relaxed font-medium drop-shadow-sm">
-              Devenir une reference en communication et en markenting digiatl au niveau local et international .
+            <p className="text-white text-sm md:text-base leading-relaxed font-normal">
+              Devenir une référence en communication et en marketing digital au niveau local et international.
             </p>
-            <p className="text-[#FF5A5F] font-bold text-xs md:text-sm mt-2 drop-shadow-sm">
+            <p className="text-[#FF5A5F] font-bold text-xs md:text-sm mt-3 uppercase tracking-wider">
               Votre partenaire de croissance digitale à Dakar
             </p>
           </div>
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl py-12">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl py-14">
         {/* Section CRÉATION DE CONTENU */}
-        <div className="mb-14">
-          <h2 className="text-xl md:text-2xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3">
+        <div id="contenu" className="mb-16 scroll-mt-28">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3 font-poppins">
             CREATION DE CONTENU
           </h2>
-          <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-normal">
+          <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 font-normal max-w-3xl">
             Des contenus pensés pour raconter, valoriser et faire vivre les marques. À travers la photographie et la vidéo, nous créons des contenus adaptés aux réseaux sociaux, à la communication corporate, aux campagnes promotionnelles et aux besoins spécifiques de chaque projet.
           </p>
 
           {/* Sous-section PHOTOS : */}
-          <div className="mb-8">
+          <div className="mb-12">
             <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
               PHOTOS :
             </p>
-            {/* Grille 3x2 avec bordures arrondies et texte en superposition */}
-            <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+            {/* Grille 6 colonnes sur grand écran / 3 sur mobile */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
               {SAMPLE_ITEMS.map((item, i) => (
                 <div
-                  key={i}
-                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+                  key={`photo-${i}`}
+                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <Image
                     src={item.image}
@@ -302,7 +305,7 @@ function FullPortfolioView({
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 flex items-center justify-center p-2 text-center transition-colors">
                     <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
                       {item.title}
                     </span>
@@ -327,11 +330,11 @@ function FullPortfolioView({
             <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
               VIDEOS :
             </p>
-            <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
               {SAMPLE_ITEMS.map((item, i) => (
                 <div
                   key={`vid-${i}`}
-                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <Image
                     src={item.image}
@@ -339,7 +342,7 @@ function FullPortfolioView({
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 flex items-center justify-center p-2 text-center transition-colors">
                     <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
                       {item.title}
                     </span>
@@ -359,22 +362,22 @@ function FullPortfolioView({
         </div>
 
         {/* Ligne séparatrice Canva */}
-        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-200 my-16" />
 
         {/* Section INFOGRAPHIE */}
-        <div id="infographie" className="mb-14 scroll-mt-28">
-          <h2 className="text-xl md:text-2xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
-            infographie
+        <div id="infographie" className="mb-16 scroll-mt-28">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
+            Infographie
           </h2>
-          <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-normal">
+          <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 font-normal max-w-3xl">
             Chaque visuel est une occasion de renforcer l'image d'une marque. De l'identité visuelle aux supports de communication digitaux et imprimés, nous concevons des créations graphiques cohérentes, modernes et pensées pour transmettre efficacement chaque message.
           </p>
 
-          <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
             {SAMPLE_ITEMS.map((item, i) => (
               <div
                 key={`info-${i}`}
-                className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+                className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <Image
                   src={item.image}
@@ -382,7 +385,7 @@ function FullPortfolioView({
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 flex items-center justify-center p-2 text-center transition-colors">
                   <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
                     {item.title}
                   </span>
@@ -402,22 +405,22 @@ function FullPortfolioView({
         </div>
 
         {/* Ligne séparatrice Canva */}
-        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-200 my-16" />
 
         {/* Section WEB DESIGN */}
-        <div id="webdesign" className="mb-14 scroll-mt-28">
-          <h2 className="text-xl md:text-2xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
+        <div id="webdesign" className="mb-16 scroll-mt-28">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
             Web design
           </h2>
-          <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-normal">
+          <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 font-normal max-w-3xl">
             Nous concevons des expériences digitales qui associent esthétique, fonctionnalité et expérience utilisateur. Sites vitrines, plateformes, e-commerce ou interfaces digitales : chaque projet est pensé pour valoriser la marque et répondre à ses objectifs.
           </p>
 
-          <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
             {SAMPLE_ITEMS.map((item, i) => (
               <div
                 key={`web-${i}`}
-                className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+                className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <Image
                   src={item.image}
@@ -425,7 +428,7 @@ function FullPortfolioView({
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 flex items-center justify-center p-2 text-center transition-colors">
                   <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
                     {item.title}
                   </span>
@@ -445,18 +448,18 @@ function FullPortfolioView({
         </div>
 
         {/* Ligne séparatrice Canva */}
-        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-200 my-16" />
 
         {/* Section Social & Photo de fin style Canva */}
-        <div className="pt-4">
-          <p className="text-gray-900 text-xs md:text-sm leading-relaxed font-semibold mb-4 max-w-xl">
+        <div className="pt-4 max-w-4xl mx-auto text-center">
+          <p className="text-gray-900 text-sm md:text-base leading-relaxed font-semibold mb-4">
             Chaque projet est différent, mais notre objectif reste le même : transformer les idées en solutions digitales qui ont du sens. Découvrez nos réalisations et imaginez ce que nous pouvons construire ensemble pour votre marque.
           </p>
           <p className="text-[#FF5A5F] text-xs md:text-sm font-semibold mb-6">
             Envie d'en voir plus ? Retrouvez davantage de nos réalisations et de nos projets sur nos réseaux sociaux.
           </p>
 
-          <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center justify-center gap-5 mb-10">
             {SOCIAL_ICONS.map((social) => (
               <a
                 key={social.name}
@@ -469,7 +472,7 @@ function FullPortfolioView({
             ))}
           </div>
 
-          <div className="relative h-[260px] md:h-[400px] rounded-[24px] overflow-hidden shadow-xl">
+          <div className="relative h-[300px] md:h-[460px] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100">
             <Image
               src={endUrl}
               alt="Création de contenu et réseaux sociaux EZK Agency"

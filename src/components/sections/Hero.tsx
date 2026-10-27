@@ -139,20 +139,22 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
         </div>
       </div>
 
-      {/* Indicateurs de confiance (sous le hero, pour mobile et desktop) */}
+      {/* Indicateurs de confiance (sous le hero, bande unique unifiée style coordonnées contact) */}
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl mt-8 md:mt-12">
-        <div className="grid grid-cols-3 gap-3 md:gap-6 text-center">
-          <div className="p-4 md:p-5 rounded-2xl bg-gray-50/90 border border-gray-100 shadow-sm hover:shadow transition-shadow">
+        <div className="bg-[#EBF6FA] rounded-[24px] p-6 md:p-8 flex flex-wrap items-center justify-around gap-6 text-center text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+          <div className="flex-1 min-w-[140px]">
             <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Stratégies</span>
-            <span className="text-gray-500 text-xs md:text-sm mt-0.5 block">Sur mesure</span>
+            <span className="text-gray-600 text-xs md:text-sm mt-0.5 block">Sur mesure</span>
           </div>
-          <div className="p-4 md:p-5 rounded-2xl bg-gray-50/90 border border-gray-100 shadow-sm hover:shadow transition-shadow">
+          <div className="hidden sm:block w-[1px] h-8 bg-blue-200/60" />
+          <div className="flex-1 min-w-[140px]">
             <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Résultats</span>
-            <span className="text-gray-500 text-xs md:text-sm mt-0.5 block">Mesurables</span>
+            <span className="text-gray-600 text-xs md:text-sm mt-0.5 block">Mesurables</span>
           </div>
-          <div className="p-4 md:p-5 rounded-2xl bg-gray-50/90 border border-gray-100 shadow-sm hover:shadow transition-shadow">
+          <div className="hidden sm:block w-[1px] h-8 bg-blue-200/60" />
+          <div className="flex-1 min-w-[140px]">
             <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Accompagnement</span>
-            <span className="text-gray-500 text-xs md:text-sm mt-0.5 block">Dédié</span>
+            <span className="text-gray-600 text-xs md:text-sm mt-0.5 block">Dédié</span>
           </div>
         </div>
       </div>

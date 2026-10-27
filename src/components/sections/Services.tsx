@@ -304,21 +304,17 @@ export default function Services({
       <section id="services" className="py-10 md:py-16 bg-[#F8FAFC] relative">
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-xs md:text-sm font-bold text-[#0D4FB8] tracking-widest uppercase mb-2">
-                CE QUE NOUS FAISONS
-              </p>
               <h2 className="text-3xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight">
                 NOS SERVICES
               </h2>
-              <div className="w-14 h-1 bg-[#5FD3E2] mx-auto mt-4 rounded-full" />
-              <p className="text-gray-600 text-sm md:text-base mt-4 leading-relaxed font-normal">
+              <p className="text-gray-600 text-sm md:text-base mt-3 leading-relaxed font-normal">
                 Chez EZK Agency, nous proposons un accompagnement complet qui couvre tous les besoins clés de votre communication et développement digital.
               </p>
             </motion.div>

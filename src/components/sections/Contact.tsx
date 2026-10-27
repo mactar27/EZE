@@ -22,14 +22,17 @@ type Pathway = "accompagnement" | "prestation" | "rejoindre";
 export default function Contact({ 
   isHomeTeaser = false,
   contactBanner,
+  contactPhotoCircle,
 }: { 
   isHomeTeaser?: boolean;
   contactBanner?: any;
+  contactPhotoCircle?: any;
 }) {
   const [activePathway, setActivePathway] = useState<Pathway>("accompagnement");
   const [submitted, setSubmitted] = useState<string | null>(null);
 
   const bannerUrl = contactBanner ? urlFor(contactBanner).url() : "/services-banner.png";
+  const photoCircleUrl = contactPhotoCircle ? urlFor(contactPhotoCircle).url() : "/collaboration-creative.png";
 
   const handleSubmit = (e: React.FormEvent, formName: string) => {
     e.preventDefault();
@@ -161,10 +164,10 @@ export default function Contact({
 
           </div>
 
-          {/* Coordonnées directes alignées à gauche avec icônes de réseaux sociaux verticales */}
-          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+          {/* Coordonnées directes alignées à gauche avec photo ronde au centre et icônes de réseaux sociaux verticales */}
+          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
             {/* Colonne Gauche : Liste des coordonnées alignées à gauche */}
-            <div className="space-y-4 sm:space-y-5">
+            <div className="space-y-4 sm:space-y-5 flex-1 w-full md:w-auto">
               <div className="flex items-center gap-3.5 text-left">
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
                   <MapPin className="w-5 h-5" />
@@ -198,8 +201,20 @@ export default function Contact({
               </div>
             </div>
 
+            {/* Centre : Cercle avec photo (gérable par l'admin via Sanity) */}
+            <div className="flex flex-col items-center justify-center px-4 my-2 md:my-0">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg border-4 border-white bg-white group hover:scale-105 transition-transform duration-300">
+                <Image
+                  src={photoCircleUrl}
+                  alt="EZK Agency Contact"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
             {/* Colonne Droite : Icônes Réseaux Sociaux en disposition verticale */}
-            <div className="pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-blue-200/50 md:pl-8 flex flex-row md:flex-col items-center justify-around md:justify-center gap-3 sm:gap-4 shrink-0">
+            <div className="pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-blue-200/50 md:pl-8 flex flex-row md:flex-col items-center justify-around md:justify-center gap-3 sm:gap-4 shrink-0 w-full md:w-auto">
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider hidden md:block text-center mb-1">
                 Suivez-nous
               </span>

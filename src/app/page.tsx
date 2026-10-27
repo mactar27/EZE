@@ -46,6 +46,7 @@ export default async function Home() {
     methodBanner,
     statsBanner,
     contactBanner,
+    contactPhotoCircle,
     clientLogos
   }`);
 
@@ -77,7 +78,11 @@ export default async function Home() {
       <Portfolio projects={projects} isHomeTeaser={true} />
       <Method methodBanner={siteImages?.methodBanner} statsBanner={siteImages?.statsBanner} />
       <Testimonials clientLogos={combinedClientLogos} />
-      <Contact isHomeTeaser={true} contactBanner={siteImages?.contactBanner} />
+      <Contact 
+        isHomeTeaser={true} 
+        contactBanner={siteImages?.contactBanner} 
+        contactPhotoCircle={siteImages?.contactPhotoCircle}
+      />
       <Footer />
     </main>
   );

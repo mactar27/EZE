@@ -76,6 +76,13 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'contactPhotoCircle',
+      title: 'Photo en Cercle (Bandeau Coordonnées Contact)',
+      description: 'La photo ronde affichée au centre du bandeau de contact (portrait, équipe ou logo de l\'agence).',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'clientLogos',
       title: 'Logos des Clients ("Ils nous ont fait confiance")',
       description: 'Ajoutez, retirez ou réordonnez les logos des clients qui défilent.',

@@ -2,102 +2,125 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Quote, Star, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
-const TESTIMONIALS = [
-  {
-    id: 1,
-    text: "EZK Agency a totalement transformé notre présence en ligne. Une équipe créative et professionnelle.",
-    rating: 5,
-    author: "Client satisfait",
-  },
-  {
-    id: 2,
-    text: "Grâce à EZK, notre visibilité a augmenté et nos ventes aussi. Excellent accompagnement !",
-    rating: 5,
-    author: "Client satisfait",
-  },
-  {
-    id: 3,
-    text: "Leur expertise en création de contenu et marketing digital est vraiment remarquable.",
-    rating: 5,
-    author: "Client satisfait",
-  },
+const STATS_DATA = [
+  { value: "100 +", label: "projets realisés" },
+  { value: "25 +", label: "Clients satisfais" },
+  { value: "10 +", label: "Marques représenté" },
+  { value: "4 ans +", label: "D'expérience" },
+];
+
+const CLIENT_LOGOS = [
+  { id: 1, src: "/client-logo-1.png", alt: "Client Médical" },
+  { id: 2, src: "/client-logo-2.png", alt: "Logo Branding" },
+  { id: 3, src: "/client-logo-3.png", alt: "Client Oiseau" },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-gray-50/50">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
+    <section className="py-16 md:py-24 bg-white relative">
+      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl">
         
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+        {/* Carte Chiffres Clés avec Bannière & Boîte Verre Dépoli Bleue */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative rounded-[28px] overflow-hidden shadow-xl mb-12"
+        >
+          {/* Photo de fond */}
+          <div className="relative h-[280px] md:h-[320px] w-full">
+            <Image
+              src="/services-banner.png"
+              alt="Statistiques EZK Agency"
+              fill
+              className="object-cover"
+            />
+            {/* Voile doux */}
+            <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px]" />
+
+            {/* Boîte style Canva avec bordure bleue et fond translucide */}
+            <div className="absolute inset-4 md:inset-8 rounded-[22px] border-2 border-[#0D4FB8]/80 bg-white/70 backdrop-blur-md p-6 flex items-center justify-center shadow-sm">
+              <div className="grid grid-cols-2 gap-6 md:gap-12 w-full text-center">
+                {STATS_DATA.map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center justify-center">
+                    <span className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] drop-shadow-sm font-poppins">
+                      {item.value}
+                    </span>
+                    <span className="text-xs md:text-sm font-semibold text-gray-700 mt-1">
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Ligne séparatrice Canva */}
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+
+        {/* Section Ils nous ont fait confiance */}
+        <div className="text-center my-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-8"
           >
-            <h2 className="text-[1.75rem] font-bold font-poppins text-dark mb-4 tracking-tight uppercase">
-              TÉMOIGNAGES CLIENTS
-            </h2>
-            <div className="w-12 h-0.5 bg-primary mx-auto rounded-full"></div>
-          </motion.div>
-        </div>
+            ils nous ont fais confiance
+          </motion.h2>
 
-        <div className="relative flex items-center justify-center gap-6">
-          
-          {/* Left Arrow */}
-          <button className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-primary hover:bg-gray-50 transition-colors shrink-0 shadow-sm absolute -left-5 lg:static z-10">
-            <ChevronLeft size={20} />
-          </button>
+          {/* Carrousel de logos clients style Canva avec fond bleu ciel doux et flèches rouges */}
+          <div className="relative bg-[#EBF6FA] rounded-[24px] py-6 px-4 md:px-12 flex items-center justify-between shadow-sm">
+            {/* Flèche gauche rouge */}
+            <button
+              aria-label="Précédent"
+              className="w-8 h-8 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
+            >
+              <ChevronLeft className="w-6 h-6 stroke-[3]" />
+            </button>
 
-          {/* Cards Container */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {TESTIMONIALS.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-[20px] p-8 shadow-sm border border-gray-100 flex flex-col justify-between"
-              >
-                <div>
-                  <Quote className="text-primary w-8 h-8 mb-4 rotate-180 opacity-80" />
-                  <p className="text-gray-600 text-[0.9rem] leading-relaxed mb-6 font-medium">
-                    {testimonial.text}
-                  </p>
+            {/* Logos ronds */}
+            <div className="flex items-center justify-center gap-4 md:gap-10 overflow-hidden py-2">
+              {CLIENT_LOGOS.map((logo) => (
+                <div
+                  key={logo.id}
+                  className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md bg-white hover:scale-105 transition-transform shrink-0"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    className="object-contain p-1"
+                  />
                 </div>
-                
-                <div>
-                  <div className="flex gap-1 text-primary mb-2">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-gray-400 font-medium">{testimonial.author}</p>
-                </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+
+            {/* Flèche droite rouge */}
+            <button
+              aria-label="Suivant"
+              className="w-8 h-8 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
+            >
+              <ChevronRight className="w-6 h-6 stroke-[3]" />
+            </button>
           </div>
-
-          {/* Right Arrow */}
-          <button className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-primary hover:bg-gray-50 transition-colors shrink-0 shadow-sm absolute -right-5 lg:static z-10">
-            <ChevronRight size={20} />
-          </button>
-
         </div>
 
-        {/* Bouton Voir plus */}
-        <div className="mt-16 text-center">
+        {/* Bouton vers page Témoignages dédiée */}
+        <div className="mt-12 text-center">
           <Link
             href="/temoignages"
-            className="inline-flex items-center gap-2 bg-primary text-white font-medium px-8 py-3.5 rounded-full shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
+            className="inline-flex items-center gap-2 bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs uppercase tracking-wider px-8 py-3 rounded-[10px] shadow-sm hover:shadow transition-all"
           >
-            <span>Voir tous les témoignages</span>
+            <span>Voir tous les avis clients</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
+
       </div>
     </section>
   );

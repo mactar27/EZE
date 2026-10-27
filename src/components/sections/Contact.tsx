@@ -59,9 +59,6 @@ export default function Contact({
               <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/70 to-transparent" />
               
               <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-center max-w-2xl">
-                <span className="inline-block bg-[#5FD3E2] text-gray-900 text-[11px] font-extrabold tracking-widest px-3.5 py-1 rounded-full uppercase mb-3 w-fit shadow-sm">
-                  CONTACTEZ EZK AGENCY
-                </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-poppins text-white leading-tight uppercase">
                   PARLONS DE VOTRE <span className="text-[#5FD3E2]">PROJET</span>
                 </h2>
@@ -257,13 +254,9 @@ export default function Contact({
         
         {/* En-tête officiel */}
         <div className="text-center mb-12">
-          <p className="text-xs md:text-sm font-bold text-[#5FD3E2] tracking-widest uppercase mb-2">
-            CONTACTEZ EZK AGENCY
-          </p>
           <h1 className="text-2xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight uppercase mb-4">
             PARLONS DE VOTRE PROJET
           </h1>
-          <div className="w-16 h-1 bg-[#5FD3E2] mx-auto rounded-full mb-6" />
           <div className="space-y-3 text-gray-700 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
             <p>
               Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ?

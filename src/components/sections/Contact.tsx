@@ -1,130 +1,847 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, HeadphonesIcon } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Briefcase, 
+  Layers, 
+  UserCheck, 
+  CheckCircle2, 
+  MapPin, 
+  Mail, 
+  Phone, 
+  Send 
+} from "lucide-react";
+
+type Pathway = "accompagnement" | "prestation" | "rejoindre";
 
 export default function Contact() {
+  const [activePathway, setActivePathway] = useState<Pathway>("accompagnement");
+  const [submitted, setSubmitted] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent, formName: string) => {
+    e.preventDefault();
+    setSubmitted(formName);
+    setTimeout(() => {
+      // scroll to confirmation or reset after timeout if needed
+    }, 500);
+  };
+
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="flex flex-col lg:flex-row gap-12 xl:gap-20">
-          
-          {/* Left: Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:w-1/4"
-          >
-            <h2 className="text-[1.5rem] font-bold font-poppins text-dark mb-4 tracking-tight uppercase">
-              CONTACTEZ-NOUS
-            </h2>
-            <div className="w-12 h-0.5 bg-primary mb-10"></div>
-
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="text-primary mt-1 shrink-0"><MapPin size={20} /></div>
-                <div>
-                  <p className="text-[0.9rem] text-dark font-medium leading-tight">Dakar, Sénégal</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="text-primary mt-1 shrink-0"><Mail size={20} /></div>
-                <div>
-                  <a href="mailto:contactezkagency@gmail.com" className="text-[0.9rem] text-dark font-medium leading-tight hover:text-primary transition-colors">
-                    contactezkagency@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="text-primary mt-1 shrink-0"><Phone size={20} /></div>
-                <div className="flex flex-col gap-2">
-                  <a href="tel:+221775933193" className="text-[0.9rem] text-dark font-medium leading-tight hover:text-primary transition-colors">+221 77 593 31 93</a>
-                  <a href="tel:+221761968759" className="text-[0.9rem] text-dark font-medium leading-tight hover:text-primary transition-colors">+221 76 196 87 59</a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Middle: Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:w-2/4"
-          >
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <input 
-                    type="text" 
-                    placeholder="Nom complet" 
-                    className="w-full px-5 py-3.5 rounded-[8px] bg-white border border-gray-200 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400"
-                  />
-                </div>
-                <div>
-                  <input 
-                    type="email" 
-                    placeholder="Email" 
-                    className="w-full px-5 py-3.5 rounded-[8px] bg-white border border-gray-200 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <input 
-                  type="tel" 
-                  placeholder="Téléphone" 
-                  className="w-full px-5 py-3.5 rounded-[8px] bg-white border border-gray-200 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400"
-                />
-              </div>
-
-              <div>
-                <textarea 
-                  rows={4} 
-                  placeholder="Votre message" 
-                  className="w-full px-5 py-3.5 rounded-[8px] bg-white border border-gray-200 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 resize-none"
-                ></textarea>
-              </div>
-
-              <button 
-                type="button" 
-                className="w-full bg-primary text-white py-4 rounded-[8px] font-semibold text-sm uppercase tracking-wide hover:bg-primary/90 transition-all"
-              >
-                ENVOYER MA DEMANDE
-              </button>
-            </form>
-          </motion.div>
-
-          {/* Right: Help Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:w-1/4"
-          >
-            <div className="bg-[#F5F8FF] rounded-2xl p-8 flex flex-col items-center text-center h-full justify-center">
-              <div className="w-16 h-16 rounded-full border-2 border-primary text-primary flex items-center justify-center mb-6">
-                <HeadphonesIcon size={28} />
-              </div>
-              <h4 className="font-bold text-dark font-poppins text-lg mb-3 leading-tight">
-                Besoin d'un accompagnement personnalisé ?
-              </h4>
-              <p className="text-gray-500 text-xs leading-relaxed mb-8 px-2">
-                Nous sommes à votre écoute pour donner vie à vos projets.
-              </p>
-              <button className="bg-primary text-white px-6 py-2.5 rounded-[8px] text-xs font-semibold hover:bg-primary/90 transition-colors w-full">
-                Parlons de votre projet
-              </button>
-            </div>
-          </motion.div>
-
+    <section id="contact" className="py-16 md:py-24 bg-white relative">
+      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-5xl">
+        
+        {/* En-tête officiel */}
+        <div className="text-center mb-12">
+          <p className="text-xs md:text-sm font-bold text-[#5FD3E2] tracking-widest uppercase mb-2">
+            CONTACTEZ EZK AGENCY
+          </p>
+          <h1 className="text-2xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight uppercase mb-4">
+            PARLONS DE VOTRE PROJET
+          </h1>
+          <div className="w-16 h-1 bg-[#5FD3E2] mx-auto rounded-full mb-6" />
+          <div className="space-y-3 text-gray-700 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
+            <p>
+              Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ?
+            </p>
+            <p>
+              Que vous recherchiez un accompagnement régulier, une prestation spécifique ou une opportunité de rejoindre notre environnement professionnel, EZK Agency est à votre écoute.
+            </p>
+            <p className="font-semibold text-gray-900 pt-1">
+              Choisissez le parcours qui correspond à votre besoin et partagez-nous quelques informations sur votre projet.
+            </p>
+          </div>
         </div>
+
+        {/* 3 Onglets de Parcours */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          {/* Parcours 01 */}
+          <button
+            type="button"
+            onClick={() => { setActivePathway("accompagnement"); setSubmitted(null); }}
+            className={`p-6 rounded-[22px] border text-left transition-all flex flex-col justify-between ${
+              activePathway === "accompagnement"
+                ? "border-[#0D4FB8] bg-blue-50/40 shadow-md ring-2 ring-[#0D4FB8]/20"
+                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm"
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-extrabold text-[#5FD3E2] uppercase tracking-wider">
+                  01 — PARCOURS
+                </span>
+                <Briefcase className="w-5 h-5 text-[#0D4FB8]" />
+              </div>
+              <h3 className="text-sm font-extrabold text-gray-900 uppercase leading-snug mb-2 font-poppins">
+                VOUS RECHERCHEZ UN ACCOMPAGNEMENT DIGITAL ?
+              </h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Pour structurer, développer ou améliorer votre communication digitale sur la durée.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-gray-200/60">
+              <span className={`text-[11px] font-bold uppercase tracking-wider ${activePathway === "accompagnement" ? "text-[#0D4FB8]" : "text-gray-400"}`}>
+                {activePathway === "accompagnement" ? "● Formulaire sélectionné" : "Choisir ce parcours →"}
+              </span>
+            </div>
+          </button>
+
+          {/* Parcours 02 */}
+          <button
+            type="button"
+            onClick={() => { setActivePathway("prestation"); setSubmitted(null); }}
+            className={`p-6 rounded-[22px] border text-left transition-all flex flex-col justify-between ${
+              activePathway === "prestation"
+                ? "border-[#0D4FB8] bg-blue-50/40 shadow-md ring-2 ring-[#0D4FB8]/20"
+                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm"
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-extrabold text-[#5FD3E2] uppercase tracking-wider">
+                  02 — PARCOURS
+                </span>
+                <Layers className="w-5 h-5 text-[#0D4FB8]" />
+              </div>
+              <h3 className="text-sm font-extrabold text-gray-900 uppercase leading-snug mb-2 font-poppins">
+                VOUS AVEZ BESOIN D'UNE PRESTATION SPÉCIFIQUE ?
+              </h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Un besoin ponctuel précis : création de contenu, identité visuelle, site web ou publicité Ads.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-gray-200/60">
+              <span className={`text-[11px] font-bold uppercase tracking-wider ${activePathway === "prestation" ? "text-[#0D4FB8]" : "text-gray-400"}`}>
+                {activePathway === "prestation" ? "● Formulaire sélectionné" : "Choisir ce parcours →"}
+              </span>
+            </div>
+          </button>
+
+          {/* Parcours 03 */}
+          <button
+            type="button"
+            onClick={() => { setActivePathway("rejoindre"); setSubmitted(null); }}
+            className={`p-6 rounded-[22px] border text-left transition-all flex flex-col justify-between ${
+              activePathway === "rejoindre"
+                ? "border-[#0D4FB8] bg-blue-50/40 shadow-md ring-2 ring-[#0D4FB8]/20"
+                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm"
+            }`}
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-extrabold text-[#5FD3E2] uppercase tracking-wider">
+                  03 — PARCOURS
+                </span>
+                <UserCheck className="w-5 h-5 text-[#0D4FB8]" />
+              </div>
+              <h3 className="text-sm font-extrabold text-gray-900 uppercase leading-snug mb-2 font-poppins">
+                VOUS SOUHAITEZ REJOINDRE EZK ?
+              </h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Jeune, passionné(e) par le digital, monteur, graphiste ou créateur : partagez votre profil.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-gray-200/60">
+              <span className={`text-[11px] font-bold uppercase tracking-wider ${activePathway === "rejoindre" ? "text-[#0D4FB8]" : "text-gray-400"}`}>
+                {activePathway === "rejoindre" ? "● Formulaire sélectionné" : "Choisir ce parcours →"}
+              </span>
+            </div>
+          </button>
+        </div>
+
+        {/* Coordonnées rapides */}
+        <div className="bg-[#EBF6FA] rounded-[22px] p-5 md:p-6 mb-12 flex flex-wrap items-center justify-between gap-4 text-xs md:text-sm text-gray-700">
+          <div className="flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-[#0D4FB8]" />
+            <span className="font-semibold">Dakar, Sénégal</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4 text-[#0D4FB8]" />
+            <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-semibold text-gray-900">
+              contactezkagency@gmail.com
+            </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4 text-[#0D4FB8]" />
+            <span className="font-semibold">+221 77 593 31 93 / +221 76 196 87 59</span>
+          </div>
+        </div>
+
+        {/* Message de Succès après Envoi */}
+        {submitted && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mb-10 p-8 rounded-[24px] bg-green-50 border border-green-200 text-center"
+          >
+            <CheckCircle2 className="w-12 h-12 text-green-600 mx-auto mb-3" />
+            <h3 className="text-lg font-bold text-green-900 mb-1">
+              Merci pour les informations partagées !
+            </h3>
+            <p className="text-xs md:text-sm text-green-700 max-w-lg mx-auto">
+              Notre équipe va étudier votre demande afin de mieux comprendre votre situation et revenir vers vous très rapidement concernant les prochaines étapes.
+            </p>
+          </motion.div>
+        )}
+
+        {/* FORMULAIRES COMPLETS SELON LE PARCOURS */}
+        <div className="bg-white rounded-[28px] p-6 md:p-12 border border-gray-100 shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
+          <AnimatePresence mode="wait">
+            {/* ========================================================
+                01 — FORMULAIRE DEMANDE D'ACCOMPAGNEMENT DIGITAL
+               ======================================================== */}
+            {activePathway === "accompagnement" && (
+              <motion.form
+                key="form-accompagnement"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                onSubmit={(e) => handleSubmit(e, "accompagnement")}
+                className="space-y-10"
+              >
+                <div>
+                  <span className="text-xs font-bold text-[#5FD3E2] tracking-wider uppercase">
+                    PARCOURS 01
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 uppercase font-poppins mt-1">
+                    FORMULAIRE — DEMANDE D'ACCOMPAGNEMENT DIGITAL
+                  </h2>
+                  <p className="text-xs md:text-sm text-gray-600 mt-2">
+                    Vous souhaitez être accompagné sur la durée pour structurer, développer ou améliorer votre communication et votre présence digitale ? Parlez-nous de votre entreprise, de vos objectifs et de vos besoins.
+                  </p>
+                </div>
+
+                {/* Section 1 : VOTRE IDENTITÉ */}
+                <div className="space-y-4 pt-4 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    1. VOTRE IDENTITÉ
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Nom et prénom *</label>
+                      <input required type="text" placeholder="Votre nom complet" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] focus:ring-1 focus:ring-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Nom de l'entreprise / marque / projet *</label>
+                      <input required type="text" placeholder="Nom de l'entreprise" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] focus:ring-1 focus:ring-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Votre numéro de téléphone / WhatsApp *</label>
+                      <input required type="tel" placeholder="+221 XX XXX XX XX" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] focus:ring-1 focus:ring-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Votre adresse email *</label>
+                      <input required type="email" placeholder="exemple@domaine.com" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] focus:ring-1 focus:ring-[#0D4FB8]" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Ville / Localisation *</label>
+                      <input required type="text" placeholder="Dakar, Sénégal ou autre" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] focus:ring-1 focus:ring-[#0D4FB8]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2 : VOTRE ACTIVITÉ */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    2. VOTRE ACTIVITÉ
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quel est votre secteur d'activité ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+                      {[
+                        "Commerce / Vente", "Immobilier", "Restauration / Alimentation",
+                        "Mode / Beauté", "Transport / Mobilité", "Éducation / Formation",
+                        "Santé / Bien-être", "BTP / Construction", "Services",
+                        "Technologie / Digital", "Association / Organisation", "Institution", "Autre"
+                      ].map((item) => (
+                        <label key={item} className="flex items-center gap-2 p-2.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="secteur" value={item} className="rounded text-[#0D4FB8] focus:ring-[#0D4FB8]" />
+                          <span className="text-gray-700">{item}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Présentez-nous brièvement votre activité.</label>
+                    <textarea rows={3} placeholder="Décrivez en quelques mots ce que vous proposez..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] focus:ring-1 focus:ring-[#0D4FB8] resize-none" />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Depuis combien de temps votre activité existe-t-elle ?</label>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+                      {["Moins de 6 mois", "6 mois à 1 an", "1 à 3 ans", "Plus de 3 ans", "Projet en cours de lancement"].map((duree) => (
+                        <label key={duree} className="flex items-center gap-2 p-2.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="radio" name="anciennete" value={duree} className="text-[#0D4FB8] focus:ring-[#0D4FB8]" />
+                          <span className="text-gray-700">{duree}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3 : VOTRE PRÉSENCE DIGITALE */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    3. VOTRE PRÉSENCE DIGITALE
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Sur quels canaux êtes-vous actuellement présent ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                      {["Instagram", "Facebook", "TikTok", "LinkedIn", "Snapchat", "YouTube", "Site internet", "Google Business Profile", "Aucun pour le moment", "Autre"].map((canal) => (
+                        <label key={canal} className="flex items-center gap-2 p-2.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="canaux" value={canal} className="rounded text-[#0D4FB8] focus:ring-[#0D4FB8]" />
+                          <span className="text-gray-700">{canal}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Avez-vous déjà une identité visuelle ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {["Oui, elle est complète", "Oui, mais elle doit être améliorée", "Nous avons uniquement un logo", "Non, nous devons encore la créer"].map((idVisuelle) => (
+                          <label key={idVisuelle} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="identite_visuelle" value={idVisuelle} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{idVisuelle}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Avez-vous déjà une personne ou une équipe qui s'occupe de votre communication digitale ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {["Oui, en interne", "Oui, avec un prestataire", "Oui, mais de manière ponctuelle", "Non", "Nous sommes actuellement à la recherche d'un accompagnement"].map((equipe) => (
+                          <label key={equipe} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="equipe_comm" value={equipe} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{equipe}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 4 : VOS OBJECTIFS */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    4. VOS OBJECTIFS & DIFFICULTÉS
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quel est votre principal objectif aujourd'hui ?</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                      {[
+                        "Développer ma visibilité", "Améliorer mon image de marque", "Développer mes réseaux sociaux",
+                        "Créer régulièrement du contenu", "Trouver davantage de clients", "Promouvoir mes produits ou services",
+                        "Lancer une nouvelle activité / marque", "Améliorer mon site internet", "Développer mes ventes en ligne",
+                        "Mettre en place de la publicité digitale", "Structurer toute ma communication digitale", "Autre"
+                      ].map((obj) => (
+                        <label key={obj} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="objectifs" value={obj} className="rounded text-[#0D4FB8]" />
+                          <span className="text-gray-700">{obj}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quelle est aujourd'hui votre principale difficulté ?</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                      {[
+                        "Je manque de temps", "Je manque de contenu", "Je ne sais pas comment communiquer efficacement",
+                        "Ma présence digitale manque de cohérence", "Mes réseaux sociaux ne progressent pas suffisamment", "Je manque de visibilité",
+                        "Je n'obtiens pas suffisamment de prospects / clients", "Je ne maîtrise pas la publicité digitale", "Je n'ai pas encore de véritable stratégie", "Je ne sais pas précisément", "Autre"
+                      ].map((diff) => (
+                        <label key={diff} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="difficultes" value={diff} className="rounded text-[#0D4FB8]" />
+                          <span className="text-gray-700">{diff}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Qu'aimeriez-vous améliorer en priorité ?</label>
+                    <input type="text" placeholder="Votre priorité numéro 1..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                  </div>
+                </div>
+
+                {/* Section 5 : VOTRE BESOIN D'ACCOMPAGNEMENT */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    5. VOTRE BESOIN D'ACCOMPAGNEMENT
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quels domaines souhaitez-vous éventuellement confier à EZK Agency ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                      {[
+                        "Création de contenu", "Gestion des réseaux sociaux", "Infographie / identité visuelle",
+                        "Site internet / web design", "Consulting digital", "Publicité digitale / Ads",
+                        "Plusieurs de ces services", "Je ne sais pas encore, j'aimerais être conseillé(e)"
+                      ].map((domaine) => (
+                        <label key={domaine} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="domaines_confier" value={domaine} className="rounded text-[#0D4FB8]" />
+                          <span className="text-gray-700">{domaine}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Comment souhaitez-vous être accompagné ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {[
+                          "Accompagnement global de ma communication digitale",
+                          "Gestion régulière de mes réseaux sociaux",
+                          "Développement de ma visibilité et acquisition",
+                          "Accompagnement stratégique",
+                          "Je ne sais pas encore"
+                        ].map((modalite) => (
+                          <label key={modalite} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="modalite_accompagnement" value={modalite} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{modalite}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">À quelle échéance souhaitez-vous commencer ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {["Dès que possible", "Dans les prochaines semaines", "Dans les 1 à 3 prochains mois", "Je suis encore en réflexion"].map((delai) => (
+                          <label key={delai} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="delai_demarrage" value={delai} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{delai}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Y a-t-il quelque chose d'important que vous souhaitez nous préciser concernant votre projet ?</label>
+                    <textarea rows={3} placeholder="Précisions complémentaires, attentes particulières..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] resize-none" />
+                  </div>
+                </div>
+
+                {/* Fin du formulaire 01 */}
+                <div className="pt-6 border-t border-gray-100 flex flex-col items-center text-center">
+                  <p className="text-xs text-gray-500 mb-4 max-w-md">
+                    Merci pour les informations partagées. Notre équipe va étudier votre demande afin de mieux comprendre votre situation et revenir vers vous concernant les prochaines étapes.
+                  </p>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-10 py-4 rounded-full shadow-md hover:shadow-lg transition-all"
+                  >
+                    <span>ENVOYER MA DEMANDE</span>
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
+              </motion.form>
+            )}
+
+            {/* ========================================================
+                02 — FORMULAIRE DEMANDE DE PRESTATION SPÉCIFIQUE
+               ======================================================== */}
+            {activePathway === "prestation" && (
+              <motion.form
+                key="form-prestation"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                onSubmit={(e) => handleSubmit(e, "prestation")}
+                className="space-y-10"
+              >
+                <div>
+                  <span className="text-xs font-bold text-[#5FD3E2] tracking-wider uppercase">
+                    PARCOURS 02
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 uppercase font-poppins mt-1">
+                    FORMULAIRE — DEMANDE DE SERVICE
+                  </h2>
+                  <p className="text-xs md:text-sm text-gray-600 mt-2">
+                    Vous avez besoin d'un service précis sans nécessairement rechercher un accompagnement mensuel ? Création de contenu, identité visuelle, site internet, visuel publicitaire ou campagne Ads : présentez-nous votre demande.
+                  </p>
+                </div>
+
+                {/* Section 1 : VOS INFORMATIONS */}
+                <div className="space-y-4 pt-4 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    1. VOS INFORMATIONS
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Nom et prénom *</label>
+                      <input required type="text" placeholder="Votre nom" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Entreprise / marque / projet *</label>
+                      <input required type="text" placeholder="Nom du projet" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Téléphone / WhatsApp *</label>
+                      <input required type="tel" placeholder="+221 XX XXX XX XX" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Email *</label>
+                      <input required type="email" placeholder="votre.email@domaine.com" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2 : VOTRE BESOIN */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    2. VOTRE BESOIN
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quel service recherchez-vous ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+                      {[
+                        "Création de contenu photo", "Création de contenu vidéo", "Gestion des réseaux sociaux",
+                        "Infographie", "Logo / identité visuelle", "Flyer / affiche / support graphique",
+                        "Présentation / document professionnel", "Site vitrine", "E-commerce",
+                        "Landing page", "Application / interface digitale", "Consulting / audit digital",
+                        "Campagne publicitaire", "Publicité Meta", "Publicité Google", "Publicité TikTok", "Autre"
+                      ].map((srv) => (
+                        <label key={srv} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="service_souhaite" value={srv} className="rounded text-[#0D4FB8]" />
+                          <span className="text-gray-700">{srv}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Votre demande concerne :</label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+                      {["Une prestation unique", "Plusieurs prestations", "Une campagne ponctuelle", "Un projet de lancement", "Un événement", "Autre"].map((typ) => (
+                        <label key={typ} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="radio" name="type_demande" value={typ} className="text-[#0D4FB8]" />
+                          <span className="text-gray-700">{typ}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Décrivez-nous votre besoin.</label>
+                    <textarea rows={3} placeholder="Détails de la prestation, objectifs, attentes..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] resize-none" />
+                  </div>
+                </div>
+
+                {/* Section 3 : VOTRE PROJET */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    3. DÉTAILS DU PROJET & BUDGET
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Avez-vous déjà une identité visuelle ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {["Oui", "Partiellement", "Non"].map((opt) => (
+                          <label key={opt} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="identite_presta" value={opt} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{opt}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Avez-vous déjà les éléments nécessaires à la réalisation ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {["Oui, tout est prêt", "J'ai une partie des éléments", "Non, j'ai besoin d'aide pour les préparer"].map((elem) => (
+                          <label key={elem} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="elements_prets" value={elem} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{elem}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Quand souhaitez-vous réaliser cette prestation ?</label>
+                      <div className="space-y-1.5 text-xs">
+                        {["Dès que possible", "Dans les prochaines semaines", "Dans le mois", "Dans les 1 à 3 prochains mois", "Date précise à définir"].map((del) => (
+                          <label key={del} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="delai_presta" value={del} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{del}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Budget indicatif prévu pour ce projet</label>
+                      <div className="space-y-1.5 text-xs">
+                        {[
+                          "Moins de 50 000 FCFA",
+                          "50 000 – 100 000 FCFA",
+                          "100 000 – 250 000 FCFA",
+                          "250 000 – 500 000 FCFA",
+                          "Plus de 500 000 FCFA",
+                          "Je souhaite d'abord recevoir une estimation"
+                        ].map((bud) => (
+                          <label key={bud} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="budget_indicatif" value={bud} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{bud}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Avez-vous une date limite particulière ?</label>
+                      <input type="text" placeholder="Oui (précisez la date) / Non" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Avez-vous des références, exemples ou inspirations à partager ?</label>
+                      <input type="text" placeholder="Lien drive, site exemple, référence..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Informations complémentaires</label>
+                    <textarea rows={2} placeholder="Remarques additionnelles..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] resize-none" />
+                  </div>
+                </div>
+
+                {/* Fin du formulaire 02 */}
+                <div className="pt-6 border-t border-gray-100 flex flex-col items-center text-center">
+                  <p className="text-xs text-gray-500 mb-4 max-w-md">
+                    Merci pour votre demande. Nous allons étudier les éléments transmis afin de mieux comprendre votre besoin et revenir vers vous avec les prochaines étapes.
+                  </p>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-10 py-4 rounded-full shadow-md hover:shadow-lg transition-all"
+                  >
+                    <span>ENVOYER MA DEMANDE</span>
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
+              </motion.form>
+            )}
+
+            {/* ========================================================
+                03 — FORMULAIRE REJOINDRE EZK
+               ======================================================== */}
+            {activePathway === "rejoindre" && (
+              <motion.form
+                key="form-rejoindre"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                onSubmit={(e) => handleSubmit(e, "rejoindre")}
+                className="space-y-10"
+              >
+                <div>
+                  <span className="text-xs font-bold text-[#5FD3E2] tracking-wider uppercase">
+                    PARCOURS 03
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 uppercase font-poppins mt-1">
+                    FORMULAIRE — REJOINDRE EZK AGENCY
+                  </h2>
+                  <div className="space-y-2 text-xs md:text-sm text-gray-600 mt-2">
+                    <p className="font-bold text-gray-800 uppercase">VOUS ÊTES PASSIONNÉ(E) PAR LE DIGITAL ?</p>
+                    <p>
+                      Vous êtes jeune, passionné(e) par le digital et vous souhaitez développer vos compétences dans un environnement professionnel ? Vous habitez à Dakar ou ailleurs au Sénégal ? EZK Agency est toujours ouverte à découvrir de nouveaux talents.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Section 1 : QUI ÊTES-VOUS ? */}
+                <div className="space-y-4 pt-4 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    1. QUI ÊTES-VOUS ?
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Nom et prénom *</label>
+                      <input required type="text" placeholder="Votre nom" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Âge *</label>
+                      <input required type="text" placeholder="Ex: 22 ans" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Ville / Région *</label>
+                      <input required type="text" placeholder="Dakar, Thiès, etc." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Numéro de téléphone / WhatsApp *</label>
+                      <input required type="tel" placeholder="+221 XX XXX XX XX" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Adresse email *</label>
+                      <input required type="email" placeholder="votre.email@domaine.com" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2 : VOTRE SITUATION */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    2. VOTRE SITUATION
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quelle est votre situation actuelle ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                      {["Étudiant(e)", "Élève", "Jeune diplômé(e)", "En recherche d'emploi", "Salarié(e)", "Entrepreneur(e)", "Freelance", "Autre"].map((sit) => (
+                        <label key={sit} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="radio" name="situation" value={sit} className="text-[#0D4FB8]" />
+                          <span className="text-gray-700">{sit}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Si vous êtes étudiant(e) ou élève, quelle formation suivez-vous ?</label>
+                      <input type="text" placeholder="Filière, établissement..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">Si vous travaillez actuellement, dans quel domaine ?</label>
+                      <input type="text" placeholder="Domaine d'activité..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3 : VOTRE PROFIL DIGITAL */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    3. VOTRE PROFIL DIGITAL & OUTILS
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Dans quels domaines avez-vous des compétences ou un intérêt ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+                      {[
+                        "Montage vidéo", "Graphisme / design", "Création de contenu", "Photographie",
+                        "Vidéo", "Community management", "Marketing digital", "Publicité digitale",
+                        "Web design", "Développement web / mobile", "Rédaction / copywriting", "Autre"
+                      ].map((comp) => (
+                        <label key={comp} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="competences" value={comp} className="rounded text-[#0D4FB8]" />
+                          <span className="text-gray-700">{comp}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Quels outils maîtrisez-vous ou utilisez-vous régulièrement ?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                      {[
+                        "Canva", "CapCut", "Photoshop", "Illustrator", "Premiere Pro",
+                        "After Effects", "Meta Business Suite", "Google Ads", "WordPress", "Figma", "Autre"
+                      ].map((outil) => (
+                        <label key={outil} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="checkbox" name="outils" value={outil} className="rounded text-[#0D4FB8]" />
+                          <span className="text-gray-700">{outil}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Comment évaluez-vous votre niveau dans votre principal domaine ?</label>
+                      <div className="grid grid-cols-2 gap-1.5 text-xs">
+                        {["Débutant(e)", "Intermédiaire", "Bon niveau", "Avancé(e)"].map((niv) => (
+                          <label key={niv} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="niveau" value={niv} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{niv}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-2">Avez-vous déjà réalisé des projets dans le digital ?</label>
+                      <div className="space-y-1 text-xs">
+                        {["Oui, professionnellement", "Oui, pour des projets personnels", "Oui, dans le cadre de mes études / formations", "Pas encore, mais je souhaite apprendre"].map((proj) => (
+                          <label key={proj} className="flex items-center gap-2 p-1.5 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                            <input type="radio" name="projets_realises" value={proj} className="text-[#0D4FB8]" />
+                            <span className="text-gray-700">{proj}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Si vous avez un portfolio, une page professionnelle ou quelques réalisations à partager, indiquez le lien ici :</label>
+                    <input type="url" placeholder="https://instagram.com/..., drive, behance, etc." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                  </div>
+                </div>
+
+                {/* Section 4 : POURQUOI EZK ? */}
+                <div className="space-y-4 pt-6 border-t border-gray-100">
+                  <h3 className="text-xs md:text-sm font-extrabold text-[#0D4FB8] tracking-wider uppercase">
+                    4. MOTIVATION & DISPONIBILITÉ
+                  </h3>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Pourquoi souhaitez-vous rejoindre EZK Agency ? (court)</label>
+                    <textarea rows={2} placeholder="Votre motivation..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] resize-none" />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Qu'aimeriez-vous développer ou apprendre dans le digital ?</label>
+                    <textarea rows={2} placeholder="Vos aspirations, objectifs d'apprentissage..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8] resize-none" />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-2">Êtes-vous actuellement disponible pour des missions, collaborations, stages ou opportunités professionnelles ?</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                      {[
+                        "Oui, immédiatement",
+                        "Oui, à temps partiel",
+                        "Oui, selon les projets",
+                        "Non actuellement, mais je souhaite rester en contact"
+                      ].map((disp) => (
+                        <label key={disp} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200/80 hover:bg-gray-50 cursor-pointer">
+                          <input type="radio" name="disponibilite" value={disp} className="text-[#0D4FB8]" />
+                          <span className="text-gray-700">{disp}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Y a-t-il quelque chose que vous aimeriez que nous sachions sur vous ?</label>
+                    <input type="text" placeholder="Passions, atouts particuliers, etc." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-xs md:text-sm outline-none focus:border-[#0D4FB8]" />
+                  </div>
+                </div>
+
+                {/* Fin du formulaire 03 */}
+                <div className="pt-6 border-t border-gray-100 flex flex-col items-center text-center">
+                  <p className="text-xs text-gray-500 mb-4 max-w-md">
+                    Merci pour l'intérêt porté à EZK Agency. Nous conserverons votre profil parmi les candidatures reçues. Si une opportunité correspond à vos compétences, nous pourrons vous contacter pour un échange plus approfondi.
+                  </p>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-10 py-4 rounded-full shadow-md hover:shadow-lg transition-all"
+                  >
+                    <span>ENVOYER MON PROFIL</span>
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
+              </motion.form>
+            )}
+          </AnimatePresence>
+        </div>
+
       </div>
     </section>
   );

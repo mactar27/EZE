@@ -36,27 +36,32 @@ export default function Portfolio({
   bannerImage,
   endImage
 }: PortfolioSectionProps) {
-  // Mode Teaser Accueil inspiré de la maquette Canva
+  // Mode Teaser Accueil inspiré de la maquette Canva (adaptatif Mobile & Grand Écran)
   if (isHomeTeaser) {
     return (
-      <section id="portfolio" className="py-16 bg-white relative">
-        <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-5xl">
+      <section id="portfolio" className="py-16 md:py-24 bg-white relative">
+        <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
           {/* Ligne séparatrice supérieure */}
-          <div className="w-full max-w-sm mx-auto h-[1px] bg-gray-300 mb-10" />
+          <div className="w-full max-w-xs md:max-w-md mx-auto h-[1.5px] bg-gray-300 mb-12" />
 
           {/* Titre Cyan Canva */}
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-8"
-          >
-            NOS REALISATIONS
-          </motion.h2>
+          <div className="text-center mb-10">
+            <motion.h2
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase"
+            >
+              NOS REALISATIONS
+            </motion.h2>
+            <p className="text-gray-500 text-xs md:text-sm mt-2 max-w-md mx-auto">
+              Découvrez un aperçu de nos projets et créations digitales
+            </p>
+          </div>
 
-          {/* 3 Cartes illustrées avec titre corail/rouge */}
-          <div className="space-y-6">
+          {/* 3 Cartes illustrées (3 colonnes sur desktop, 1 colonne sur mobile) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {TEASER_CARDS.map((card, idx) => (
               <motion.div
                 key={card.title}
@@ -64,7 +69,7 @@ export default function Portfolio({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="relative h-[180px] md:h-[230px] rounded-[24px] overflow-hidden shadow-md group cursor-pointer"
+                className="relative h-[220px] md:h-[280px] rounded-[24px] overflow-hidden shadow-md group cursor-pointer border border-gray-100 hover:shadow-xl transition-all"
               >
                 <Link href={card.href} className="block w-full h-full relative">
                   <Image
@@ -73,11 +78,19 @@ export default function Portfolio({
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Titre corail en haut à gauche comme sur la maquette */}
+                  {/* Dégradé doux pour lisibilité */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                  
+                  {/* Titre corail/rouge en haut à gauche comme sur la maquette */}
                   <div className="absolute top-5 left-6 z-10">
-                    <span className="text-[#FF5A5F] font-extrabold text-sm md:text-lg tracking-wider uppercase drop-shadow-sm font-poppins">
+                    <span className="text-[#FF5A5F] font-extrabold text-sm md:text-base tracking-wider uppercase drop-shadow-sm font-poppins">
                       {card.title}
                     </span>
+                  </div>
+
+                  <div className="absolute bottom-5 left-6 right-6 z-10 flex items-center justify-between text-white text-xs font-bold uppercase tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
+                    <span>Explorer</span>
+                    <span className="text-[#5FD3E2] text-base group-hover:translate-x-1 transition-transform">→</span>
                   </div>
                 </Link>
               </motion.div>
@@ -85,17 +98,17 @@ export default function Portfolio({
           </div>
 
           {/* Bouton cyan avec texte corail style Canva */}
-          <div className="mt-10 text-center">
+          <div className="mt-12 text-center">
             <Link
               href="/realisations"
-              className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] font-bold text-xs md:text-sm tracking-wider uppercase px-8 py-3.5 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
+              className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] font-bold text-xs md:text-sm tracking-wider uppercase px-8 py-3.5 rounded-[14px] shadow-sm hover:shadow-md transition-all active:scale-95"
             >
               voir toutes nos realisions
             </Link>
           </div>
 
           {/* Ligne séparatrice inférieure */}
-          <div className="w-full max-w-sm mx-auto h-[1px] bg-gray-300 mt-12" />
+          <div className="w-full max-w-xs md:max-w-md mx-auto h-[1.5px] bg-gray-300 mt-14" />
 
         </div>
       </section>

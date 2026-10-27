@@ -38,17 +38,17 @@ export default function Testimonials({
 
   return (
     <section className="py-16 md:py-24 bg-white relative">
-      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
         
         {/* Carte Chiffres Clés avec Bannière & Boîte Verre Dépoli Bleue */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative rounded-[28px] overflow-hidden shadow-xl mb-12"
+          className="relative rounded-[32px] overflow-hidden shadow-2xl mb-16 border border-gray-100"
         >
           {/* Photo de fond */}
-          <div className="relative h-[280px] md:h-[320px] w-full">
+          <div className="relative h-[280px] md:h-[340px] w-full">
             <Image
               src={bannerUrl}
               alt="Statistiques EZK Agency"
@@ -59,14 +59,14 @@ export default function Testimonials({
             <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px]" />
 
             {/* Boîte style Canva avec bordure bleue et fond translucide */}
-            <div className="absolute inset-4 md:inset-8 rounded-[22px] border-2 border-[#0D4FB8]/80 bg-white/70 backdrop-blur-md p-6 flex items-center justify-center shadow-sm">
-              <div className="grid grid-cols-2 gap-6 md:gap-12 w-full text-center">
+            <div className="absolute inset-4 md:inset-8 rounded-[24px] border-2 border-[#0D4FB8]/80 bg-white/75 backdrop-blur-md p-6 md:p-10 flex items-center justify-center shadow-lg">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 w-full text-center">
                 {STATS_DATA.map((item, idx) => (
                   <div key={idx} className="flex flex-col items-center justify-center">
-                    <span className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] drop-shadow-sm font-poppins">
+                    <span className="text-3xl md:text-5xl font-extrabold text-[#5FD3E2] drop-shadow-sm font-poppins">
                       {item.value}
                     </span>
-                    <span className="text-xs md:text-sm font-semibold text-gray-700 mt-1">
+                    <span className="text-xs md:text-sm font-bold text-gray-800 mt-2 uppercase tracking-wider">
                       {item.label}
                     </span>
                   </div>
@@ -77,41 +77,41 @@ export default function Testimonials({
         </motion.div>
 
         {/* Ligne séparatrice Canva */}
-        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-16" />
 
         {/* Section Ils nous ont fait confiance */}
-        <div className="text-center my-8">
+        <div className="text-center my-10 max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-8"
+            className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-8"
           >
-            ils nous ont fais confiance
+            ils nous ont fait confiance
           </motion.h2>
 
           {/* Carrousel de logos clients style Canva avec fond bleu ciel doux et flèches rouges */}
-          <div className="relative bg-[#EBF6FA] rounded-[24px] py-6 px-4 md:px-12 flex items-center justify-between shadow-sm">
+          <div className="relative bg-[#EBF6FA] rounded-[28px] py-8 px-6 md:px-14 flex items-center justify-between shadow-md">
             {/* Flèche gauche rouge */}
             <button
               aria-label="Précédent"
-              className="w-8 h-8 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
+              className="w-10 h-10 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
             >
-              <ChevronLeft className="w-6 h-6 stroke-[3]" />
+              <ChevronLeft className="w-7 h-7 stroke-[3]" />
             </button>
 
             {/* Logos ronds */}
-            <div className="flex items-center justify-center gap-4 md:gap-10 overflow-hidden py-2">
+            <div className="flex items-center justify-center gap-6 md:gap-12 overflow-hidden py-2 flex-wrap">
               {displayLogos.map((logo) => (
                 <div
                   key={logo.id}
-                  className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md bg-white hover:scale-105 transition-transform shrink-0"
+                  className="relative w-20 h-20 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md bg-white hover:scale-105 transition-transform shrink-0 border border-gray-100"
                 >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     fill
-                    className="object-contain p-1"
+                    className="object-contain p-2"
                   />
                 </div>
               ))}
@@ -120,9 +120,9 @@ export default function Testimonials({
             {/* Flèche droite rouge */}
             <button
               aria-label="Suivant"
-              className="w-8 h-8 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
+              className="w-10 h-10 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
             >
-              <ChevronRight className="w-6 h-6 stroke-[3]" />
+              <ChevronRight className="w-7 h-7 stroke-[3]" />
             </button>
           </div>
         </div>

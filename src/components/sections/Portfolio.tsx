@@ -201,108 +201,133 @@ const SOCIAL_ICONS = [
 ];
 
 function FullPortfolioView({ projects = [] }: { projects: any[] }) {
-  const sections = BASE_SECTIONS.map((section) => {
-    const updatedSubsections = section.subsections.map((sub) => {
-      const matchingProjects = projects.filter((p) => p.category === sub.categoryMatch);
-      return {
-        ...sub,
-        items: matchingProjects.map((p) => ({
-          title: p.title,
-          image: p.image?.asset ? p.image : "/portfolio_event.png",
-        })),
-      };
-    });
-    return { ...section, subsections: updatedSubsections };
-  });
+  const SAMPLE_ITEMS = [
+    { title: "Logos", image: "/sample-logos.png" },
+    { title: "Fleyers", image: "/sample-fleyers.png" },
+    { title: "Carte de visite", image: "/sample-carte-de-visite.png" },
+    { title: "Posts graphique", image: "/sample-posts-graphique.png" },
+    { title: "Presentations graphique", image: "/sample-presentations.png" },
+    { title: "Animation", image: "/sample-animation.png" },
+  ];
 
   return (
-    <section id="portfolio-full" className="bg-white">
-      {/* Hero Banner */}
-      <div className="relative h-[300px] md:h-[380px] overflow-hidden">
-        <Image
-          src="/portfolio_event.png"
-          alt="Nos Réalisations EZK"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-dark/60" />
-        <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold font-poppins text-secondary mb-3 uppercase tracking-tight">
-              NOS RÉALISATIONS
+    <section id="portfolio-full" className="bg-white pb-20">
+      {/* Hero Banner style Canva avec caméra sur trépied */}
+      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl pt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative h-[260px] md:h-[340px] rounded-[28px] overflow-hidden shadow-xl"
+        >
+          <Image
+            src="/realisations-camera-banner.png"
+            alt="Nos Réalisations EZK Agency"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dégradé léger et textes Canva */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent flex flex-col justify-start p-6 md:p-8">
+            <h1 className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-2 drop-shadow-sm font-poppins">
+              NOS REALISATIONS
             </h1>
-            <p className="text-gray-300 text-lg max-w-xl">
-              Chaque projet est unique. Découvrez comment nous donnons vie aux marques à travers nos réalisations.
+            <p className="text-white text-xs md:text-sm max-w-md leading-relaxed font-medium drop-shadow-sm">
+              Devenir une reference en communication et en markenting digiatl au niveau local et international .
             </p>
-          </motion.div>
-        </div>
+            <p className="text-[#FF5A5F] font-bold text-xs md:text-sm mt-2 drop-shadow-sm">
+              Votre partenaire de croissance digitale à Dakar
+            </p>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-16">
-        {sections.map((section, sIdx) => (
-          <motion.div
-            key={section.id}
-            id={section.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 scroll-mt-28"
-          >
-            <div className="mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold font-poppins text-dark mb-2">
-                {section.title}
-              </h2>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-2xl">
-                {section.description}
-              </p>
+      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl py-12">
+        {/* Section CRÉATION DE CONTENU */}
+        <div className="mb-14">
+          <h2 className="text-xl md:text-2xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3">
+            CREATION DE CONTENU
+          </h2>
+          <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-normal">
+            Des contenus pensés pour raconter, valoriser et faire vivre les marques. À travers la photographie et la vidéo, nous créons des contenus adaptés aux réseaux sociaux, à la communication corporate, aux campagnes promotionnelles et aux besoins spécifiques de chaque projet.
+          </p>
+
+          {/* Sous-section PHOTOS : */}
+          <div className="mb-8">
+            <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
+              PHOTOS :
+            </p>
+            {/* Grille 3x2 avec bordures arrondies et texte en superposition */}
+            <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+              {SAMPLE_ITEMS.map((item, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                    <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
+                      {item.title}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {section.subsections.map((sub, subIdx) => (
-              <div key={subIdx} className="mb-8">
-                {sub.label && (
-                  <p className="text-primary font-bold text-sm uppercase tracking-widest mb-4">
-                    {sub.label} :
-                  </p>
-                )}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-5">
-                  {sub.items.map((item: any, i: number) => (
-                    <div
-                      key={i}
-                      className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group shadow-sm bg-gray-100"
-                    >
-                      <Image
-                        src={typeof item.image === "string" ? item.image : "/portfolio_event.png"}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <p className="text-white text-xs md:text-sm font-bold leading-tight drop-shadow-sm">
-                          {item.title}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+            {/* Bouton voir plus cyan style Canva */}
+            <div className="flex justify-center mt-6">
+              <Link
+                href="/contact"
+                className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] text-xs font-bold px-6 py-2 rounded-full transition-colors shadow-sm uppercase tracking-wider"
+              >
+                voir plus
+              </Link>
+            </div>
+          </div>
 
-            {sIdx < sections.length - 1 && (
-              <div className="border-t border-gray-200 mt-12" />
-            )}
-          </motion.div>
-        ))}
+          {/* Sous-section VIDEOS : */}
+          <div className="mt-12">
+            <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
+              VIDEOS :
+            </p>
+            <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+              {SAMPLE_ITEMS.map((item, i) => (
+                <div
+                  key={`vid-${i}`}
+                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                    <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
+                      {item.title}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center mt-6">
+              <Link
+                href="/contact"
+                className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] text-xs font-bold px-6 py-2 rounded-full transition-colors shadow-sm uppercase tracking-wider"
+              >
+                voir plus
+              </Link>
+            </div>
+          </div>
+        </div>
 
         {/* Social Icons & Bottom Banner */}
-        <div className="border-t border-gray-200 pt-12">
+        <div className="border-t border-gray-200 pt-12 mt-12">
           <div className="flex items-center gap-4 mb-8">
             {SOCIAL_ICONS.map((social) => (
               <a
@@ -315,7 +340,7 @@ function FullPortfolioView({ projects = [] }: { projects: any[] }) {
               </a>
             ))}
           </div>
-          <div className="relative h-[280px] md:h-[400px] rounded-3xl overflow-hidden shadow-xl">
+          <div className="relative h-[240px] md:h-[360px] rounded-[24px] overflow-hidden shadow-xl">
             <Image
               src="/collaboration-creative.png"
               alt="Collaboration créative chez EZK Agency"

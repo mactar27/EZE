@@ -63,19 +63,28 @@ export default function Navbar() {
           </ul>
           <Link
             href="/contact"
-            className="bg-primary text-white px-6 py-2.5 rounded-full font-medium text-base hover:bg-primary/90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            className="bg-[#0D4FB8] text-white px-6 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase hover:bg-blue-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
-            Demander un devis
+            CONTACT US
           </Link>
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-dark p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Header: Logo, Burger, and CONTACT US Button */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            className="text-dark p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menu"
+          >
+            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+          <Link
+            href="/contact"
+            className="bg-[#0D4FB8] text-white px-4 py-2 rounded-full font-bold text-[11px] tracking-wider uppercase shadow-sm"
+          >
+            CONTACT US
+          </Link>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -99,9 +108,9 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="bg-primary text-white text-center px-6 py-3 rounded-full font-medium mt-4"
+            className="bg-[#0D4FB8] text-white text-center px-6 py-3 rounded-full font-bold text-xs tracking-wider uppercase mt-4 shadow-md"
           >
-            Demander un devis
+            CONTACT US
           </Link>
         </motion.div>
       )}

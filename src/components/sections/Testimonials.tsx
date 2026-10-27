@@ -17,6 +17,11 @@ const CLIENT_LOGOS = [
   { id: 1, src: "/client-logo-1.png", alt: "Client Médical" },
   { id: 2, src: "/client-logo-2.png", alt: "Logo Branding" },
   { id: 3, src: "/client-logo-3.png", alt: "Client Oiseau" },
+  { id: 4, src: "/client-logo-1.png", alt: "Partenaire Santé" },
+  { id: 5, src: "/client-logo-2.png", alt: "Tech & Innovation" },
+  { id: 6, src: "/client-logo-3.png", alt: "Commerce & Distribution" },
+  { id: 7, src: "/client-logo-1.png", alt: "Groupe Corporate" },
+  { id: 8, src: "/client-logo-2.png", alt: "Créateurs & Marque" },
 ];
 
 export default function Testimonials({
@@ -80,7 +85,7 @@ export default function Testimonials({
         <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-16" />
 
         {/* Section Ils nous ont fait confiance */}
-        <div className="text-center my-10 max-w-4xl mx-auto">
+        <div className="text-center my-10 max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -90,40 +95,28 @@ export default function Testimonials({
             ils nous ont fait confiance
           </motion.h2>
 
-          {/* Carrousel de logos clients style Canva avec fond bleu ciel doux et flèches rouges */}
-          <div className="relative bg-[#EBF6FA] rounded-[28px] py-8 px-6 md:px-14 flex items-center justify-between shadow-md">
-            {/* Flèche gauche rouge */}
-            <button
-              aria-label="Précédent"
-              className="w-10 h-10 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
-            >
-              <ChevronLeft className="w-7 h-7 stroke-[3]" />
-            </button>
+          {/* Bandeau défilant infini (Marquee) de tous les logos clients */}
+          <div className="relative bg-[#EBF6FA] rounded-[32px] py-10 px-6 overflow-hidden shadow-md border border-blue-100/60">
+            {/* Dégradés d'estompage sur les côtés */}
+            <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#EBF6FA] to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#EBF6FA] to-transparent z-10 pointer-events-none" />
 
-            {/* Logos ronds */}
-            <div className="flex items-center justify-center gap-6 md:gap-12 overflow-hidden py-2 flex-wrap">
-              {displayLogos.map((logo) => (
+            <div className="flex w-max items-center gap-8 md:gap-12 animate-marquee">
+              {/* Double liste pour un défilement infini sans coupure */}
+              {[...displayLogos, ...displayLogos].map((logo, idx) => (
                 <div
-                  key={logo.id}
-                  className="relative w-20 h-20 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md bg-white hover:scale-105 transition-transform shrink-0 border border-gray-100"
+                  key={`${logo.id}-${idx}`}
+                  className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md bg-white hover:scale-110 transition-transform shrink-0 border border-gray-100 flex items-center justify-center p-3"
                 >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     fill
-                    className="object-contain p-2"
+                    className="object-contain p-3"
                   />
                 </div>
               ))}
             </div>
-
-            {/* Flèche droite rouge */}
-            <button
-              aria-label="Suivant"
-              className="w-10 h-10 flex items-center justify-center text-[#FF5A5F] hover:scale-110 transition-transform shrink-0"
-            >
-              <ChevronRight className="w-7 h-7 stroke-[3]" />
-            </button>
           </div>
         </div>
 

@@ -158,9 +158,6 @@ export default function Method({
             {/* Contenu textuel et boutons */}
             <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col justify-between h-full text-center">
               <div>
-                <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 shadow-sm">
-                  NOTRE DIFFÉRENCE
-                </span>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0D4FB8] tracking-wider uppercase mb-3 drop-shadow-sm font-poppins">
                   POURQUOI NOUS CHOISIR ?
                 </h3>

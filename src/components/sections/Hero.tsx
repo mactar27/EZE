@@ -10,7 +10,7 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
   const imageUrl = heroImage ? urlFor(heroImage).url() : "/services-banner.png";
 
   return (
-    <section className="relative pt-24 md:pt-32 pb-8 md:pb-12 overflow-hidden bg-white">
+    <section className="relative pt-24 md:pt-32 pb-4 md:pb-8 overflow-hidden bg-white">
       {/* Background Decorative Blur */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#5FD3E2]/15 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
@@ -140,7 +140,7 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
       </div>
 
       {/* Indicateurs de confiance (sous le hero, bande unique unifiée style coordonnées contact) */}
-      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl mt-8 md:mt-12">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl mt-4 md:mt-8">
         <div className="bg-[#EBF6FA] rounded-[24px] p-6 md:p-8 flex flex-wrap items-center justify-around gap-6 text-center text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
           <div className="flex-1 min-w-[140px]">
             <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Stratégies</span>

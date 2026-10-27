@@ -39,7 +39,7 @@ export default function Portfolio({
   // Mode Teaser Accueil inspiré de la maquette Canva (adaptatif Mobile & Grand Écran)
   if (isHomeTeaser) {
     return (
-      <section id="portfolio" className="py-16 md:py-24 bg-white relative">
+      <section id="portfolio" className="py-10 md:py-16 bg-white relative">
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
           {/* Ligne séparatrice supérieure */}

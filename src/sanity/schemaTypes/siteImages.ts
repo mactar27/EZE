@@ -69,6 +69,13 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'contactBanner',
+      title: 'Image d\'Introduction Section Contact',
+      description: 'L\'image ou bannière d\'introduction affichée dans la section Contact de l\'accueil et de la page contact.',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'clientLogos',
       title: 'Logos des Clients ("Ils nous ont fait confiance")',
       description: 'Ajoutez, retirez ou réordonnez les logos des clients qui défilent.',

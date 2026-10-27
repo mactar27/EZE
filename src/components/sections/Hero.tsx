@@ -10,7 +10,7 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
   const imageUrl = heroImage ? urlFor(heroImage).url() : "/services-banner.png";
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-12 md:pb-20 overflow-hidden bg-white">
+    <section className="relative pt-24 md:pt-32 pb-8 md:pb-12 overflow-hidden bg-white">
       {/* Background Decorative Blur */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#5FD3E2]/15 rounded-full blur-[100px] -z-10 pointer-events-none" />
 

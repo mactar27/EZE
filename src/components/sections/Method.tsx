@@ -6,6 +6,13 @@ import Image from "next/image";
 import { Search, Target, Lightbulb, Monitor, BarChart2 } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 
+const STATS_DATA = [
+  { value: "100 +", label: "projets realisés" },
+  { value: "25 +", label: "Clients satisfais" },
+  { value: "10 +", label: "Marques représenté" },
+  { value: "4 ans +", label: "D'expérience" },
+];
+
 const METHOD_STEPS = [
   {
     title: "Analyse",
@@ -39,11 +46,18 @@ const METHOD_STEPS = [
   },
 ];
 
-export default function Method({ methodBanner }: { methodBanner?: any }) {
+export default function Method({ 
+  methodBanner,
+  statsBanner,
+}: { 
+  methodBanner?: any;
+  statsBanner?: any;
+}) {
   const bannerUrl = methodBanner ? urlFor(methodBanner).url() : "/services-banner.png";
+  const statsBannerUrl = statsBanner ? urlFor(statsBanner).url() : "/services-banner.png";
 
   return (
-    <section id="method" className="py-16 md:py-24 bg-white relative">
+    <section id="method" className="py-10 md:py-16 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
         {/* Titre Cyan Canva */}
@@ -117,36 +131,40 @@ export default function Method({ methodBanner }: { methodBanner?: any }) {
         </div>
 
         {/* Ligne séparatrice Canva */}
-        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-16" />
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-10 md:my-12" />
 
-        {/* Carte POURQUOI NOUS CHOISIR ? avec Bannière Photo superposée */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative rounded-[32px] overflow-hidden shadow-2xl max-w-5xl mx-auto border border-gray-100"
-        >
-          {/* Image de fond de la bannière */}
-          <div className="relative h-[360px] md:h-[340px] w-full">
-            <Image
-              src={bannerUrl}
-              alt="Pourquoi nous choisir EZK"
-              fill
-              className="object-cover"
-            />
-            {/* Voile blanc / translucide pour lisibilité parfaite */}
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" />
+        {/* Section CÔTE À CÔTE : POURQUOI NOUS CHOISIR & CHIFFRES CLÉS EZK */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-7xl mx-auto">
+          
+          {/* Colonne Gauche : Carte POURQUOI NOUS CHOISIR ? */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-[28px] md:rounded-[32px] overflow-hidden shadow-xl border border-gray-100 flex flex-col justify-between"
+          >
+            {/* Image de fond de la bannière */}
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src={bannerUrl}
+                alt="Pourquoi nous choisir EZK"
+                fill
+                className="object-cover"
+              />
+              {/* Voile blanc / translucide pour lisibilité parfaite */}
+              <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
+            </div>
 
             {/* Contenu textuel et boutons */}
-            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between text-center max-w-3xl mx-auto">
+            <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col justify-between h-full text-center">
               <div>
                 <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 shadow-sm">
                   NOTRE DIFFÉRENCE
                 </span>
-                <h3 className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-4 drop-shadow-sm font-poppins">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-4 drop-shadow-sm font-poppins">
                   POURQUOI NOUS CHOISIR ?
                 </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-800 leading-relaxed font-medium mx-auto">
+                <p className="text-xs sm:text-sm text-gray-800 leading-relaxed font-medium mx-auto">
                   Nous combinons créativité, expertise et vision stratégique pour donner à votre marque une présence digitale forte et cohérente. Plus qu'un simple prestataire, nous nous engageons comme un partenaire de confiance dans le développement de votre activité.
                 </p>
               </div>
@@ -155,20 +173,60 @@ export default function Method({ methodBanner }: { methodBanner?: any }) {
               <div className="flex justify-center gap-4 mt-6">
                 <Link
                   href="/a-propos"
-                  className="bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs tracking-wider uppercase px-8 py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
+                  className="bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs tracking-wider uppercase px-6 py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
                 >
                   Analyse
                 </Link>
                 <Link
                   href="/contact"
-                  className="bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs tracking-wider uppercase px-8 py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
+                  className="bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs tracking-wider uppercase px-6 py-3 rounded-[12px] shadow-sm hover:shadow-md transition-all active:scale-95"
                 >
                   Contact
                 </Link>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Colonne Droite : Carte CHIFFRES DE EZK */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-[28px] md:rounded-[32px] overflow-hidden shadow-xl border border-gray-100 flex flex-col justify-between"
+          >
+            {/* Image de fond de la bannière stats */}
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src={statsBannerUrl}
+                alt="Statistiques EZK Agency"
+                fill
+                className="object-cover"
+              />
+              {/* Voile doux */}
+              <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]" />
+            </div>
+
+            {/* Boîte style Canva avec bordure bleue et fond translucide */}
+            <div className="relative z-10 m-3 sm:m-4 md:m-6 rounded-[22px] md:rounded-[24px] border-2 border-[#0D4FB8]/80 bg-white/80 backdrop-blur-md p-6 sm:p-8 flex flex-col items-center justify-center shadow-lg h-[calc(100%-1.5rem)] sm:h-[calc(100%-2rem)] md:h-[calc(100%-3rem)]">
+              <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-6 shadow-sm">
+                LES CHIFFRES DE EZK
+              </span>
+              <div className="grid grid-cols-2 gap-6 sm:gap-8 w-full text-center">
+                {STATS_DATA.map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center justify-center">
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#5FD3E2] drop-shadow-sm font-poppins">
+                      {item.value}
+                    </span>
+                    <span className="text-[11px] sm:text-xs font-bold text-gray-800 mt-2 uppercase tracking-wider">
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
 
       </div>
     </section>

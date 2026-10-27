@@ -29,19 +29,19 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-white/80 backdrop-blur-sm py-4 md:py-5"
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-md py-2.5" : "bg-white/80 backdrop-blur-sm py-3.5 md:py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-12 lg:px-20 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          {/* Logo EZK Agency propre, net et parfaitement dimensionné */}
+          {/* Logo EZK Agency parfaitement proportionné */}
           <div className="relative flex items-center">
             <Image 
               src="/logo-clean.png" 
               alt="EZK Agency Logo" 
               width={755} 
               height={392} 
-              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain transition-all" 
+              className="h-11 sm:h-13 md:h-14 lg:h-16 w-auto object-contain transition-all" 
               priority
             />
           </div>

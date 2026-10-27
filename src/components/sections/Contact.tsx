@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Briefcase, 
   Layers, 
@@ -14,12 +15,21 @@ import {
   Send,
   ArrowRight
 } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
 type Pathway = "accompagnement" | "prestation" | "rejoindre";
 
-export default function Contact({ isHomeTeaser = false }: { isHomeTeaser?: boolean }) {
+export default function Contact({ 
+  isHomeTeaser = false,
+  contactBanner,
+}: { 
+  isHomeTeaser?: boolean;
+  contactBanner?: any;
+}) {
   const [activePathway, setActivePathway] = useState<Pathway>("accompagnement");
   const [submitted, setSubmitted] = useState<string | null>(null);
+
+  const bannerUrl = contactBanner ? urlFor(contactBanner).url() : "/services-banner.png";
 
   const handleSubmit = (e: React.FormEvent, formName: string) => {
     e.preventDefault();
@@ -32,19 +42,39 @@ export default function Contact({ isHomeTeaser = false }: { isHomeTeaser?: boole
   // VERSION TEASER ACCUEIL : Présente les 3 parcours et les coordonnées sans dérouler les 30 questions de formulaire
   if (isHomeTeaser) {
     return (
-      <section id="contact" className="py-16 md:py-24 bg-[#F8FAFC] relative">
+      <section id="contact" className="py-10 md:py-16 bg-[#F8FAFC] relative">
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-block bg-blue-50 text-[#0D4FB8] text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase mb-3">
-              CONTACTEZ EZK AGENCY
-            </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold font-poppins text-gray-900 leading-tight tracking-tight uppercase">
-              PARLONS DE VOTRE <span className="text-[#0D4FB8]">PROJET</span>
-            </h2>
-            <div className="w-14 h-1 bg-[#5FD3E2] mx-auto mt-4 rounded-full" />
-            <p className="text-gray-600 text-sm md:text-base mt-4 leading-relaxed font-normal">
-              Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ? Choisissez le parcours qui correspond à votre besoin.
+          {/* Bannière / Image d'introduction pour la section Contacter EZK Agency */}
+          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-xl mb-12 sm:mb-16 border border-gray-100">
+            <div className="relative h-[220px] sm:h-[260px] md:h-[300px] w-full">
+              <Image
+                src={bannerUrl}
+                alt="Contacter EZK Agency Dakar"
+                fill
+                className="object-cover"
+                priority={false}
+              />
+              {/* Voile sombre transparent dégradé élégant */}
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/70 to-transparent" />
+              
+              <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-center max-w-2xl">
+                <span className="inline-block bg-[#5FD3E2] text-gray-900 text-[11px] font-extrabold tracking-widest px-3.5 py-1 rounded-full uppercase mb-3 w-fit shadow-sm">
+                  CONTACTEZ EZK AGENCY
+                </span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-poppins text-white leading-tight uppercase">
+                  PARLONS DE VOTRE <span className="text-[#5FD3E2]">PROJET</span>
+                </h2>
+                <p className="text-gray-200 text-xs sm:text-sm mt-3 leading-relaxed font-normal max-w-xl">
+                  Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ? Que vous recherchiez un accompagnement régulier, une prestation ponctuelle ou à rejoindre l'équipe, nous sommes à votre écoute.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <p className="text-gray-700 text-sm md:text-base font-medium">
+              Choisissez le parcours qui correspond à votre besoin et partagez-nous quelques informations sur votre projet.
             </p>
           </div>
 

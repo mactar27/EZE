@@ -301,7 +301,7 @@ export default function Services({
   // Vue synthétique pour la page d'accueil (Grid 3 colonnes de cartes modernes)
   if (isHomeTeaser) {
     return (
-      <section id="services" className="py-16 md:py-24 bg-[#F8FAFC] relative">
+      <section id="services" className="py-10 md:py-16 bg-[#F8FAFC] relative">
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
           <div className="text-center max-w-2xl mx-auto mb-14">

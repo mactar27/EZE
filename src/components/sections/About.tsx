@@ -27,7 +27,7 @@ export default function About({
   // VERSION TEASER ACCUEIL : Synthétique avec aperçu et bouton "En savoir plus sur nous"
   if (isHomeTeaser) {
     return (
-      <section id="about" className="py-16 md:py-24 bg-white relative">
+      <section id="about" className="py-10 md:py-16 bg-white relative">
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">

@@ -415,8 +415,15 @@ function FullPortfolioView({ projects = [] }: { projects: any[] }) {
         {/* Ligne séparatrice Canva */}
         <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
 
-        {/* Social Icons & Bottom Banner */}
-        <div className="border-t border-gray-200 pt-12 mt-12">
+        {/* Section Social & Photo de fin style Canva */}
+        <div className="pt-4">
+          <p className="text-gray-900 text-xs md:text-sm leading-relaxed font-semibold mb-4 max-w-xl">
+            Chaque projet est différent, mais notre objectif reste le même : transformer les idées en solutions digitales qui ont du sens. Découvrez nos réalisations et imaginez ce que nous pouvons construire ensemble pour votre marque.
+          </p>
+          <p className="text-[#FF5A5F] text-xs md:text-sm font-semibold mb-6">
+            Envie d'en voir plus ? Retrouvez davantage de nos réalisations et de nos projets sur nos réseaux sociaux.
+          </p>
+
           <div className="flex items-center gap-4 mb-8">
             {SOCIAL_ICONS.map((social) => (
               <a
@@ -429,10 +436,11 @@ function FullPortfolioView({ projects = [] }: { projects: any[] }) {
               </a>
             ))}
           </div>
-          <div className="relative h-[240px] md:h-[360px] rounded-[24px] overflow-hidden shadow-xl">
+
+          <div className="relative h-[260px] md:h-[400px] rounded-[24px] overflow-hidden shadow-xl">
             <Image
-              src="/collaboration-creative.png"
-              alt="Collaboration créative chez EZK Agency"
+              src="/realisations-woman-ringlight.png"
+              alt="Création de contenu et réseaux sociaux EZK Agency"
               fill
               className="object-cover"
             />

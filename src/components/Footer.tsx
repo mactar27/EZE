@@ -11,11 +11,11 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center">
               <Image 
-                src="/logo.jpeg" 
+                src="/logo-clean.png" 
                 alt="EZK Agency Logo" 
-                width={200} 
-                height={50} 
-                className="h-12 w-auto object-contain rounded filter brightness-0 invert" 
+                width={755} 
+                height={392} 
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain rounded filter brightness-0 invert" 
               />
             </div>
             <div className="space-y-3">

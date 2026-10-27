@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="bg-dark text-white pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-16">
           {/* Brand */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-4">
             <div className="flex items-center">
               <Image 
                 src="/logo-clean.png" 
@@ -31,51 +31,60 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-lg font-poppins">Informations</h4>
-            <ul className="space-y-4 text-gray-400 text-sm">
-              <li className="flex items-center gap-3">
-                <span className="text-secondary">📍</span> Dakar, Sénégal
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-secondary">📧</span> contactezkagency@gmail.com
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-secondary">📞</span> +221 77 593 31 93
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-secondary">📞</span> +221 76 196 87 59
-              </li>
-            </ul>
-          </div>
+          {/* Informations et Liens Rapides : côte à côte en 2 colonnes (sur mobile comme sur grand écran) */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-6 sm:gap-8">
+            {/* Contact Info */}
+            <div className="space-y-4 sm:space-y-6">
+              <h4 className="font-semibold text-base sm:text-lg font-poppins text-white">Informations</h4>
+              <ul className="space-y-3 sm:space-y-4 text-gray-400 text-xs sm:text-sm">
+                <li className="flex items-start sm:items-center gap-2">
+                  <span className="text-secondary shrink-0">📍</span>
+                  <span>Dakar, Sénégal</span>
+                </li>
+                <li className="flex items-start sm:items-center gap-2">
+                  <span className="text-secondary shrink-0">📧</span>
+                  <a href="mailto:contactezkagency@gmail.com" className="hover:text-white break-all">
+                    contactezkagency@gmail.com
+                  </a>
+                </li>
+                <li className="flex items-start sm:items-center gap-2">
+                  <span className="text-secondary shrink-0">📞</span>
+                  <span>+221 77 593 31 93</span>
+                </li>
+                <li className="flex items-start sm:items-center gap-2">
+                  <span className="text-secondary shrink-0">📞</span>
+                  <span>+221 76 196 87 59</span>
+                </li>
+              </ul>
+            </div>
 
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-lg font-poppins">Liens rapides</h4>
-            <ul className="space-y-3 text-gray-400 text-sm">
-              <li>
-                <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
-              </li>
-              <li>
-                <Link href="/a-propos" className="hover:text-secondary transition-colors">À propos</Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-secondary transition-colors">Services</Link>
-              </li>
-              <li>
-                <Link href="/realisations" className="hover:text-secondary transition-colors">Réalisations</Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-secondary transition-colors">Contact</Link>
-              </li>
-            </ul>
+            {/* Quick Links */}
+            <div className="space-y-4 sm:space-y-6">
+              <h4 className="font-semibold text-base sm:text-lg font-poppins text-white">Liens rapides</h4>
+              <ul className="space-y-2.5 sm:space-y-3 text-gray-400 text-xs sm:text-sm">
+                <li>
+                  <Link href="/" className="hover:text-secondary transition-colors">Accueil</Link>
+                </li>
+                <li>
+                  <Link href="/a-propos" className="hover:text-secondary transition-colors">À propos</Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-secondary transition-colors">Services</Link>
+                </li>
+                <li>
+                  <Link href="/realisations" className="hover:text-secondary transition-colors">Réalisations</Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-secondary transition-colors">Contact</Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Social */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-lg font-poppins">Réseaux sociaux</h4>
-            <div className="flex items-center gap-4">
+          <div className="space-y-6 lg:col-span-3">
+            <h4 className="font-semibold text-base sm:text-lg font-poppins text-white">Réseaux sociaux</h4>
+            <div className="flex items-center gap-3 sm:gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white" aria-label="Facebook">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>

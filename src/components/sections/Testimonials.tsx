@@ -36,8 +36,8 @@ export default function Testimonials({
   const displayLogos = clientLogos && clientLogos.length > 0
     ? clientLogos.map((item, idx) => ({
         id: idx,
-        src: urlFor(item).url(),
-        alt: item.clientName || `Client ${idx + 1}`,
+        src: item.src ? (typeof item.src === "string" ? item.src : urlFor(item.src).url()) : (item.logo ? urlFor(item.logo).url() : urlFor(item).url()),
+        alt: item.clientName || item.name || `Client ${idx + 1}`,
       }))
     : CLIENT_LOGOS;
 

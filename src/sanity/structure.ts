@@ -27,6 +27,7 @@ export const structure: StructureResolver = (S) =>
         ),
       S.divider(),
       // Collections récurrentes
+      S.documentTypeListItem('clientLogo').title('Logos Clients ("Ils nous ont fait confiance")'),
       S.documentTypeListItem('project').title('Réalisations (Portfolio)'),
       S.documentTypeListItem('service').title('Services'),
     ])

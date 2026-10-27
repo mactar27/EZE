@@ -46,6 +46,19 @@ export default async function Home() {
     clientLogos
   }`);
 
+  const sanityClientLogos = await client.fetch(`*[_type == "clientLogo"] | order(order asc) {
+    _id,
+    name,
+    logo
+  }`);
+
+  const combinedClientLogos = sanityClientLogos && sanityClientLogos.length > 0
+    ? sanityClientLogos.map((item: any) => ({
+        src: item.logo,
+        clientName: item.name
+      }))
+    : siteImages?.clientLogos;
+
   return (
     <main>
       <WelcomeScreen />
@@ -55,7 +68,7 @@ export default async function Home() {
       <Services services={services} bannerImage={siteImages?.servicesBanner} isHomeTeaser={true} />
       <Portfolio projects={projects} isHomeTeaser={true} />
       <Method methodBanner={siteImages?.methodBanner} />
-      <Testimonials statsBanner={siteImages?.statsBanner} clientLogos={siteImages?.clientLogos} />
+      <Testimonials statsBanner={siteImages?.statsBanner} clientLogos={combinedClientLogos} />
       <Contact isHomeTeaser={true} />
       <Footer />
     </main>

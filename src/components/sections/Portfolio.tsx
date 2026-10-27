@@ -326,6 +326,95 @@ function FullPortfolioView({ projects = [] }: { projects: any[] }) {
           </div>
         </div>
 
+        {/* Ligne séparatrice Canva */}
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+
+        {/* Section INFOGRAPHIE */}
+        <div id="infographie" className="mb-14 scroll-mt-28">
+          <h2 className="text-xl md:text-2xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
+            infographie
+          </h2>
+          <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-normal">
+            Chaque visuel est une occasion de renforcer l'image d'une marque. De l'identité visuelle aux supports de communication digitaux et imprimés, nous concevons des créations graphiques cohérentes, modernes et pensées pour transmettre efficacement chaque message.
+          </p>
+
+          <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+            {SAMPLE_ITEMS.map((item, i) => (
+              <div
+                key={`info-${i}`}
+                className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                  <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
+                    {item.title}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <Link
+              href="/contact"
+              className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] text-xs font-bold px-6 py-2 rounded-full transition-colors shadow-sm uppercase tracking-wider"
+            >
+              voir plus
+            </Link>
+          </div>
+        </div>
+
+        {/* Ligne séparatrice Canva */}
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+
+        {/* Section WEB DESIGN */}
+        <div id="webdesign" className="mb-14 scroll-mt-28">
+          <h2 className="text-xl md:text-2xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
+            Web design
+          </h2>
+          <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-normal">
+            Nous concevons des expériences digitales qui associent esthétique, fonctionnalité et expérience utilisateur. Sites vitrines, plateformes, e-commerce ou interfaces digitales : chaque projet est pensé pour valoriser la marque et répondre à ses objectifs.
+          </p>
+
+          <div className="grid grid-cols-3 gap-3 md:gap-5 mb-5">
+            {SAMPLE_ITEMS.map((item, i) => (
+              <div
+                key={`web-${i}`}
+                className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-md transition-all"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/25 flex items-center justify-center p-2 text-center">
+                  <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
+                    {item.title}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <Link
+              href="/contact"
+              className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] text-xs font-bold px-6 py-2 rounded-full transition-colors shadow-sm uppercase tracking-wider"
+            >
+              voir plus
+            </Link>
+          </div>
+        </div>
+
+        {/* Ligne séparatrice Canva */}
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+
         {/* Social Icons & Bottom Banner */}
         <div className="border-t border-gray-200 pt-12 mt-12">
           <div className="flex items-center gap-4 mb-8">

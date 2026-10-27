@@ -52,7 +52,7 @@ export default async function Home() {
       <Navbar />
       <Hero heroImage={siteImages?.heroImage} />
       <About aboutData={about} aboutImage={siteImages?.aboutImage} />
-      <Services services={services} bannerImage={siteImages?.servicesBanner} />
+      <Services services={services} bannerImage={siteImages?.servicesBanner} isHomeTeaser={true} />
       <Portfolio projects={projects} isHomeTeaser={true} />
       <Method methodBanner={siteImages?.methodBanner} />
       <WhyUs />

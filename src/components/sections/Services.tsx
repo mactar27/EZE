@@ -271,16 +271,104 @@ const SERVICES_DETAILED = [
 
 export default function Services({ 
   services = [],
-  bannerImage 
+  bannerImage,
+  isHomeTeaser = false,
 }: { 
   services?: any[];
   bannerImage?: any;
+  isHomeTeaser?: boolean;
 }) {
   const imageUrl = bannerImage ? urlFor(bannerImage).url() : "/services-banner.png";
 
+  // Vue synthétique pour la page d'accueil (Grid 3 colonnes de cartes modernes)
+  if (isHomeTeaser) {
+    return (
+      <section id="services" className="py-16 md:py-24 bg-[#F8FAFC] relative">
+        <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
+          
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-xs md:text-sm font-bold text-[#0D4FB8] tracking-widest uppercase mb-2">
+                CE QUE NOUS FAISONS
+              </p>
+              <h2 className="text-3xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight">
+                NOS SERVICES
+              </h2>
+              <div className="w-14 h-1 bg-[#5FD3E2] mx-auto mt-4 rounded-full" />
+              <p className="text-gray-600 text-sm md:text-base mt-4 leading-relaxed font-normal">
+                Chez EZK Agency, nous proposons un accompagnement complet qui couvre tous les besoins clés de votre communication et développement digital.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Grille des 6 services sous forme de cartes d'accueil */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {SERVICES_DETAILED.map((service, idx) => (
+              <motion.div
+                key={service.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className="bg-white rounded-[24px] p-7 md:p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-[#0D4FB8]/10 transition-colors">
+                      {service.icon}
+                    </div>
+                    <span className="text-xl font-extrabold text-[#5FD3E2] font-poppins">
+                      {service.num}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base md:text-lg font-extrabold font-poppins text-gray-900 mb-3 group-hover:text-[#0D4FB8] transition-colors leading-snug">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed font-normal line-clamp-3">
+                    {service.intro}
+                  </p>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-gray-100 flex items-center justify-between">
+                  <Link
+                    href={`/services#service-${service.num}`}
+                    className="text-xs font-bold text-[#0D4FB8] group-hover:text-blue-700 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                  >
+                    <span>Voir le détail</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bouton Voir tous les services */}
+          <div className="mt-14 text-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all"
+            >
+              <span>Découvrir l'ensemble de nos offres</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+    );
+  }
+
+  // Page dédiée /services : Présentation détaillée avec la bannière et toutes les sous-sections
   return (
     <section id="services" className="py-16 md:py-24 bg-white relative">
-      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-5xl">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
         
         {/* Banner visuelle */}
         <motion.div
@@ -288,7 +376,7 @@ export default function Services({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative h-[220px] md:h-[300px] w-full rounded-[28px] overflow-hidden shadow-lg mb-12"
+          className="relative h-[240px] md:h-[340px] w-full rounded-[30px] overflow-hidden shadow-xl mb-14"
         >
           <Image
             src={imageUrl}
@@ -297,11 +385,14 @@ export default function Services({
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-10">
+            <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-2 self-start shadow-sm">
+              ACCOMPAGNEMENT DIGITAL & STRATÉGIE
+            </span>
             <h1 className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase drop-shadow-sm font-poppins">
               NOS SERVICES
             </h1>
-            <p className="text-white text-xs md:text-sm max-w-xl mt-2 font-medium">
+            <p className="text-white/95 text-xs md:text-sm max-w-2xl mt-2 font-normal leading-relaxed">
               Chez EZK Agency, nous proposons un accompagnement qui couvre les principaux besoins liés à la communication et au développement digital d’une entreprise ou d’une marque.
             </p>
           </div>
@@ -311,12 +402,13 @@ export default function Services({
         <div className="space-y-12">
           {SERVICES_DETAILED.map((service, idx) => (
             <motion.div
+              id={`service-${service.num}`}
               key={service.num}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="bg-white rounded-[26px] p-6 md:p-10 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)]"
+              className="bg-white rounded-[26px] p-6 md:p-10 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] scroll-mt-28"
             >
               {/* Header du service */}
               <div className="flex items-start gap-4 md:gap-6 mb-6">
@@ -327,7 +419,7 @@ export default function Services({
                   <h2 className="text-lg md:text-2xl font-extrabold font-poppins text-gray-900 tracking-tight">
                     {service.title}
                   </h2>
-                  <p className="text-gray-600 text-xs md:text-sm mt-2 leading-relaxed font-normal">
+                  <p className="text-gray-600 text-xs md:text-sm mt-2 leading-relaxed font-normal max-w-3xl">
                     {service.intro}
                   </p>
                 </div>
@@ -336,18 +428,20 @@ export default function Services({
               {/* Sous-sections avec puces */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
                 {service.subsections.map((sub, sIdx) => (
-                  <div key={sIdx} className="bg-gray-50/70 rounded-[18px] p-5 border border-gray-100/60">
-                    <h3 className="text-xs md:text-sm font-bold text-[#0D4FB8] uppercase tracking-wider mb-3">
-                      {sub.title}
-                    </h3>
-                    <ul className="space-y-2 text-xs md:text-sm text-gray-700">
-                      {sub.items.map((item, iIdx) => (
-                        <li key={iIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#5FD3E2] shrink-0 mt-0.5" />
-                          <span className="leading-tight">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div key={sIdx} className="bg-gray-50/70 rounded-[18px] p-5 border border-gray-100/60 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xs md:text-sm font-bold text-[#0D4FB8] uppercase tracking-wider mb-3">
+                        {sub.title}
+                      </h3>
+                      <ul className="space-y-2 text-xs md:text-sm text-gray-700">
+                        {sub.items.map((item, iIdx) => (
+                          <li key={iIdx} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#5FD3E2] shrink-0 mt-0.5" />
+                            <span className="leading-tight">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ))}
               </div>

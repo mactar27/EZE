@@ -18,7 +18,7 @@ export default function About({ aboutData, aboutImage }: { aboutData?: any; abou
 
   return (
     <section id="about" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
 
         {/* Section Header */}
         <motion.div
@@ -35,42 +35,43 @@ export default function About({ aboutData, aboutImage }: { aboutData?: any; abou
           <div className="w-16 h-1 bg-[#5FD3E2] mx-auto mt-4 rounded-full" />
         </motion.div>
 
-        {/* Who We Are & Visual */}
-        <div className="space-y-6 text-gray-700 leading-relaxed text-sm md:text-base font-normal">
-          <p>
-            <strong className="text-gray-900 font-bold">EZK Agency</strong> est une agence de communication et de marketing digital basée à Dakar, qui accompagne les entreprises, les marques et les entrepreneurs dans la construction d’une présence digitale forte, cohérente et durable.
-          </p>
-          <p>
-            Depuis plus de quatre ans, nous mettons notre créativité, notre expertise et notre compréhension des enjeux numériques au service de projets de différentes natures et de différents secteurs.
-          </p>
-          <p>
-            De la création de contenus à la gestion des plateformes digitales, en passant par l’infographie, le web design, le consulting digital et les campagnes publicitaires, nous concevons des solutions adaptées à chaque identité, chaque objectif et chaque réalité.
-          </p>
-          <p>
-            Notre approche repose sur une conviction simple : une présence digitale efficace ne se résume pas à être visible. Elle doit avoir du sens, transmettre une image forte et contribuer concrètement au développement de l’activité.
-          </p>
-        </div>
-
-        {/* Bannière Visuelle avec Cadrage */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative h-[240px] md:h-[340px] rounded-[26px] overflow-hidden shadow-xl my-12"
-        >
-          <Image
-            src={imageUrl}
-            alt="Collaboration créative chez EZK Agency"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 md:p-8">
-            <div>
-              <p className="text-[#5FD3E2] text-xs font-bold tracking-widest uppercase mb-1">Basée à Dakar, Sénégal</p>
-              <p className="text-white text-lg md:text-2xl font-bold font-poppins leading-snug">Créativité & Stratégie Digitale</p>
-            </div>
+        {/* Who We Are & Visual (Desktop 2 colonnes / Mobile empilé) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-10">
+          <div className="lg:col-span-7 space-y-5 text-gray-700 leading-relaxed text-sm md:text-base font-normal">
+            <p>
+              <strong className="text-gray-900 font-bold">EZK Agency</strong> est une agence de communication et de marketing digital basée à Dakar, qui accompagne les entreprises, les marques et les entrepreneurs dans la construction d’une présence digitale forte, cohérente et durable.
+            </p>
+            <p>
+              Depuis plus de quatre ans, nous mettons notre créativité, notre expertise et notre compréhension des enjeux numériques au service de projets de différentes natures et de différents secteurs.
+            </p>
+            <p>
+              De la création de contenus à la gestion des plateformes digitales, en passant par l’infographie, le web design, le consulting digital et les campagnes publicitaires, nous concevons des solutions adaptées à chaque identité, chaque objectif et chaque réalité.
+            </p>
+            <p>
+              Notre approche repose sur une conviction simple : une présence digitale efficace ne se résume pas à être visible. Elle doit avoir du sens, transmettre une image forte et contribuer concrètement au développement de l’activité.
+            </p>
           </div>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 relative h-[300px] md:h-[380px] rounded-[28px] overflow-hidden shadow-xl"
+          >
+            <Image
+              src={imageUrl}
+              alt="Collaboration créative chez EZK Agency"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-6 md:p-8">
+              <div>
+                <p className="text-[#5FD3E2] text-xs font-bold tracking-widest uppercase mb-1">Basée à Dakar, Sénégal</p>
+                <p className="text-white text-base md:text-xl font-bold font-poppins leading-snug">Créativité & Stratégie Digitale</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Vision & Mission */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">

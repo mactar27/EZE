@@ -39,9 +39,9 @@ export default function Navbar() {
             <Image 
               src="/logo.jpeg" 
               alt="EZK Agency Logo" 
-              width={600} 
-              height={180} 
-              className="h-28 md:h-36 w-auto object-contain rounded transform -translate-x-8 md:-translate-x-24" 
+              width={300} 
+              height={90} 
+              className="h-16 md:h-20 w-auto object-contain rounded" 
               priority
             />
           </div>

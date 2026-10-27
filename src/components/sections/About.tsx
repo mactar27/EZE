@@ -52,17 +52,17 @@ export default function About({
                 </p>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="pt-2 flex flex-row items-center gap-3 sm:gap-4">
                 <Link
                   href="/a-propos"
-                  className="inline-flex items-center gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#0D4FB8] hover:bg-blue-700 text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider px-4 sm:px-7 py-3 sm:py-3.5 rounded-full shadow-md hover:shadow-lg transition-all whitespace-nowrap"
                 >
                   <span>En savoir plus sur nous</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-full transition-all"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-[11px] sm:text-xs uppercase tracking-wider px-4 sm:px-7 py-3 sm:py-3.5 rounded-full transition-all whitespace-nowrap"
                 >
                   <span>Nous contacter</span>
                 </Link>

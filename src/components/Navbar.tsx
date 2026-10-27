@@ -34,14 +34,14 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-12 lg:px-20 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          {/* Logo EZK Agency bien visible et proportionné */}
-          <div className="relative flex items-center py-1">
+          {/* Logo EZK Agency propre, net et parfaitement dimensionné */}
+          <div className="relative flex items-center">
             <Image 
-              src="/logo.jpeg" 
+              src="/logo-clean.png" 
               alt="EZK Agency Logo" 
-              width={450} 
-              height={140} 
-              className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain transition-all" 
+              width={755} 
+              height={392} 
+              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain transition-all" 
               priority
             />
           </div>

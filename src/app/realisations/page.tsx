@@ -16,11 +16,20 @@ export default async function RealisationsPage() {
     image
   }`);
 
+  const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    realisationsBanner,
+    realisationsEndImage
+  }`);
+
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <div className="pt-28 flex-1">
-        <Portfolio projects={projects} />
+        <Portfolio 
+          projects={projects} 
+          bannerImage={siteImages?.realisationsBanner} 
+          endImage={siteImages?.realisationsEndImage} 
+        />
       </div>
       <Footer />
     </main>

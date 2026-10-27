@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function Hero() {
+export default function Hero({ heroImage }: { heroImage?: any }) {
+  const imageUrl = heroImage ? urlFor(heroImage).url() : "/services-banner.png";
+
   return (
     <section className="relative pt-24 md:pt-36 pb-12 md:pb-20 overflow-hidden bg-white">
       {/* Background Decorative Blur */}
@@ -23,7 +26,7 @@ export default function Hero() {
           {/* Hauteur équilibrée pour afficher l'image et le texte ensemble sur mobile sans scroller */}
           <div className="relative h-[340px] sm:h-[400px] md:h-[460px] w-full">
             <Image
-              src="/services-banner.png"
+              src={imageUrl}
               alt="EZK Agency - Illuminez votre présence en ligne"
               fill
               className="object-cover object-center"

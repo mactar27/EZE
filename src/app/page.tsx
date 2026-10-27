@@ -35,17 +35,28 @@ export default async function Home() {
     statsYears
   }`);
 
+  const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    heroImage,
+    aboutImage,
+    servicesBanner,
+    realisationsBanner,
+    realisationsEndImage,
+    methodBanner,
+    statsBanner,
+    clientLogos
+  }`);
+
   return (
     <main>
       <WelcomeScreen />
       <Navbar />
-      <Hero />
-      <About aboutData={about} />
-      <Services services={services} />
+      <Hero heroImage={siteImages?.heroImage} />
+      <About aboutData={about} aboutImage={siteImages?.aboutImage} />
+      <Services services={services} bannerImage={siteImages?.servicesBanner} />
       <Portfolio projects={projects} isHomeTeaser={true} />
-      <Method />
+      <Method methodBanner={siteImages?.methodBanner} />
       <WhyUs />
-      <Testimonials />
+      <Testimonials statsBanner={siteImages?.statsBanner} clientLogos={siteImages?.clientLogos} />
       <Contact />
       <Footer />
     </main>

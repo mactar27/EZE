@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function About({ aboutData }: { aboutData?: any }) {
+export default function About({ aboutData, aboutImage }: { aboutData?: any; aboutImage?: any }) {
+  const imageUrl = aboutImage ? urlFor(aboutImage).url() : "/collaboration-creative.png";
+
   const stats = [
     { number: aboutData?.statsProjects || "100+", label: "PROJETS RÉALISÉS" },
     { number: aboutData?.statsClients || "25+", label: "CLIENTS ACCOMPAGNÉS" },
@@ -56,7 +59,7 @@ export default function About({ aboutData }: { aboutData?: any }) {
           className="relative h-[240px] md:h-[340px] rounded-[26px] overflow-hidden shadow-xl my-12"
         >
           <Image
-            src="/collaboration-creative.png"
+            src={imageUrl}
             alt="Collaboration créative chez EZK Agency"
             fill
             className="object-cover"

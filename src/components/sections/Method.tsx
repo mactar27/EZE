@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, Target, Lightbulb, Monitor, BarChart2 } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
 const METHOD_STEPS = [
   {
@@ -38,7 +39,9 @@ const METHOD_STEPS = [
   },
 ];
 
-export default function Method() {
+export default function Method({ methodBanner }: { methodBanner?: any }) {
+  const bannerUrl = methodBanner ? urlFor(methodBanner).url() : "/services-banner.png";
+
   return (
     <section id="method" className="py-16 md:py-24 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl">
@@ -102,7 +105,7 @@ export default function Method() {
           {/* Image de fond de la bannière */}
           <div className="relative h-[340px] md:h-[300px] w-full">
             <Image
-              src="/services-banner.png"
+              src={bannerUrl}
               alt="Pourquoi nous choisir EZK"
               fill
               className="object-cover"

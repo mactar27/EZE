@@ -3,10 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface PortfolioSectionProps {
   projects?: any[];
   isHomeTeaser?: boolean;
+  bannerImage?: any;
+  endImage?: any;
 }
 
 const TEASER_CARDS = [
@@ -27,7 +30,12 @@ const TEASER_CARDS = [
   },
 ];
 
-export default function Portfolio({ projects = [], isHomeTeaser = false }: PortfolioSectionProps) {
+export default function Portfolio({ 
+  projects = [], 
+  isHomeTeaser = false,
+  bannerImage,
+  endImage
+}: PortfolioSectionProps) {
   // Mode Teaser Accueil inspiré de la maquette Canva
   if (isHomeTeaser) {
     return (
@@ -95,7 +103,7 @@ export default function Portfolio({ projects = [], isHomeTeaser = false }: Portf
   }
 
   // Page complète Réalisations (/realisations)
-  return <FullPortfolioView projects={projects} />;
+  return <FullPortfolioView projects={projects} bannerImage={bannerImage} endImage={endImage} />;
 }
 
 const BASE_SECTIONS = [
@@ -200,7 +208,18 @@ const SOCIAL_ICONS = [
   },
 ];
 
-function FullPortfolioView({ projects = [] }: { projects: any[] }) {
+function FullPortfolioView({ 
+  projects = [],
+  bannerImage,
+  endImage
+}: { 
+  projects: any[];
+  bannerImage?: any;
+  endImage?: any;
+}) {
+  const bannerUrl = bannerImage ? urlFor(bannerImage).url() : "/realisations-camera-banner.png";
+  const endUrl = endImage ? urlFor(endImage).url() : "/realisations-woman-ringlight.png";
+
   const SAMPLE_ITEMS = [
     { title: "Logos", image: "/sample-logos.png" },
     { title: "Fleyers", image: "/sample-fleyers.png" },
@@ -221,7 +240,7 @@ function FullPortfolioView({ projects = [] }: { projects: any[] }) {
           className="relative h-[260px] md:h-[340px] rounded-[28px] overflow-hidden shadow-xl"
         >
           <Image
-            src="/realisations-camera-banner.png"
+            src={bannerUrl}
             alt="Nos Réalisations EZK Agency"
             fill
             className="object-cover"
@@ -439,7 +458,7 @@ function FullPortfolioView({ projects = [] }: { projects: any[] }) {
 
           <div className="relative h-[260px] md:h-[400px] rounded-[24px] overflow-hidden shadow-xl">
             <Image
-              src="/realisations-woman-ringlight.png"
+              src={endUrl}
               alt="Création de contenu et réseaux sociaux EZK Agency"
               fill
               className="object-cover"

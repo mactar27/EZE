@@ -13,6 +13,7 @@ import {
   CheckCircle2, 
   ArrowRight 
 } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
 const SERVICES_DETAILED = [
   {
@@ -268,7 +269,15 @@ const SERVICES_DETAILED = [
   },
 ];
 
-export default function Services({ services = [] }: { services?: any[] }) {
+export default function Services({ 
+  services = [],
+  bannerImage 
+}: { 
+  services?: any[];
+  bannerImage?: any;
+}) {
+  const imageUrl = bannerImage ? urlFor(bannerImage).url() : "/services-banner.png";
+
   return (
     <section id="services" className="py-16 md:py-24 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-5xl">
@@ -282,7 +291,7 @@ export default function Services({ services = [] }: { services?: any[] }) {
           className="relative h-[220px] md:h-[300px] w-full rounded-[28px] overflow-hidden shadow-lg mb-12"
         >
           <Image
-            src="/services-banner.png"
+            src={imageUrl}
             alt="Nos Services EZK Agency"
             fill
             className="object-cover"

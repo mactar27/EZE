@@ -17,11 +17,15 @@ export default async function ServicesPage() {
     icon
   }`);
 
+  const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    servicesBanner
+  }`);
+
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <div className="pt-28 flex-1">
-        <Services services={services} />
+        <Services services={services} bannerImage={siteImages?.servicesBanner} />
       </div>
       <Footer />
     </main>

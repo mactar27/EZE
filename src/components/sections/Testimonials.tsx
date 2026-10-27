@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
 const STATS_DATA = [
   { value: "100 +", label: "projets realisés" },
@@ -18,7 +19,23 @@ const CLIENT_LOGOS = [
   { id: 3, src: "/client-logo-3.png", alt: "Client Oiseau" },
 ];
 
-export default function Testimonials() {
+export default function Testimonials({
+  statsBanner,
+  clientLogos,
+}: {
+  statsBanner?: any;
+  clientLogos?: any[];
+}) {
+  const bannerUrl = statsBanner ? urlFor(statsBanner).url() : "/services-banner.png";
+  
+  const displayLogos = clientLogos && clientLogos.length > 0
+    ? clientLogos.map((item, idx) => ({
+        id: idx,
+        src: urlFor(item).url(),
+        alt: item.clientName || `Client ${idx + 1}`,
+      }))
+    : CLIENT_LOGOS;
+
   return (
     <section className="py-16 md:py-24 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl">
@@ -33,7 +50,7 @@ export default function Testimonials() {
           {/* Photo de fond */}
           <div className="relative h-[280px] md:h-[320px] w-full">
             <Image
-              src="/services-banner.png"
+              src={bannerUrl}
               alt="Statistiques EZK Agency"
               fill
               className="object-cover"
@@ -85,7 +102,7 @@ export default function Testimonials() {
 
             {/* Logos ronds */}
             <div className="flex items-center justify-center gap-4 md:gap-10 overflow-hidden py-2">
-              {CLIENT_LOGOS.map((logo) => (
+              {displayLogos.map((logo) => (
                 <div
                   key={logo.id}
                   className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md bg-white hover:scale-105 transition-transform shrink-0"

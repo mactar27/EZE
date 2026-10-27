@@ -2,104 +2,145 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Camera, Megaphone, Palette, MonitorSmartphone, BarChart3, Target, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { 
+  Megaphone, 
+  Camera, 
+  BarChart3, 
+  MonitorSmartphone, 
+  Palette, 
+  Target, 
+  ArrowRight 
+} from "lucide-react";
+
+const DEFAULT_SERVICES = [
+  {
+    _id: "comm-digitale",
+    title: "Communication Digitale",
+    description: "Gestion et animation des réseaux sociaux.",
+    icon: "Megaphone",
+  },
+  {
+    _id: "creation-contenu",
+    title: "Création de Contenu",
+    description: "Photos, vidéos, reels, interviews et contenus créatifs.",
+    icon: "Camera",
+  },
+  {
+    _id: "marketing-digital",
+    title: "Marketing Digital",
+    description: "Stratégies de visibilité et campagnes publicitaires.",
+    icon: "BarChart3",
+  },
+  {
+    _id: "webdesign",
+    title: "Web Design",
+    description: "Conception de sites vitrines, plateformes et interfaces modernes.",
+    icon: "MonitorSmartphone",
+  },
+  {
+    _id: "infographie",
+    title: "Infographie & Branding",
+    description: "Création de logos, chartes graphiques et supports visuels percutants.",
+    icon: "Palette",
+  },
+  {
+    _id: "campagnes-ads",
+    title: "Campagnes Publicitaires (Ads)",
+    description: "Ciblage précis, acquisition et conversion sur Meta, Google et TikTok.",
+    icon: "Target",
+  },
+];
 
 const ICONS_MAP: Record<string, React.ReactNode> = {
-  Camera: <Camera className="text-primary w-8 h-8" strokeWidth={1.5} />,
-  Megaphone: <Megaphone className="text-primary w-8 h-8" strokeWidth={1.5} />,
-  Palette: <Palette className="text-primary w-8 h-8" strokeWidth={1.5} />,
-  MonitorSmartphone: <MonitorSmartphone className="text-primary w-8 h-8" strokeWidth={1.5} />,
-  BarChart3: <BarChart3 className="text-primary w-8 h-8" strokeWidth={1.5} />,
-  Target: <Target className="text-primary w-8 h-8" strokeWidth={1.5} />,
+  Megaphone: <Megaphone className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />,
+  Camera: <Camera className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />,
+  BarChart3: <BarChart3 className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />,
+  MonitorSmartphone: <MonitorSmartphone className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />,
+  Palette: <Palette className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />,
+  Target: <Target className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />,
 };
 
 export default function Services({ services = [] }: { services?: any[] }) {
-  // Use Sanity services if available, otherwise empty array
-  const displayServices = services.length > 0 ? services : [];
+  const displayServices = services && services.length > 0 ? services : DEFAULT_SERVICES;
+
   return (
-    <section id="services" className="py-20 bg-white relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-sm font-bold text-primary tracking-widest uppercase mb-3">Ce que nous faisons</p>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-dark mb-4 tracking-tight">
+    <section id="services" className="py-16 md:py-24 bg-white relative">
+      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-5xl">
+        
+        {/* Banner visuelle style Canva */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative h-[220px] md:h-[300px] w-full rounded-[28px] overflow-hidden shadow-lg mb-10 md:mb-14"
+        >
+          <Image
+            src="/services-banner.png"
+            alt="Nos Services EZK Agency"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay dégradé léger pour lisibilité */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-end md:items-center justify-center p-6">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
               NOS SERVICES
             </h2>
-            <div className="w-12 h-0.5 bg-primary mx-auto rounded-full mb-6"></div>
-            <p className="text-gray-500 text-base leading-relaxed">
-              Chez EZK Agency, nous proposons un accompagnement qui couvre les principaux besoins liés à la communication et au développement digital d'une entreprise ou d'une marque.
-            </p>
-          </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Grille de cartes épurées style Canva */}
+        <div className="space-y-4 md:space-y-5">
+          {displayServices.map((service, index) => {
+            const iconComponent = ICONS_MAP[service.icon] || <Megaphone className="text-[#0D4FB8] w-7 h-7" strokeWidth={1.75} />;
+            return (
+              <motion.div
+                key={service._id || index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (index * 0.08) % 0.3 }}
+                className="bg-white rounded-[24px] p-6 md:p-8 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(13,79,184,0.08)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-between gap-4 group"
+              >
+                <div className="flex items-start md:items-center gap-5">
+                  {/* Icône bleue */}
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50/70 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    {iconComponent}
+                  </div>
+
+                  {/* Textes */}
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold font-poppins text-gray-900 group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-500 font-normal mt-1 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Petite flèche cyan style Canva */}
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#5FD3E2] group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayServices.map((service, index) => (
-            <ServiceCard 
-              key={service._id || index} 
-              service={{
-                ...service,
-                num: String(index + 1).padStart(2, '0'),
-                delay: (index * 0.1) % 0.4,
-                iconNode: ICONS_MAP[service.icon] || ICONS_MAP['Target']
-              }} 
-            />
-          ))}
+        {/* Bouton SEE MORE style Canva (cyan vif avec majuscules et coins arrondis) */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/services"
+            className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-white font-bold text-xs tracking-wider uppercase px-8 py-3 rounded-[10px] shadow-sm hover:shadow-md transition-all active:scale-95"
+          >
+            SEE MORE
+          </Link>
         </div>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-4">
-          <Link 
-            href="/services" 
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-full font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
-          >
-            <span>Voir tous nos services</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center gap-2 bg-white text-dark border border-gray-200 px-8 py-3.5 rounded-full font-medium shadow-sm hover:bg-gray-50 transition-all text-sm"
-          >
-            Demander un devis
-          </Link>
-        </div>
       </div>
     </section>
-  );
-}
-
-function ServiceCard({ service }: { service: any }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: service.delay }}
-      className="bg-white rounded-[20px] p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 hover:shadow-[0_8px_30px_rgb(13,79,184,0.08)] hover:-translate-y-1 transition-all duration-300 group relative flex flex-col h-full"
-    >
-      {/* Number badge */}
-      <span className="absolute top-6 right-6 text-xs font-bold text-gray-200 font-poppins select-none">
-        {service.num}
-      </span>
-
-      <div className="w-14 h-14 bg-primary/8 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
-        {service.iconNode}
-      </div>
-
-      <h4 className="text-[1rem] font-bold text-[#2D2D2D] font-poppins mb-3 leading-snug group-hover:text-primary transition-colors">
-        {service.title}
-      </h4>
-      <p className="text-gray-500 text-[0.85rem] leading-relaxed flex-1">
-        {service.description}
-      </p>
-      
-      <div className="mt-6 flex items-center gap-2 text-secondary group-hover:text-primary transition-colors duration-300">
-        <span className="text-xs font-semibold">En savoir plus</span>
-        <ArrowRight size={14} />
-      </div>
-    </motion.div>
   );
 }

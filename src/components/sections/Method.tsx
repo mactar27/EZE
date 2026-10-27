@@ -2,118 +2,144 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Search, Compass, PenTool, Rocket, LineChart, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Search, Target, Lightbulb, Monitor, BarChart2 } from "lucide-react";
 
-const STEPS = [
+const METHOD_STEPS = [
   {
-    id: "01",
     title: "Analyse",
-    description: "Comprendre l'activité, l'environnement, les besoins et les objectifs du projet.",
-    icon: <Search className="w-6 h-6 text-primary" />,
+    description:
+      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+    icon: <Search className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    id: "02",
-    title: "Stratégie",
-    description: "Définir une approche claire, adaptée au positionnement, aux ressources et aux résultats recherchés.",
-    icon: <Compass className="w-6 h-6 text-white" />,
-    isDark: true,
+    title: "strategie",
+    description:
+      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+    icon: <Target className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    id: "03",
-    title: "Création",
-    description: "Transformer la stratégie en contenus, supports et solutions créatives de qualité.",
-    icon: <PenTool className="w-6 h-6 text-primary" />,
+    title: "création",
+    description:
+      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+    icon: <Lightbulb className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    id: "04",
-    title: "Déploiement",
-    description: "Mettre en œuvre les actions et assurer leur diffusion sur les plateformes et canaux adaptés.",
-    icon: <Rocket className="w-6 h-6 text-white" />,
-    isDark: true,
+    title: "Deploiment",
+    description:
+      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+    icon: <Monitor className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
   {
-    id: "05",
     title: "Optimisation",
-    description: "Mesurer les performances, tirer les enseignements et ajuster les actions pour progresser durablement.",
-    icon: <LineChart className="w-6 h-6 text-primary" />,
+    description:
+      "Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie",
+    icon: <BarChart2 className="w-6 h-6 text-white" strokeWidth={2.2} />,
   },
 ];
 
 export default function Method() {
   return (
-    <section id="method" className="py-24 bg-white relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+    <section id="method" className="py-16 md:py-24 bg-white relative">
+      <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-4xl">
+        
+        {/* Titre Cyan Canva */}
+        <div className="text-center mb-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-5"
           >
-            <h3 className="text-3xl md:text-4xl font-extrabold font-poppins text-[#5FD3E2] tracking-wider uppercase mb-6">
-              NOTRE METHODE
-            </h3>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie adaptée, produisons des contenus de qualité et assurons un suivi continu afin d’optimiser durablement vos résultats.
-            </p>
-          </motion.div>
+            NOTRE METHODE
+          </motion.h2>
+          <p className="text-gray-700 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-normal">
+            Chez EZK Agency, chaque projet commence par une compréhension approfondie de vos besoins et de vos objectifs. Nous élaborons ensuite une stratégie adaptée, produisons des contenus de qualité et assurons un suivi continu afin d'optimiser durablement vos résultats.
+          </p>
         </div>
 
-        <div className="relative">
-          {/* Horizontal Line (Desktop) */}
-          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gray-200 -z-10"></div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-6 relative">
-            {STEPS.map((step, index) => (
-              <motion.div
-                key={step.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col items-center text-center relative group"
-              >
-                {/* Desktop Connecting Line Fill Animation */}
-                {index < STEPS.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-[60%] w-full h-0.5 bg-gradient-to-r from-primary to-transparent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out -z-10"></div>
-                )}
-                
-                {/* Circle Icon */}
-                <div 
-                  className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-xl transition-transform duration-300 group-hover:scale-110 relative z-10 ${
-                    step.isDark ? "bg-dark" : "bg-white border-4 border-gray-50"
-                  }`}
-                >
+        {/* 5 Étapes alignées style Canva */}
+        <div className="my-12 space-y-6 md:space-y-8">
+          {METHOD_STEPS.map((step, index) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="flex items-start gap-5 md:gap-8 group"
+            >
+              {/* Colonne Icône Ronde Cyan + Label sous l'icône */}
+              <div className="flex flex-col items-center shrink-0 w-20 md:w-24">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#5FD3E2] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
                   {step.icon}
                 </div>
-                
-                {/* Step Number */}
-                <span className="text-secondary font-bold text-lg mb-2">
-                  {step.id}
-                </span>
-                
-                {/* Content */}
-                <h4 className="text-xl font-bold font-poppins text-dark mb-2">
+                <span className="text-xs md:text-sm font-bold text-gray-900 mt-2 text-center capitalize">
                   {step.title}
-                </h4>
-                <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
+                </span>
+              </div>
+
+              {/* Colonne Description */}
+              <div className="flex-1 pt-1">
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-normal">
                   {step.description}
                 </p>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Bouton Voir plus */}
-        <div className="mt-16 text-center">
-          <Link
-            href="/methode"
-            className="inline-flex items-center gap-2 bg-primary text-white font-medium px-8 py-3.5 rounded-full shadow-md hover:bg-primary/90 hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
-          >
-            <span>Découvrir notre méthode en détail</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+        {/* Ligne séparatrice Canva */}
+        <div className="w-full max-w-md mx-auto h-[1.5px] bg-gray-700/80 my-12" />
+
+        {/* Carte POURQUOI NOUS CHOISIR ? avec Bannière Photo superposée */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative rounded-[28px] overflow-hidden shadow-xl"
+        >
+          {/* Image de fond de la bannière */}
+          <div className="relative h-[340px] md:h-[300px] w-full">
+            <Image
+              src="/services-banner.png"
+              alt="Pourquoi nous choisir EZK"
+              fill
+              className="object-cover"
+            />
+            {/* Voile blanc / translucide pour lisibilité parfaite */}
+            <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
+
+            {/* Contenu textuel et boutons */}
+            <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-between text-center">
+              <div>
+                <h3 className="text-xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3 drop-shadow-sm">
+                  POURQUOI NOUS CHOISIR ?
+                </h3>
+                <p className="text-xs md:text-sm text-gray-800 leading-relaxed font-medium max-w-xl mx-auto">
+                  Nous combinons créativité, expertise et vision stratégique pour donner à votre marque une présence digitale forte et cohérente. Plus qu'un simple prestataire, nous nous engageons comme un partenaire de confiance dans le développement de votre activité.
+                </p>
+              </div>
+
+              {/* Deux boutons Cyan Canva en bas */}
+              <div className="flex justify-center gap-3 md:gap-4 mt-4">
+                <Link
+                  href="/a-propos"
+                  className="bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs tracking-wider uppercase px-6 md:px-8 py-2.5 rounded-[10px] shadow-sm hover:shadow transition-all"
+                >
+                  Analyse
+                </Link>
+                <Link
+                  href="/contact"
+                  className="bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 font-bold text-xs tracking-wider uppercase px-6 md:px-8 py-2.5 rounded-[10px] shadow-sm hover:shadow transition-all"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

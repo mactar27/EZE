@@ -164,36 +164,84 @@ export default function Contact({
 
           </div>
 
-          {/* Coordonnées directes */}
-          <div className="bg-[#EBF6FA] rounded-[24px] p-6 md:p-8 flex flex-wrap items-center justify-around gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
-                <MapPin className="w-5 h-5" />
+          {/* Coordonnées directes alignées à gauche avec icônes de réseaux sociaux verticales */}
+          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+            {/* Colonne Gauche : Liste des coordonnées alignées à gauche */}
+            <div className="space-y-4 sm:space-y-5">
+              <div className="flex items-center gap-3.5 text-left">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Localisation</span>
+                  <span className="font-bold text-gray-900">Dakar, Sénégal</span>
+                </div>
               </div>
-              <div>
-                <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Localisation</span>
-                <span className="font-bold text-gray-900">Dakar, Sénégal</span>
+
+              <div className="flex items-center gap-3.5 text-left">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Email direct</span>
+                  <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-bold text-gray-900">
+                    contactezkagency@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3.5 text-left">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Téléphone / WhatsApp</span>
+                  <span className="font-bold text-gray-900">+221 77 593 31 93 / +221 76 196 87 59</span>
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Email direct</span>
-                <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-bold text-gray-900">
-                  contactezkagency@gmail.com
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Téléphone / WhatsApp</span>
-                <span className="font-bold text-gray-900">+221 77 593 31 93 / +221 76 196 87 59</span>
-              </div>
+
+            {/* Colonne Droite : Icônes Réseaux Sociaux en disposition verticale */}
+            <div className="pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-blue-200/50 md:pl-8 flex flex-row md:flex-col items-center justify-around md:justify-center gap-3 sm:gap-4 shrink-0">
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider hidden md:block text-center mb-1">
+                Suivez-nous
+              </span>
+              <a
+                href="https://www.instagram.com/ezk_agency/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-sm flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                aria-label="Instagram EZK Agency"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a
+                href="https://www.tiktok.com/@ezk_agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-sm flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                aria-label="TikTok EZK Agency"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/ezkagency/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-sm flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                aria-label="LinkedIn EZK Agency"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-sm flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                aria-label="Facebook EZK Agency"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
             </div>
           </div>
 

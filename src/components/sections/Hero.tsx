@@ -139,22 +139,20 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
         </div>
       </div>
 
-      {/* Indicateurs de confiance (sous le hero, bande unique unifiée style coordonnées contact) */}
-      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl mt-4 md:mt-8">
-        <div className="bg-[#EBF6FA] rounded-[24px] p-6 md:p-8 flex flex-wrap items-center justify-around gap-6 text-center text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
-          <div className="flex-1 min-w-[140px]">
-            <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Stratégies</span>
-            <span className="text-gray-600 text-xs md:text-sm mt-0.5 block">Sur mesure</span>
+      {/* Indicateurs de confiance (sous le hero, bande unique unifiée garantie sur une seule ligne) */}
+      <div className="container mx-auto px-2 sm:px-4 md:px-12 lg:px-20 max-w-6xl mt-4 md:mt-8">
+        <div className="bg-[#EBF6FA] rounded-[22px] sm:rounded-[24px] py-4 px-3 sm:p-6 md:p-8 grid grid-cols-3 items-center text-center shadow-sm border border-blue-100/50">
+          <div className="px-1">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Stratégies</span>
+            <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Sur mesure</span>
           </div>
-          <div className="hidden sm:block w-[1px] h-8 bg-blue-200/60" />
-          <div className="flex-1 min-w-[140px]">
-            <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Résultats</span>
-            <span className="text-gray-600 text-xs md:text-sm mt-0.5 block">Mesurables</span>
+          <div className="px-1 border-x border-blue-200/60">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Résultats</span>
+            <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Mesurables</span>
           </div>
-          <div className="hidden sm:block w-[1px] h-8 bg-blue-200/60" />
-          <div className="flex-1 min-w-[140px]">
-            <span className="block text-[#0D4FB8] font-bold text-sm md:text-base">Accompagnement</span>
-            <span className="text-gray-600 text-xs md:text-sm mt-0.5 block">Dédié</span>
+          <div className="px-1">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Accompagnement</span>
+            <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Dédié</span>
           </div>
         </div>
       </div>

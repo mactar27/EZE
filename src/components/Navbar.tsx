@@ -70,7 +70,7 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Header: CONTACT US Button, then Burger Menu (permutés) */}
-        <div className="flex md:hidden items-center gap-2.5">
+        <div className="flex md:hidden items-center gap-2">
           <Link
             href="/contact"
             className="bg-[#0D4FB8] text-white px-3.5 py-1.5 rounded-full font-bold text-[11px] tracking-wider uppercase shadow-sm active:scale-95 transition-transform"
@@ -78,11 +78,11 @@ export default function Navbar() {
             CONTACT US
           </Link>
           <button
-            className="text-dark p-1.5 focus:outline-none"
+            className="text-dark p-1 focus:outline-none flex items-center justify-center active:scale-95"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Menu"
           >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            {mobileMenuOpen ? <X size={30} strokeWidth={2.3} /> : <Menu size={30} strokeWidth={2.3} />}
           </button>
         </div>
       </div>

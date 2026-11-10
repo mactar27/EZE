@@ -141,17 +141,21 @@ export default function Hero({ heroImage }: { heroImage?: any }) {
 
       {/* Indicateurs de confiance (sous le hero, bande unique unifiée alignée exactement avec la carte du hero) */}
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl mt-4 md:mt-8">
-        <div className="bg-[#EBF6FA] rounded-[22px] sm:rounded-[24px] py-4 px-3 sm:p-6 md:p-8 grid grid-cols-3 items-center text-center shadow-sm border border-blue-100/50">
-          <div className="px-1">
-            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Stratégies</span>
+        <div className="bg-[#EBF6FA] rounded-[22px] sm:rounded-[24px] py-4 px-3 sm:p-6 md:p-8 grid grid-cols-2 sm:grid-cols-4 gap-y-4 sm:gap-y-0 items-center text-center shadow-sm border border-blue-100/50">
+          <div className="px-1 sm:border-r sm:border-blue-200/60">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight">Analyse</span>
+            <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Approfondie</span>
+          </div>
+          <div className="px-1 border-l border-blue-200/60 sm:border-l-0 sm:border-r">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight">Stratégies</span>
             <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Sur mesure</span>
           </div>
-          <div className="px-1 border-x border-blue-200/60">
-            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Résultats</span>
+          <div className="px-1 pt-3 sm:pt-0 border-t sm:border-t-0 border-blue-200/40 sm:border-r sm:border-blue-200/60">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight">Résultats</span>
             <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Mesurables</span>
           </div>
-          <div className="px-1">
-            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight truncate">Accompagnement</span>
+          <div className="px-1 pt-3 sm:pt-0 border-t sm:border-t-0 border-blue-200/40 border-l sm:border-l-0 border-blue-200/60">
+            <span className="block text-[#0D4FB8] font-bold text-xs sm:text-sm md:text-base leading-tight">Accompagnement</span>
             <span className="text-gray-600 text-[10px] sm:text-xs md:text-sm mt-0.5 block leading-tight">Dédié</span>
           </div>
         </div>

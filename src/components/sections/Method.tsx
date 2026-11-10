@@ -93,10 +93,10 @@ export default function Method({
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="bg-gray-50/90 rounded-[24px] p-6 border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="w-16 h-16 rounded-full bg-[#5FD3E2] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-4">
+                <div className="w-16 h-16 rounded-full bg-[#0D4FB8] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-4">
                   {step.icon}
                 </div>
-                <span className="text-[11px] font-extrabold text-[#0D4FB8] tracking-widest uppercase mb-1">
+                <span className="text-[11px] font-extrabold text-[#5FD3E2] tracking-widest uppercase mb-1">
                   {step.num}
                 </span>
                 <h3 className="text-base font-extrabold text-gray-900 tracking-wider uppercase mb-3 font-poppins">
@@ -121,10 +121,10 @@ export default function Method({
                 className="flex items-start gap-4 p-4 rounded-2xl bg-gray-50/70 border border-gray-100"
               >
                 <div className="flex flex-col items-center shrink-0 w-16">
-                  <div className="w-12 h-12 rounded-full bg-[#5FD3E2] flex items-center justify-center shadow-md">
+                  <div className="w-12 h-12 rounded-full bg-[#0D4FB8] flex items-center justify-center shadow-md">
                     {step.icon}
                   </div>
-                  <span className="text-[10px] font-extrabold text-[#0D4FB8] mt-1.5">
+                  <span className="text-[10px] font-extrabold text-[#5FD3E2] mt-1.5">
                     {step.num}
                   </span>
                 </div>

@@ -163,20 +163,14 @@ export default function About({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+            className="bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between"
           >
-            <h3 className="text-lg md:text-xl font-extrabold font-poppins text-[#5FD3E2] mb-3 uppercase tracking-wider">
-              NOTRE VISION
-            </h3>
-            <div className="space-y-4 text-gray-700 leading-relaxed text-xs md:text-sm">
-              <p>
-                Nous ambitionnons de faire d’EZK Agency une référence en communication et marketing digital, d’abord au niveau local, puis progressivement à l’échelle internationale.
-              </p>
-              <p>
-                Notre vision est de construire une agence capable de répondre aux exigences d’un marché en constante évolution, tout en valorisant les entreprises, les marques et les talents d’ici sur la scène digitale mondiale.
-              </p>
-              <p>
-                Nous souhaitons contribuer à une nouvelle manière de penser la communication en associant créativité, stratégie, innovation et compréhension des réalités propres à chaque marché.
+            <div>
+              <h3 className="text-lg md:text-xl font-extrabold font-poppins text-[#5FD3E2] mb-4 uppercase tracking-wider">
+                NOTRE VISION
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-sm md:text-base font-normal">
+                {aboutData?.visionText || "Faire d’EZK Agency une référence en communication et marketing digital, capable de répondre aux exigences d’un marché en constante évolution tout en valorisant les entreprises, marques et talents au niveau local, puis international."}
               </p>
             </div>
           </motion.div>
@@ -186,20 +180,14 @@ export default function About({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+            className="bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between"
           >
-            <h3 className="text-lg md:text-xl font-extrabold font-poppins text-[#5FD3E2] mb-3 uppercase tracking-wider">
-              NOTRE MISSION
-            </h3>
-            <div className="space-y-4 text-gray-700 leading-relaxed text-xs md:text-sm">
-              <p>
-                Notre mission est d’accompagner les entreprises, les marques et les entrepreneurs dans leur développement digital, en leur apportant les outils, les stratégies et les solutions nécessaires pour mieux se positionner, communiquer et atteindre leurs objectifs.
-              </p>
-              <p>
-                Nous cherchons à transformer chaque besoin en une démarche concrète et structurée, depuis la réflexion stratégique jusqu’à la mise en œuvre et l’évaluation des actions engagées.
-              </p>
-              <p>
-                Notre rôle est de permettre à nos clients de mieux exprimer leur valeur, de renforcer leur visibilité et de construire une présence digitale capable de soutenir durablement leur activité.
+            <div>
+              <h3 className="text-lg md:text-xl font-extrabold font-poppins text-[#5FD3E2] mb-4 uppercase tracking-wider">
+                NOTRE MISSION
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-sm md:text-base font-normal">
+                {aboutData?.missionText || "Accompagner les entreprises, les marques et les entrepreneurs dans leur développement digital, en leur apportant les outils, les stratégies et les solutions nécessaires pour mieux se positionner, communiquer et atteindre leurs objectifs."}
               </p>
             </div>
           </motion.div>

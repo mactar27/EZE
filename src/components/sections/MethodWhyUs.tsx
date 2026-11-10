@@ -9,31 +9,31 @@ const PROCESS_STEPS = [
   {
     num: "01",
     title: "ANALYSE",
-    desc: "Comprendre l’activité, l’environnement, les besoins et les objectifs.",
+    desc: "Nous étudions votre activité, votre marché, vos concurrents et votre présence digitale afin d’identifier vos besoins, vos forces et vos opportunités de développement.",
     icon: <Search className="w-5 h-5 text-white" />,
   },
   {
     num: "02",
     title: "STRATÉGIE",
-    desc: "Définir une approche claire, adaptée au positionnement, aux ressources et aux résultats recherchés.",
+    desc: "Nous élaborons une stratégie digitale sur mesure, alignée sur vos objectifs, votre cible et votre positionnement, pour définir les actions les plus pertinentes à mettre en œuvre.",
     icon: <Compass className="w-5 h-5 text-white" />,
   },
   {
     num: "03",
     title: "CRÉATION",
-    desc: "Transformer la stratégie en contenus, supports et solutions créatives.",
+    desc: "Nous concevons des contenus et des supports de communication cohérents avec votre identité : visuels, vidéos, textes et autres ressources nécessaires pour valoriser votre marque.",
     icon: <PenTool className="w-5 h-5 text-white" />,
   },
   {
     num: "04",
     title: "DÉPLOIEMENT",
-    desc: "Mettre en œuvre les actions et assurer leur diffusion sur les plateformes et canaux adaptés.",
+    desc: "Nous mettons en œuvre la stratégie à travers la diffusion des contenus, la gestion de vos plateformes et le lancement des actions de communication prévues.",
     icon: <Rocket className="w-5 h-5 text-white" />,
   },
   {
     num: "05",
     title: "OPTIMISATION",
-    desc: "Mesurer les performances, tirer les enseignements et ajuster les actions pour progresser durablement.",
+    desc: "Nous analysons les résultats, mesurons les performances et ajustons les actions engagées afin d’améliorer continuellement votre visibilité et l’efficacité de votre communication digitale.",
     icon: <LineChart className="w-5 h-5 text-white" />,
   },
 ];
@@ -140,12 +140,13 @@ export default function MethodWhyUs() {
           <div className="space-y-4">
             {PROCESS_STEPS.map((step, index) => (
               <div key={step.num} className="bg-white rounded-[20px] p-5 border border-gray-100 shadow-sm flex items-center gap-5">
-                <div className="w-12 h-12 rounded-full bg-[#5FD3E2] flex items-center justify-center shrink-0 shadow-sm">
+                <div className="w-12 h-12 rounded-full bg-[#0D4FB8] flex items-center justify-center shrink-0 shadow-sm">
                   {step.icon}
                 </div>
                 <div>
                   <h3 className="text-xs md:text-sm font-bold text-gray-900">
-                    {step.num} — {step.title}
+                    <span className="text-[#5FD3E2] font-extrabold mr-2">{step.num}</span>
+                    <span>— {step.title}</span>
                   </h3>
                   <p className="text-gray-600 text-xs mt-1">
                     {step.desc}

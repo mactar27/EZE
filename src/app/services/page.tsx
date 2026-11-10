@@ -19,13 +19,14 @@ export default async function ServicesPage() {
   }`);
 
   const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    siteLogo,
     servicesBanner,
     servicesImages
   }`);
 
   return (
     <main className="min-h-screen flex flex-col bg-white">
-      <Navbar />
+      <Navbar logoImage={siteImages?.siteLogo} />
       <div className="pt-28 flex-1">
         <Services 
           services={services} 
@@ -33,7 +34,7 @@ export default async function ServicesPage() {
           servicesImages={siteImages?.servicesImages}
         />
       </div>
-      <Footer />
+      <Footer logoImage={siteImages?.siteLogo} />
     </main>
   );
 }

@@ -13,7 +13,8 @@ import {
   Mail, 
   Phone, 
   Send,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -50,7 +51,7 @@ export default function Contact({
           
           {/* Bannière / Image d'introduction pour la section Contacter EZK Agency */}
           <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-xl mb-10 sm:mb-14 border border-gray-100">
-            <div className="relative h-[300px] sm:h-[340px] md:h-[380px] w-full">
+            <div className="relative h-[420px] sm:h-[460px] md:h-[500px] w-full">
               <Image
                 src={bannerUrl}
                 alt="Contacter EZK Agency Dakar"
@@ -62,6 +63,9 @@ export default function Contact({
               <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/70 to-transparent" />
               
               <div className="absolute inset-0 p-6 sm:p-10 md:p-14 flex flex-col justify-center max-w-2xl">
+                <span className="inline-block bg-[#5FD3E2] text-gray-900 text-[11px] font-extrabold tracking-widest px-3.5 py-1 rounded-full uppercase mb-3 w-fit shadow-xs">
+                  CONTACTEZ EZK AGENCY
+                </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-poppins text-white leading-tight uppercase">
                   PARLONS DE VOTRE <span className="text-[#5FD3E2]">PROJET</span>
                 </h2>
@@ -164,10 +168,10 @@ export default function Contact({
 
           </div>
 
-          {/* Coordonnées directes alignées à gauche avec photo ronde au centre et icônes de réseaux sociaux verticales */}
-          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
-            {/* Colonne Gauche : Liste des coordonnées alignées à gauche */}
-            <div className="space-y-4 sm:space-y-5 flex-1 w-full md:w-auto">
+          {/* Coordonnées directes avec photo carrée agrandie au centre et réseaux sociaux */}
+          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-8 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+            {/* Colonne Gauche : Liste des coordonnées */}
+            <div className="space-y-4 sm:space-y-5 lg:col-span-5 w-full">
               <div className="flex items-center gap-3.5 text-left">
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
                   <MapPin className="w-5 h-5" />
@@ -201,9 +205,9 @@ export default function Contact({
               </div>
             </div>
 
-            {/* Centre : Cercle avec photo (gérable par l'admin via Sanity) */}
-            <div className="flex flex-col items-center justify-center px-4 my-2 md:my-0">
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg border-4 border-white bg-white group hover:scale-105 transition-transform duration-300">
+            {/* Centre : Photo carrée agrandie au centre pour combler l'espace */}
+            <div className="lg:col-span-5 flex items-center justify-center w-full my-2 lg:my-0">
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-[22px] sm:rounded-[26px] overflow-hidden shadow-lg border-4 border-white bg-white group hover:scale-[1.02] transition-transform duration-300">
                 <Image
                   src={photoCircleUrl}
                   alt="EZK Agency Contact"
@@ -213,9 +217,9 @@ export default function Contact({
               </div>
             </div>
 
-            {/* Colonne Droite : Icônes Réseaux Sociaux en disposition verticale */}
-            <div className="pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-blue-200/50 md:pl-8 flex flex-row md:flex-col items-center justify-around md:justify-center gap-3 sm:gap-4 shrink-0 w-full md:w-auto">
-              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider hidden md:block text-center mb-1">
+            {/* Colonne Droite : Icônes Réseaux Sociaux */}
+            <div className="pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-blue-200/50 lg:pl-8 flex flex-row lg:flex-col items-center justify-around lg:justify-center gap-3 sm:gap-4 shrink-0 w-full lg:col-span-2">
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider hidden lg:block text-center mb-1">
                 Suivez-nous
               </span>
               <a
@@ -264,25 +268,45 @@ export default function Contact({
 
   // VERSION COMPLÈTE PAGE DÉDIÉE /contact (avec tous les formulaires complets)
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white relative">
+    <section id="contact" className="py-6 md:py-12 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
-        {/* En-tête officiel */}
-        <div className="text-center mb-12">
-          <h1 className="text-2xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight uppercase mb-4">
-            PARLONS DE VOTRE PROJET
-          </h1>
-          <div className="space-y-3 text-gray-700 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
-            <p>
-              Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ?
+        {/* Hero Banner Contact style EZK Agency */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative h-[380px] sm:h-[440px] md:h-[480px] lg:h-[520px] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-gray-100 mb-10 sm:mb-12"
+        >
+          <Image
+            src={bannerUrl}
+            alt="Contacter EZK Agency Dakar"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Voile sombre transparent dégradé élégant */}
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/70 to-transparent flex flex-col justify-center p-8 sm:p-12 md:p-16 max-w-2xl">
+            <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-extrabold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 self-start shadow-sm">
+              CONTACTEZ EZK AGENCY
+            </span>
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-poppins text-white leading-tight uppercase mb-3">
+              PARLONS DE VOTRE <span className="text-[#5FD3E2]">PROJET</span>
+            </h1>
+            <p className="text-gray-200 text-xs sm:text-sm md:text-base leading-relaxed font-normal max-w-xl">
+              Vous avez un projet, un besoin précis ou souhaitez développer votre présence digitale ? Que vous recherchiez un accompagnement régulier, une prestation ponctuelle ou à rejoindre l'équipe, nous sommes à votre écoute.
             </p>
-            <p>
-              Que vous recherchiez un accompagnement régulier, une prestation spécifique ou une opportunité de rejoindre notre environnement professionnel, EZK Agency est à votre écoute.
-            </p>
-            <p className="font-semibold text-gray-900 pt-1">
-              Choisissez le parcours qui correspond à votre besoin et partagez-nous quelques informations sur votre projet.
+            <p className="text-[#5FD3E2] font-bold text-xs sm:text-sm mt-3 uppercase tracking-wider">
+              Votre partenaire de croissance digitale à Dakar
             </p>
           </div>
+        </motion.div>
+
+        {/* Sous-titre guidage parcours */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <p className="text-gray-700 text-sm md:text-base font-medium">
+            Choisissez le parcours qui correspond à votre besoin et partagez-nous quelques informations sur votre projet.
+          </p>
         </div>
 
         {/* 3 Onglets de Parcours */}
@@ -379,39 +403,6 @@ export default function Contact({
               </span>
             </div>
           </button>
-        </div>
-
-        {/* Coordonnées rapides */}
-        <div className="bg-[#EBF6FA] rounded-[22px] p-6 md:p-8 mb-12 flex flex-wrap items-center justify-around gap-6 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
-              <MapPin className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Localisation</span>
-              <span className="font-bold text-gray-900">Dakar, Sénégal</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
-              <Mail className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Email</span>
-              <a href="mailto:contactezkagency@gmail.com" className="hover:underline font-bold text-gray-900">
-                contactezkagency@gmail.com
-              </a>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
-              <Phone className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider">Téléphone / WhatsApp</span>
-              <span className="font-bold text-gray-900">+221 77 593 31 93 / +221 76 196 87 59</span>
-            </div>
-          </div>
         </div>
 
         {/* Message de Succès après Envoi */}
@@ -1087,6 +1078,169 @@ export default function Contact({
               </motion.form>
             )}
           </AnimatePresence>
+        </div>
+
+        {/* ========================================================
+            COORDONNÉES DIRECTES — PLACÉES APRÈS LE FORMULAIRE
+           ======================================================== */}
+        <div className="mt-14 sm:mt-20 max-w-5xl mx-auto">
+          <div className="bg-[#EBF6FA]/80 border border-blue-100/80 rounded-[28px] sm:rounded-[36px] p-6 sm:p-10 md:p-12 shadow-sm">
+            
+            {/* En-tête */}
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+              <span className="text-[11px] font-extrabold text-[#0D4FB8] uppercase tracking-widest bg-white px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-xs border border-blue-100/70">
+                Contact direct
+              </span>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 font-poppins uppercase">
+                Vous préférez échanger directement ?
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">
+                Une question, une urgence ou simplement envie d'échanger de vive voix ? Notre équipe est à votre écoute pour vous conseiller.
+              </p>
+            </div>
+
+            {/* 3 Cartes Coordonnées */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+              
+              {/* Carte 1 : Localisation */}
+              <div className="bg-white rounded-[22px] p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0D4FB8] flex items-center justify-center shadow-xs mb-4">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-1">
+                    Localisation
+                  </span>
+                  <h4 className="text-base font-bold text-gray-900 font-poppins">
+                    Dakar, Sénégal
+                  </h4>
+                  <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                    Équipe basée à Dakar, disponible en présentiel et à distance pour vos projets partout dans le monde.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-gray-100 text-[11px] font-bold text-[#0D4FB8] uppercase tracking-wide">
+                  Présentiel & En ligne
+                </div>
+              </div>
+
+              {/* Carte 2 : Email */}
+              <div className="bg-white rounded-[22px] p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0D4FB8] flex items-center justify-center shadow-xs mb-4">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-1">
+                    Email direct
+                  </span>
+                  <a
+                    href="mailto:contactezkagency@gmail.com"
+                    className="text-sm font-bold text-gray-900 hover:text-[#0D4FB8] transition-colors break-all block"
+                  >
+                    contactezkagency@gmail.com
+                  </a>
+                  <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                    Envoyez-nous vos documents ou questions. Réponse garantie sous 24h ouvrées.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-gray-100">
+                  <a
+                    href="mailto:contactezkagency@gmail.com"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D4FB8] hover:underline"
+                  >
+                    <span>Écrire un message</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Carte 3 : Téléphone & WhatsApp */}
+              <div className="bg-white rounded-[22px] p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0D4FB8] flex items-center justify-center shadow-xs mb-4">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <span className="block text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-1">
+                    Téléphone & WhatsApp
+                  </span>
+                  <div className="space-y-1 mt-1">
+                    <a
+                      href="tel:+221775933193"
+                      className="block text-sm font-bold text-gray-900 hover:text-[#0D4FB8] transition-colors"
+                    >
+                      +221 77 593 31 93
+                    </a>
+                    <a
+                      href="tel:+221761968759"
+                      className="block text-sm font-bold text-gray-900 hover:text-[#0D4FB8] transition-colors"
+                    >
+                      +221 76 196 87 59
+                    </a>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                    Joignables du lundi au samedi, de 9h à 19h GMT.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-gray-100">
+                  <a
+                    href="https://wa.me/221775933193"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold px-4 py-2 rounded-full shadow-xs transition-transform hover:scale-105 active:scale-95"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>WhatsApp direct</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Réseaux sociaux */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-blue-200/50">
+              <span className="text-xs text-gray-600 font-medium text-center sm:text-left">
+                Suivez EZK Agency et découvrez nos dernières réalisations sur les réseaux :
+              </span>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href="https://www.instagram.com/ezk_agency/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-xs border border-gray-200/60 flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                  aria-label="Instagram EZK Agency"
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@ezk_agency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-xs border border-gray-200/60 flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                  aria-label="TikTok EZK Agency"
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/ezkagency/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-xs border border-gray-200/60 flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                  aria-label="LinkedIn EZK Agency"
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white text-[#0D4FB8] hover:bg-[#0D4FB8] hover:text-white shadow-xs border border-gray-200/60 flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                  aria-label="Facebook EZK Agency"
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>

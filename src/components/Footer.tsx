@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-
-export default function Footer() {
+export default function Footer({ logoImage }: { logoImage?: any }) {
+  const logoUrl = logoImage ? urlFor(logoImage).url() : "/logo-clean.png";
   return (
     <footer className="bg-dark text-white pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
@@ -11,7 +12,7 @@ export default function Footer() {
           <div className="space-y-6 lg:col-span-4">
             <div className="flex items-center">
               <Image 
-                src="/logo-clean.png" 
+                src={logoUrl} 
                 alt="EZK Agency Logo" 
                 width={755} 
                 height={392} 

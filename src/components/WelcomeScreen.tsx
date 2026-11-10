@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ logoImage }: { logoImage?: any }) {
   const [isVisible, setIsVisible] = useState(false);
+  const logoUrl = logoImage ? urlFor(logoImage).url() : "/logo-clean.png";
 
   useEffect(() => {
     // Affiche le splash screen à chaque nouvelle session de navigation
@@ -62,7 +64,7 @@ export default function WelcomeScreen() {
               className="relative z-10 flex flex-col items-center"
             >
               <Image 
-                src="/logo-clean.png" 
+                src={logoUrl} 
                 alt="EZK Agency Logo" 
                 width={480} 
                 height={250} 

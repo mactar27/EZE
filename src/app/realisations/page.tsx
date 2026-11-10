@@ -18,13 +18,14 @@ export default async function RealisationsPage() {
   }`);
 
   const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    siteLogo,
     realisationsBanner,
     realisationsEndImage
   }`);
 
   return (
     <main className="min-h-screen flex flex-col bg-white">
-      <Navbar />
+      <Navbar logoImage={siteImages?.siteLogo} />
       <div className="pt-28 flex-1">
         <Portfolio 
           projects={projects} 
@@ -32,7 +33,7 @@ export default async function RealisationsPage() {
           endImage={siteImages?.realisationsEndImage} 
         />
       </div>
-      <Footer />
+      <Footer logoImage={siteImages?.siteLogo} />
     </main>
   );
 }

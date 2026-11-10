@@ -166,7 +166,7 @@ const BASE_SECTIONS = [
 const SOCIAL_ICONS = [
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/ezk_agency/",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
         <defs>
@@ -178,15 +178,15 @@ const SOCIAL_ICONS = [
             <stop offset="100%" stopColor="#7638fa" />
           </radialGradient>
         </defs>
-        <rect x="2" y="2" width="20" height="20" rx="6" ry="6" fill="url(#ig-grad)" />
-        <circle cx="12" cy="12" r="4.5" stroke="white" strokeWidth="1.8" fill="none" />
-        <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
+        <rect width="24" height="24" rx="6" fill="url(#ig-grad)" />
+        <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="2" fill="none" />
+        <circle cx="18" cy="6" r="1.4" fill="white" />
       </svg>
     ),
   },
   {
     name: "Facebook",
-    href: "#",
+    href: "https://facebook.com",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1877F2">
         <rect width="24" height="24" rx="6" fill="#1877F2" />
@@ -196,7 +196,7 @@ const SOCIAL_ICONS = [
   },
   {
     name: "TikTok",
-    href: "#",
+    href: "https://www.tiktok.com/@ezk_agency",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8">
         <rect width="24" height="24" rx="6" fill="#010101" />
@@ -207,7 +207,7 @@ const SOCIAL_ICONS = [
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/ezkagency/",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#0A66C2">
         <rect width="24" height="24" rx="6" fill="#0A66C2" />
@@ -251,8 +251,31 @@ function FullPortfolioView({
     return SAMPLE_ITEMS;
   };
 
-  const photoItems = getCategoryItems("Photos");
-  const videoItems = getCategoryItems("Videos");
+  const photoVideoFromSanity = projects.filter(
+    (p: any) =>
+      p.category === "Photos" ||
+      p.category === "Videos" ||
+      p.category === "Photos & Videos" ||
+      p.category === "Creation de contenu" ||
+      p.category === "Contenu"
+  );
+
+  const DEFAULT_PHOTO_VIDEO = [
+    { title: "Shooting Photo", image: "/portfolio_social.png" },
+    { title: "Couverture Événement", image: "/portfolio_event.png" },
+    { title: "Production Vidéo", image: "/portfolio_video.png" },
+    { title: "Reels & Formats Courts", image: "/realisations-woman-ringlight.png" },
+  ];
+
+  const photoVideoItems = (
+    photoVideoFromSanity.length > 0
+      ? photoVideoFromSanity.map((p: any) => ({
+          title: p.title,
+          image: p.image ? urlFor(p.image).url() : "/portfolio_video.png",
+        }))
+      : DEFAULT_PHOTO_VIDEO
+  ).slice(0, 4);
+
   const infographieItems = getCategoryItems("Infographie");
   const webdesignItems = getCategoryItems("Webdesign");
 
@@ -264,7 +287,7 @@ function FullPortfolioView({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative h-[280px] md:h-[400px] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100"
+          className="relative h-[380px] sm:h-[440px] md:h-[480px] lg:h-[520px] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100"
         >
           <Image
             src={bannerUrl}
@@ -301,17 +324,17 @@ function FullPortfolioView({
             Des contenus pensés pour raconter, valoriser et faire vivre les marques. À travers la photographie et la vidéo, nous créons des contenus adaptés aux réseaux sociaux, à la communication corporate, aux campagnes promotionnelles et aux besoins spécifiques de chaque projet.
           </p>
 
-          {/* Sous-section PHOTOS : */}
+          {/* Sous-section PHOTOS & VIDÉOS : sur la même ligne (4 cases seulement) */}
           <div className="mb-12">
             <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
-              PHOTOS :
+              PHOTOS & VIDÉOS :
             </p>
-            {/* Grille 6 colonnes sur grand écran / 3 sur mobile */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
-              {photoItems.map((item, i) => (
+            {/* Grille 4 colonnes sur grand écran / 2 sur mobile */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
+              {photoVideoItems.map((item, i) => (
                 <div
-                  key={`photo-${i}`}
-                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  key={`photo-video-${i}`}
+                  className="relative aspect-square rounded-[18px] md:rounded-[24px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <Image
                     src={item.image}
@@ -319,8 +342,8 @@ function FullPortfolioView({
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 flex items-center justify-center p-2 text-center transition-colors">
-                    <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
+                  <div className="absolute inset-0 bg-black/35 group-hover:bg-black/50 flex items-center justify-center p-3 text-center transition-colors">
+                    <span className="text-white font-bold text-xs md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-snug font-poppins uppercase">
                       {item.title}
                     </span>
                   </div>
@@ -328,49 +351,17 @@ function FullPortfolioView({
               ))}
             </div>
 
-            {/* Bouton voir plus cyan style Canva */}
+            {/* Bouton voir plus dirigé vers la page Instagram */}
             <div className="flex justify-center mt-6">
-              <Link
-                href="/contact"
-                className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] text-xs font-bold px-6 py-2 rounded-full transition-colors shadow-sm uppercase tracking-wider"
+              <a
+                href="https://www.instagram.com/ezk_agency/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#5FD3E2] hover:bg-[#4bc2d1] text-gray-900 text-xs font-bold px-7 py-2.5 rounded-full transition-all shadow-sm uppercase tracking-wider hover:scale-105 active:scale-95"
               >
-                voir plus
-              </Link>
-            </div>
-          </div>
-
-          {/* Sous-section VIDEOS : */}
-          <div className="mt-12">
-            <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
-              VIDEOS :
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5 mb-5">
-              {videoItems.map((item, i) => (
-                <div
-                  key={`vid-${i}`}
-                  className="relative aspect-square rounded-[18px] md:rounded-[22px] overflow-hidden cursor-pointer group shadow-sm bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 flex items-center justify-center p-2 text-center transition-colors">
-                    <span className="text-white font-bold text-[10px] md:text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">
-                      {item.title}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center mt-6">
-              <Link
-                href="/contact"
-                className="inline-block bg-[#5FD3E2] hover:bg-[#4bc2d1] text-[#FF5A5F] text-xs font-bold px-6 py-2 rounded-full transition-colors shadow-sm uppercase tracking-wider"
-              >
-                voir plus
-              </Link>
+                <span>VOIR PLUS</span>
+                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -478,6 +469,8 @@ function FullPortfolioView({
               <a
                 key={social.name}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.name}
                 className="hover:scale-110 transition-transform duration-200"
               >

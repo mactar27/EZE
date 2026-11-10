@@ -390,7 +390,7 @@ export default function Services({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative h-[240px] md:h-[340px] w-full rounded-[30px] overflow-hidden shadow-xl mb-14"
+          className="relative h-[380px] sm:h-[440px] md:h-[480px] lg:h-[520px] w-full rounded-[30px] overflow-hidden shadow-xl mb-14"
         >
           <Image
             src={imageUrl}
@@ -399,15 +399,18 @@ export default function Services({
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-10">
-            <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-2 self-start shadow-sm">
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/60 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-14 lg:p-16 max-w-2xl">
+            <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-bold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 self-start shadow-sm">
               ACCOMPAGNEMENT DIGITAL & STRATÉGIE
             </span>
-            <h1 className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase drop-shadow-sm font-poppins">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#5FD3E2] tracking-wider uppercase drop-shadow-sm font-poppins mb-3">
               NOS SERVICES
             </h1>
-            <p className="text-white/95 text-xs md:text-sm max-w-2xl mt-2 font-normal leading-relaxed">
+            <p className="text-white/95 text-xs sm:text-sm md:text-base max-w-xl font-normal leading-relaxed">
               Chez EZK Agency, nous proposons un accompagnement qui couvre les principaux besoins liés à la communication et au développement digital d’une entreprise ou d’une marque.
+            </p>
+            <p className="text-[#5FD3E2] font-bold text-xs sm:text-sm mt-3 uppercase tracking-wider">
+              Votre partenaire de croissance digitale à Dakar
             </p>
           </div>
         </motion.div>

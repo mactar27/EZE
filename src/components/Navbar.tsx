@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
 const NAV_LINKS = [
   { name: "Accueil", href: "/" },
@@ -14,9 +16,18 @@ const NAV_LINKS = [
   { name: "Contact", href: "/contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ logoImage }: { logoImage?: any }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const logoUrl = logoImage ? urlFor(logoImage).url() : "/logo-clean.png";
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +48,7 @@ export default function Navbar() {
           {/* Logo EZK Agency parfaitement proportionné */}
           <div className="relative flex items-center">
             <Image 
-              src="/logo-clean.png" 
+              src={logoUrl} 
               alt="EZK Agency Logo" 
               width={755} 
               height={392} 
@@ -48,18 +59,25 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <ul className="flex items-center gap-6">
-            {NAV_LINKS.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="text-dark/80 hover:text-primary font-medium text-base transition-colors"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <ul className="flex items-center gap-1.5 lg:gap-2">
+            {NAV_LINKS.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={`text-sm lg:text-[15px] transition-all duration-200 inline-block px-3.5 py-1.5 rounded-full ${
+                      active
+                        ? "text-[#0D4FB8] font-bold bg-[#EBF6FA] border border-blue-200/80 shadow-xs"
+                        : "text-gray-700 hover:text-[#0D4FB8] font-medium hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <Link
             href="/contact"
@@ -93,18 +111,25 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-full left-0 right-0 bg-white shadow-lg py-6 px-6 md:hidden flex flex-col gap-4"
+          className="absolute top-full left-0 right-0 bg-white shadow-lg py-6 px-6 md:hidden flex flex-col gap-2.5"
         >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-dark font-medium text-lg border-b border-gray-100 pb-2"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-base transition-all rounded-xl px-4 py-2.5 ${
+                  active
+                    ? "text-[#0D4FB8] font-bold bg-[#EBF6FA] border border-blue-200/80"
+                    : "text-gray-700 font-medium hover:text-[#0D4FB8] border-b border-gray-100"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
           <Link
             href="/contact"
             onClick={() => setMobileMenuOpen(false)}

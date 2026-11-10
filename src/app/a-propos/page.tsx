@@ -21,16 +21,17 @@ export default async function AboutPage() {
   }`);
 
   const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    siteLogo,
     aboutImage
   }`);
 
   return (
     <main className="min-h-screen flex flex-col bg-white">
-      <Navbar />
+      <Navbar logoImage={siteImages?.siteLogo} />
       <div className="pt-28 flex-1">
         <About aboutData={about} aboutImage={siteImages?.aboutImage} />
       </div>
-      <Footer />
+      <Footer logoImage={siteImages?.siteLogo} />
     </main>
   );
 }

@@ -37,6 +37,7 @@ export default async function Home() {
   }`);
 
   const siteImages = await client.fetch(`*[_type == "siteImages"][0] {
+    siteLogo,
     heroImage,
     aboutImage,
     servicesBanner,
@@ -65,8 +66,8 @@ export default async function Home() {
 
   return (
     <main>
-      <WelcomeScreen />
-      <Navbar />
+      <WelcomeScreen logoImage={siteImages?.siteLogo} />
+      <Navbar logoImage={siteImages?.siteLogo} />
       <Hero heroImage={siteImages?.heroImage} />
       <About aboutData={about} aboutImage={siteImages?.aboutImage} isHomeTeaser={true} />
       <Services 
@@ -83,7 +84,7 @@ export default async function Home() {
         contactBanner={siteImages?.contactBanner} 
         contactPhotoCircle={siteImages?.contactPhotoCircle}
       />
-      <Footer />
+      <Footer logoImage={siteImages?.siteLogo} />
     </main>
   );
 }

@@ -9,12 +9,15 @@ import { urlFor } from "@/sanity/lib/image";
 export default function About({ 
   aboutData, 
   aboutImage,
+  aboutBanner,
   isHomeTeaser = false,
 }: { 
   aboutData?: any; 
   aboutImage?: any;
+  aboutBanner?: any;
   isHomeTeaser?: boolean;
 }) {
+  const bannerUrl = aboutBanner ? urlFor(aboutBanner).url() : "/collaboration-creative.png";
   const imageUrl = aboutImage ? urlFor(aboutImage).url() : "/collaboration-creative.png";
 
   const stats = [
@@ -100,8 +103,38 @@ export default function About({
 
   // VERSION COMPLÈTE PAGE DÉDIÉE (/a-propos)
   return (
-    <section id="about" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
+    <section id="about" className="py-6 md:py-12 bg-white">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
+
+        {/* Hero Banner À Propos style EZK Agency */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative h-[380px] sm:h-[440px] md:h-[480px] lg:h-[520px] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-gray-100 mb-10 sm:mb-14"
+        >
+          <Image
+            src={bannerUrl}
+            alt="À Propos - EZK Agency Dakar"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/65 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-14 lg:p-16 max-w-2xl">
+            <span className="inline-block bg-[#0D4FB8] text-white text-[11px] font-extrabold tracking-wider px-3.5 py-1 rounded-full uppercase mb-3 self-start shadow-sm">
+              À PROPOS D'EZK AGENCY
+            </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#5FD3E2] tracking-wider uppercase drop-shadow-sm font-poppins mb-3">
+              QUI SOMMES-NOUS ?
+            </h1>
+            <p className="text-white/95 text-xs sm:text-sm md:text-base max-w-xl font-normal leading-relaxed">
+              L'agence de communication et de marketing digital basée à Dakar, qui accompagne les marques et entreprises dans la construction d'une présence digitale forte, cohérente et durable.
+            </p>
+            <p className="text-[#5FD3E2] font-bold text-xs sm:text-sm mt-3 uppercase tracking-wider">
+              Votre partenaire de croissance digitale à Dakar
+            </p>
+          </div>
+        </motion.div>
 
         {/* Section Header */}
         <motion.div
@@ -109,12 +142,12 @@ export default function About({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
-          <p className="text-xs md:text-sm font-bold text-[#5FD3E2] tracking-widest uppercase mb-2">À PROPOS</p>
-          <h1 className="text-2xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight">
-            QUI SOMMES-NOUS ?
-          </h1>
+          <p className="text-xs md:text-sm font-bold text-[#5FD3E2] tracking-widest uppercase mb-2">NOTRE HISTOIRE & EXPERTISE</p>
+          <h2 className="text-2xl md:text-4xl font-extrabold font-poppins text-gray-900 tracking-tight">
+            L'AGENCE QUI DONNE DU SENS À VOTRE IMAGE
+          </h2>
           <div className="w-16 h-1 bg-[#5FD3E2] mx-auto mt-4 rounded-full" />
         </motion.div>
 

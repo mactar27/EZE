@@ -32,6 +32,14 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'aboutBanner',
+      title: 'Bannière Hero de la Page À Propos (Haut de page)',
+      description: 'L\'image d\'en-tête Hero affichée en haut de la page À Propos.',
+      type: 'image',
+      group: 'about',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'aboutImage',
       title: 'Image Section & Page À Propos',
       description: 'L\'image de collaboration affichée dans la page et la section À Propos.',

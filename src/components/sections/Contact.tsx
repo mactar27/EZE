@@ -169,9 +169,9 @@ export default function Contact({
           </div>
 
           {/* Coordonnées directes avec photo carrée agrandie au centre et réseaux sociaux */}
-          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-8 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
+          <div className="bg-[#EBF6FA] rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 text-xs md:text-sm text-gray-700 shadow-sm border border-blue-100/50">
             {/* Colonne Gauche : Liste des coordonnées */}
-            <div className="space-y-4 sm:space-y-5 lg:col-span-5 w-full">
+            <div className="space-y-4 sm:space-y-5 w-full lg:w-[35%] shrink-0">
               <div className="flex items-center gap-3.5 text-left">
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D4FB8] shadow-sm shrink-0">
                   <MapPin className="w-5 h-5" />
@@ -205,9 +205,9 @@ export default function Contact({
               </div>
             </div>
 
-            {/* Centre : Photo carrée agrandie au centre pour combler l'espace */}
-            <div className="lg:col-span-5 flex items-center justify-center w-full my-2 lg:my-0">
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-[22px] sm:rounded-[26px] overflow-hidden shadow-lg border-4 border-white bg-white group hover:scale-[1.02] transition-transform duration-300">
+            {/* Centre : Photo élargie sur mobile pour combler la largeur, carrée agrandie et bien centrée sur desktop */}
+            <div className="flex items-center justify-center w-full lg:flex-1 my-3 lg:my-0">
+              <div className="relative w-full max-w-md lg:max-w-none lg:w-[320px] xl:w-[350px] h-60 sm:h-68 md:h-76 lg:h-[320px] xl:h-[350px] lg:aspect-square rounded-[22px] sm:rounded-[26px] overflow-hidden shadow-lg border-4 border-white bg-white group hover:scale-[1.01] transition-transform duration-300">
                 <Image
                   src={photoCircleUrl}
                   alt="EZK Agency Contact"
@@ -218,7 +218,7 @@ export default function Contact({
             </div>
 
             {/* Colonne Droite : Icônes Réseaux Sociaux */}
-            <div className="pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-blue-200/50 lg:pl-8 flex flex-row lg:flex-col items-center justify-around lg:justify-center gap-3 sm:gap-4 shrink-0 w-full lg:col-span-2">
+            <div className="pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-blue-200/50 lg:pl-8 flex flex-row lg:flex-col items-center justify-around lg:justify-center gap-3 sm:gap-4 shrink-0 w-full lg:w-[20%]">
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider hidden lg:block text-center mb-1">
                 Suivez-nous
               </span>

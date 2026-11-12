@@ -168,7 +168,7 @@ const SOCIAL_ICONS = [
     name: "Instagram",
     href: "https://www.instagram.com/ezk_agency/",
     icon: (
-      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+      <svg viewBox="0 0 24 24" className="w-9 h-9 md:w-10 md:h-10 shrink-0" fill="none">
         <defs>
           <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
             <stop offset="0%" stopColor="#ffd600" />
@@ -179,8 +179,9 @@ const SOCIAL_ICONS = [
           </radialGradient>
         </defs>
         <rect width="24" height="24" rx="6" fill="url(#ig-grad)" />
-        <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="2" fill="none" />
-        <circle cx="18" cy="6" r="1.4" fill="white" />
+        <rect x="4.5" y="4.5" width="15" height="15" rx="4" stroke="white" strokeWidth="1.6" fill="none" />
+        <circle cx="12" cy="12" r="3.6" stroke="white" strokeWidth="1.6" fill="none" />
+        <circle cx="16.5" cy="7.5" r="1" fill="white" />
       </svg>
     ),
   },
@@ -188,7 +189,7 @@ const SOCIAL_ICONS = [
     name: "Facebook",
     href: "https://facebook.com",
     icon: (
-      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#1877F2">
+      <svg viewBox="0 0 24 24" className="w-9 h-9 md:w-10 md:h-10 shrink-0" fill="#1877F2">
         <rect width="24" height="24" rx="6" fill="#1877F2" />
         <path d="M15.5 8H13.5V6.5C13.5 5.95 13.95 5.5 14.5 5.5H15.5V3H13.5C12.12 3 11 4.12 11 5.5V8H9V10.5H11V21H13.5V10.5H15L15.5 8Z" fill="white" />
       </svg>
@@ -198,7 +199,7 @@ const SOCIAL_ICONS = [
     name: "TikTok",
     href: "https://www.tiktok.com/@ezk_agency",
     icon: (
-      <svg viewBox="0 0 24 24" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" className="w-9 h-9 md:w-10 md:h-10 shrink-0">
         <rect width="24" height="24" rx="6" fill="#010101" />
         <path d="M16.5 4H14.3C14.5 5.5 15.4 6.8 17 7.1V9.3C15.9 9.2 14.9 8.8 14.1 8.1V13.7C14.1 16.1 12.2 18 9.8 18C7.4 18 5.5 16.1 5.5 13.7C5.5 11.3 7.4 9.4 9.8 9.4C10 9.4 10.2 9.4 10.4 9.5V11.7C10.2 11.6 10 11.6 9.8 11.6C8.6 11.6 7.7 12.5 7.7 13.7C7.7 14.9 8.6 15.8 9.8 15.8C11 15.8 11.9 14.9 11.9 13.7V4H14.1C14.1 4 14.3 5.6 16.5 6.2V4Z" fill="white" />
         <path d="M16.5 4H14.3C14.5 5.5 15.4 6.8 17 7.1V9.3" stroke="#69C9D0" strokeWidth="0.3" fill="none" />
@@ -209,7 +210,7 @@ const SOCIAL_ICONS = [
     name: "LinkedIn",
     href: "https://www.linkedin.com/company/ezkagency/",
     icon: (
-      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#0A66C2">
+      <svg viewBox="0 0 24 24" className="w-9 h-9 md:w-10 md:h-10 shrink-0" fill="#0A66C2">
         <rect width="24" height="24" rx="6" fill="#0A66C2" />
         <path d="M7 9H9.5V17H7V9ZM8.25 8C7.56 8 7 7.44 7 6.75C7 6.06 7.56 5.5 8.25 5.5C8.94 5.5 9.5 6.06 9.5 6.75C9.5 7.44 8.94 8 8.25 8Z" fill="white" />
         <path d="M11 9H13.4V10.2C13.8 9.5 14.7 9 15.8 9C17.9 9 18.9 10.3 18.9 12.5V17H16.4V13C16.4 12 16.1 11.2 15.1 11.2C14.1 11.2 13.5 11.9 13.5 13V17H11V9Z" fill="white" />

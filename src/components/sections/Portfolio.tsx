@@ -281,9 +281,9 @@ function FullPortfolioView({
   const webdesignItems = getCategoryItems("Webdesign");
 
   return (
-    <section id="portfolio-full" className="bg-white pb-20">
+    <section id="portfolio-full" className="pt-24 md:pt-32 pb-20 bg-white">
       {/* Hero Banner style Canva avec caméra sur trépied */}
-      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl pt-4">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

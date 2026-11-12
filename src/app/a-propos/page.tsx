@@ -29,7 +29,7 @@ export default async function AboutPage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Navbar logoImage={siteImages?.siteLogo} />
-      <div className="pt-28 flex-1">
+      <div className="flex-1">
         <About 
           aboutData={about} 
           aboutImage={siteImages?.aboutImage} 

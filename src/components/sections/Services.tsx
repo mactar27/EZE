@@ -381,7 +381,7 @@ export default function Services({
 
   // Page dédiée /services : Présentation détaillée avec la bannière et toutes les sous-sections
   return (
-    <section id="services" className="py-16 md:py-24 bg-white relative">
+    <section id="services" className="pt-24 md:pt-32 pb-16 md:pb-24 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
         {/* Banner visuelle */}

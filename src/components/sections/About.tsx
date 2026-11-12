@@ -103,7 +103,7 @@ export default function About({
 
   // VERSION COMPLÈTE PAGE DÉDIÉE (/a-propos)
   return (
-    <section id="about" className="py-6 md:py-12 bg-white">
+    <section id="about" className="pt-24 md:pt-32 pb-16 md:pb-24 bg-white">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
 
         {/* Hero Banner À Propos style EZK Agency */}

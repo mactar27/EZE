@@ -19,7 +19,7 @@ export default async function ContactPage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Navbar logoImage={siteImages?.siteLogo} />
-      <div className="pt-28 flex-1">
+      <div className="flex-1">
         <Contact 
           contactBanner={siteImages?.contactBanner}
           contactPhotoCircle={siteImages?.contactPhotoCircle}

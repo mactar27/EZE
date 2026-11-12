@@ -268,7 +268,7 @@ export default function Contact({
 
   // VERSION COMPLÈTE PAGE DÉDIÉE /contact (avec tous les formulaires complets)
   return (
-    <section id="contact" className="py-6 md:py-12 bg-white relative">
+    <section id="contact" className="pt-24 md:pt-32 pb-16 md:pb-24 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
         {/* Hero Banner Contact style EZK Agency */}

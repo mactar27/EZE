@@ -26,7 +26,7 @@ export default async function RealisationsPage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Navbar logoImage={siteImages?.siteLogo} />
-      <div className="pt-28 flex-1">
+      <div className="flex-1">
         <Portfolio 
           projects={projects} 
           bannerImage={siteImages?.realisationsBanner} 

@@ -27,7 +27,7 @@ export default async function ServicesPage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Navbar logoImage={siteImages?.siteLogo} />
-      <div className="pt-28 flex-1">
+      <div className="flex-1">
         <Services 
           services={services} 
           bannerImage={siteImages?.servicesBanner} 

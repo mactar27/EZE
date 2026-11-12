@@ -88,7 +88,7 @@ export default function Navbar({ logoImage }: { logoImage?: any }) {
         </nav>
 
         {/* Mobile Header: CONTACT US Button, then Burger Menu (permutés) */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-2 translate-x-1.5">
           <Link
             href="/contact"
             className="bg-[#0D4FB8] text-white px-3.5 py-1.5 rounded-full font-bold text-[11px] tracking-wider uppercase shadow-sm active:scale-95 transition-transform"

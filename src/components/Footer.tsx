@@ -32,29 +32,29 @@ export default function Footer({ logoImage }: { logoImage?: any }) {
             </div>
           </div>
 
-          {/* Informations et Liens Rapides : côte à côte en 2 colonnes (sur mobile comme sur grand écran) */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-6 sm:gap-8">
+          {/* Informations et Liens Rapides : côte à côte (Liens rapides décalé pour laisser la place au mail sur une seule ligne) */}
+          <div className="lg:col-span-5 grid grid-cols-[1.5fr_1fr] sm:grid-cols-[1.3fr_1fr] gap-3 sm:gap-8">
             {/* Contact Info */}
             <div className="space-y-4 sm:space-y-6">
               <h4 className="font-semibold text-base sm:text-lg font-poppins text-white">Informations</h4>
               <ul className="space-y-3 sm:space-y-4 text-gray-400 text-xs sm:text-sm">
-                <li className="flex items-start sm:items-center gap-2">
-                  <span className="text-secondary shrink-0">📍</span>
+                <li className="flex items-center gap-2">
+                  <span className="text-secondary shrink-0 text-xs sm:text-sm">📍</span>
                   <span>Dakar, Sénégal</span>
                 </li>
-                <li className="flex items-start sm:items-center gap-2">
-                  <span className="text-secondary shrink-0">📧</span>
-                  <a href="mailto:contactezkagency@gmail.com" className="hover:text-white break-all">
+                <li className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-secondary shrink-0 text-xs sm:text-sm">📧</span>
+                  <a href="mailto:contactezkagency@gmail.com" className="hover:text-white text-[11px] sm:text-xs md:text-sm whitespace-nowrap">
                     contactezkagency@gmail.com
                   </a>
                 </li>
-                <li className="flex items-start sm:items-center gap-2">
-                  <span className="text-secondary shrink-0">📞</span>
-                  <span>+221 77 593 31 93</span>
+                <li className="flex items-center gap-2">
+                  <span className="text-secondary shrink-0 text-xs sm:text-sm">📞</span>
+                  <span className="whitespace-nowrap">+221 77 593 31 93</span>
                 </li>
-                <li className="flex items-start sm:items-center gap-2">
-                  <span className="text-secondary shrink-0">📞</span>
-                  <span>+221 76 196 87 59</span>
+                <li className="flex items-center gap-2">
+                  <span className="text-secondary shrink-0 text-xs sm:text-sm">📞</span>
+                  <span className="whitespace-nowrap">+221 76 196 87 59</span>
                 </li>
               </ul>
             </div>

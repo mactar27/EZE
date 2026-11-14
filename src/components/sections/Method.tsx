@@ -65,13 +65,13 @@ export default function Method({
     <section id="method" className="py-10 md:py-16 bg-white relative">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
         
-        {/* Titre Cyan Canva */}
+        {/* Titre Noir */}
         <div className="text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-4"
+            className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-wider uppercase mb-4"
           >
             NOTRE METHODE
           </motion.h2>
@@ -169,7 +169,7 @@ export default function Method({
             {/* Contenu textuel et boutons */}
             <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col justify-between h-full text-center">
               <div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0D4FB8] tracking-wider uppercase mb-3 drop-shadow-sm font-poppins">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 tracking-wider uppercase mb-3 drop-shadow-sm font-poppins">
                   POURQUOI NOUS CHOISIR ?
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-800 leading-relaxed font-normal mx-auto max-w-md">

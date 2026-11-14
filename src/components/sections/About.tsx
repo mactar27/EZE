@@ -39,7 +39,7 @@ export default function About({
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <h2 className="text-3xl md:text-5xl font-extrabold font-poppins text-gray-900 leading-tight tracking-tight">
-                  L’AGENCE QUI DONNE DU SENS À VOTRE <span className="text-[#0D4FB8]">PRÉSENCE DIGITALE</span>
+                  L’AGENCE QUI DONNE DU SENS À VOTRE PRÉSENCE DIGITALE
                 </h2>
               </div>
 
@@ -199,7 +199,7 @@ export default function About({
             className="bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-lg md:text-xl font-extrabold font-poppins text-[#5FD3E2] mb-4 uppercase tracking-wider">
+              <h3 className="text-lg md:text-xl font-extrabold font-poppins text-gray-900 mb-4 uppercase tracking-wider">
                 NOTRE VISION
               </h3>
               <p className="text-gray-700 leading-relaxed text-sm md:text-base font-normal">
@@ -216,7 +216,7 @@ export default function About({
             className="bg-white rounded-[24px] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-lg md:text-xl font-extrabold font-poppins text-[#5FD3E2] mb-4 uppercase tracking-wider">
+              <h3 className="text-lg md:text-xl font-extrabold font-poppins text-gray-900 mb-4 uppercase tracking-wider">
                 NOTRE MISSION
               </h3>
               <p className="text-gray-700 leading-relaxed text-sm md:text-base font-normal">

@@ -118,7 +118,7 @@ export default function Testimonials({
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-8"
+            className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-wider uppercase mb-8"
           >
             ils nous ont fait confiance
           </motion.h2>

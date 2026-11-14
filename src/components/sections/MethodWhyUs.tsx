@@ -94,7 +94,7 @@ export default function MethodWhyUs() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-4"
+            className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-wider uppercase mb-4"
           >
             NOTRE MÉTHODE
           </motion.h1>
@@ -163,7 +163,7 @@ export default function MethodWhyUs() {
         {/* Pourquoi Nous Choisir ? */}
         <div className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3">
+            <h2 className="text-xl md:text-3xl font-extrabold text-gray-900 tracking-wider uppercase mb-3">
               POURQUOI NOUS CHOISIR ?
             </h2>
             <p className="text-gray-700 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">

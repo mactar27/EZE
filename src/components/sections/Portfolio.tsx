@@ -42,13 +42,13 @@ export default function Portfolio({
       <section id="portfolio" className="pt-2 pb-10 md:pt-4 md:pb-14 bg-white relative">
         <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl">
           
-          {/* Titre Cyan Canva */}
+          {/* Titre Noir */}
           <div className="text-center mb-8">
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-extrabold text-[#5FD3E2] tracking-wider uppercase"
+              className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-wider uppercase"
             >
               NOS REALISATIONS
             </motion.h2>
@@ -318,7 +318,7 @@ function FullPortfolioView({
       <div className="container mx-auto px-4 md:px-12 lg:px-20 max-w-7xl py-14">
         {/* Section CRÉATION DE CONTENU */}
         <div id="contenu" className="mb-16 scroll-mt-28">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider uppercase mb-3 font-poppins">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-wider uppercase mb-3 font-poppins">
             CREATION DE CONTENU
           </h2>
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 font-normal max-w-3xl">
@@ -327,7 +327,7 @@ function FullPortfolioView({
 
           {/* Sous-section PHOTOS & VIDÉOS : sur la même ligne (4 cases seulement) */}
           <div className="mb-12">
-            <p className="text-[#5FD3E2] font-extrabold text-sm uppercase tracking-widest mb-4">
+            <p className="text-gray-900 font-extrabold text-sm uppercase tracking-widest mb-4">
               PHOTOS & VIDÉOS :
             </p>
             {/* Grille 4 colonnes sur grand écran / 2 sur mobile */}
@@ -372,7 +372,7 @@ function FullPortfolioView({
 
         {/* Section INFOGRAPHIE */}
         <div id="infographie" className="mb-16 scroll-mt-28">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-wider mb-3 capitalize font-poppins">
             Infographie
           </h2>
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 font-normal max-w-3xl">
@@ -415,7 +415,7 @@ function FullPortfolioView({
 
         {/* Section WEB DESIGN */}
         <div id="webdesign" className="mb-16 scroll-mt-28">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#5FD3E2] tracking-wider mb-3 capitalize font-poppins">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-wider mb-3 capitalize font-poppins">
             Web design
           </h2>
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 font-normal max-w-3xl">
